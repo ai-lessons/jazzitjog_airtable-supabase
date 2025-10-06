@@ -1,0 +1,22 @@
+article_id,article_title,brand_name,model,model_key,primary_use,cushioning_type,weight,foot_width,heel_height,drop,waterproof,price,forefoot_height,carbon_plate,surface_type
+108,Unknown,Norda,008 Slide,norda 008 slide,recovery,max,262,,,,,145,,,
+109,Unknown,Mizuno,Wave Sky 9,mizuno wave sky 9,long distance running,max,283,narrow,44,6,,,38,,road
+114,Unknown,Tracksmith,Eliot Range,tracksmith eliot range,trail,balanced,281,narrow,35,9,,240,26,true,trail
+121,Unknown,Asics,GT-2000 14,asics gt-2000 14,daily trainer,balanced,269,,36,7.4,,140,28,,
+124,Unknown,Mizuno,Wave Rider 29,mizuno wave rider 29,daily trainer,max,258,standard,38,10,,150,28,true,road
+125,Unknown,Asics,Metaspeed Sky Paris,asics metaspeed sky paris,racing,firm,,narrow,,,,,,true,road
+125,Unknown,Asics,Metaspeed Sky Tokyo,asics metaspeed sky tokyo,racing,max,,standard,,,,,,true,road
+17,Unknown,Brooks,Caldera 8,brooks caldera 8,tempo,,286,,,,,,,true,trail
+20,Unknown,Hoka,Mafate 5,hoka mafate 5,tempo,,337,,,8,,,,,trail
+22,Unknown,Nike,Structure 26,nike structure 26,tempo,,267,,,,,,,,trail
+36,Unknown,Teva,Aventrail R2T,teva aventrail r2t,trail,balanced,273,standard,42,8.5,,,33,,trail
+48,Unknown,New Balance,SC Elite V5,new balance sc elite v5,race,balanced,225,narrow,40,8,,270,32,true,road
+54,Unknown,Mizuno,Wave Inspire 21,mizuno wave inspire 21,daily trainer,balanced,309,standard,32,12,,140,20,true,road
+55,Unknown,Adidas,Adizero Prime X3 Strung,adidas adizero prime x3 strung,racing,max,281,narrow,50,7,,300,43,true,road
+70,Unknown,Tracksmith,Eliot Range,tracksmith eliot range,trail,balanced,281,standard,35,9,,240,26,true,trail
+71,Unknown,Asics,Megablast,asics megablast,daily trainer,max,230,standard,45,8,,225,37,,road
+75,Unknown,Lululemon,Wildfeel Trail,lululemon wildfeel trail,trail,balanced,285,standard,20,7,,180,13,,trail
+83,Unknown,Nike,Terra Kiger 10,nike terra kiger 10,trail,firm,278,narrow,29,5,,,24,,trail
+84,Unknown,Asics,Metaspeed Sky Tokyo,asics metaspeed sky tokyo,race,balanced,170,wide,33,3,,200,30,true,road
+87,Unknown,Hoka,Rocket X 3,hoka rocket x 3,race,balanced,227,standard,40,7,,250,33,true,road
+95,Unknown,Brooks,Adrenaline GTS 25,brooks adrenaline gts 25,daily trainer,balanced,,,32,3,,145,29,,road

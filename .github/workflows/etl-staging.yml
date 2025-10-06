@@ -1,0 +1,46 @@
+name: ETL to Staging (Every 72 hours)
+
+on:
+  schedule:
+    # Run every 72 hours (3 days) at 00:00 UTC
+    - cron: '0 0 */3 * *'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  etl-staging:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ETL to Staging
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+          AIRTABLE_TABLE_NAME: ${{ secrets.AIRTABLE_TABLE_NAME }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+        run: |
+          npm run etl:staging
+
+      - name: Upload logs (if failed)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: etl-logs
+          path: logs/
+          retention-days: 7

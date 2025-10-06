@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx ts-node:*)",
+      "Bash(npx tsx:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm test)",
+      "Bash(npm test:*)",
+      "Bash(tsx test_parser_changes.ts:*)",
+      "Bash(npm install:*)",
+      "Bash(npx jest:*)",
+      "Bash(npm run simple sync:*)",
+      "Bash(npm run simple test)",
+      "Bash(npm run simple stats)",
+      "Bash(npx tsc:*)",
+      "Bash(tsx test:*)",
+      "Bash(npm run simple clear-db)",
+      "Bash(tsx check-current-adidas.js:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run test:integration:*)",
+      "Bash(npm run etl:run:*)",
+      "Bash(npm run etl:cli:*)",
+      "Bash(npm run test:unit:*)",
+      "Bash(node:*)",
+      "Bash(psql:*)",
+      "Bash(npm run dev:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

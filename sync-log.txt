@@ -1,0 +1,1653 @@
+
+> sneaker-pipeline@1.0.0 simple
+> tsx src/simple-main.ts sync
+
+🔄 Starting Airtable → Database sync...
+🚀 Starting sync from Airtable...
+📊 Found 170 records to process
+📦 Processing batch 1/4
+🔍 Processing: How to Lace and Tie Running Shoes - Running Shoe A...
+🔍 Processing: We Love to Train and Race in These 6 Adidas Runnin...
+🔍 Processing: Under Armour Velociti Pro 2 Review: Gaining Veloci...
+🔍 Processing: PUMA Velocity Nitro 4 Review...
+🔍 Processing: Brooks Hyperion Elite 5 Review...
+🔍 Processing: Cumulus Fastier Hardshell Ultralight Rain Jacket R...
+🔍 Processing: Hoka Rocket X Trail Review: Blazing Trails...
+🔍 Processing: Hoka Mach X 3 Multi Tester Review: 3 Comparisons...
+🔍 Processing: Scott Pursuit Ride 2 Review: Pursuing Happiness...
+🔍 Processing: Tantrums Crest 6 Hydration Pack Review: Pack it up...
+🔍 Processing: Notace Yama T1 Review: Less Really is More...
+🔍 Processing: Nike Vomero Premium Review: Max Madness, Fury on t...
+🔍 Processing: Ciele Athletics FLRJacket-Elite Review: Ciele cove...
+🔍 Processing: The 10 Best Massage Guns For Workout Recovery...
+🔍 Processing: The 11 Best Treadmills for Runners...
+🔍 Processing: Craft Xplor 2 Review: 3 Comparisons...
+🔍 Processing: Li Ning Feidian 5 Elite Review: 5 Comparisons...
+🔍 Processing: Testbericht: Nike Structure 26 - Wie auf Schienen ...
+🔍 Processing: KAILAS FUGA EX 330 Review: All Around, Any Trail, ...
+🔍 Processing: On Cloudultra 3 Review: A Fine Follow-Up...
+🔍 Processing: SunGod Forty2s Running Sunglasses Review...
+🔍 Processing: ASICS Gel Kayano 32 Review...
+🔍 Processing: Saucony Kinvara 16 Review...
+🔍 Processing: Hoka Mach X 3 Performance Review...
+🔍 Processing: VKTRY Recovery Clog Review...
+🔍 Processing: Salomon Aero Glide 3 GRVL Review: Gravel, So Hot R...
+🔍 Processing: From Long Runs to Race Day: The 8 Saucony Running ...
+🔍 Processing: Nike Vomero Premium Performance Review...
+🔍 Processing: Asics Megablast Performance Review...
+🔍 Processing: On Cloudboom Max Performance Review...
+🔍 Processing: Best Brooks Running Shoes Right Now...
+🔍 Processing: Mizuno Wave Rebellion Flash 3 Performance Review...
+🔍 Processing: Asics Metaspeed Sky Tokyo Performance Review...
+🔍 Processing: Asics Metaspeed Edge Tokyo Performance Review...
+🔍 Processing: Test des On Cloudsurfer Max: une alternative intér...
+🔍 Processing: The 9 Best Stability Shoes for Every Type of Runne...
+🔍 Processing: The Best Carbon Plate Shoes for Race Day and Beyon...
+🔍 Processing: Hoka Rocket X Trail Performance Review...
+🔍 Processing: La Sportiva Prodigio Max Performance Review...
+🔍 Processing: Salomon Pulsar Performance Review...
+🔍 Processing: On Cloudultra 3  Multi Tester Review: 2 Comparison...
+🔍 Processing: The 8 Best Running Headphones to Keep You Motivate...
+🔍 Processing: The Best Trail Running Shoes for Beginners...
+🔍 Processing: Inov8 RacePac8 Running Vest Review...
+🔍 Processing: Nike Vomero Plus  Review...
+🔍 Processing: Tracksmith Eliot Range Multi Tester Review: 4 Comp...
+🔍 Processing: Norda 001A Review: A Is For Awesome...
+🔍 Processing: The North Face Summit Series Vectiv Pro 3 Review: ...
+🔍 Processing: Testbericht: Puma Deviate NITRO Elite 3 - Carbonpo...
+🔍 Processing: The Bondi 9—Hoka’s Plush, Versatile Trainer—Is the...
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mOpenAI client created successfully[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+✅ Saved 1 sneakers for article 217
+✅ Saved 1 sneakers for article 211
+⚠️  No sneakers found in: SunGod Forty2s Running Sunglasses Review
+✅ Saved 0 sneakers for article 233
+[20:45:19] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:19] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:19] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 3 sneakers for article 227
+✅ Saved 3 sneakers for article 206
+✅ Saved 4 sneakers for article 223
+⚠️  No sneakers found in: How to Lace and Tie Running Shoes - Running Shoe Advice from Runner's World
+✅ Saved 0 sneakers for article 259
+⚠️  No sneakers found in: The Best Carbon Plate Shoes for Race Day and Beyond
+✅ Saved 0 sneakers for article 216
+⚠️  No sneakers found in: Cumulus Fastier Hardshell Ultralight Rain Jacket Review
+✅ Saved 0 sneakers for article 253
+[20:45:21] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:21] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:21] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:21] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:21] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:21] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:21] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:21] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:21] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+⚠️  No sneakers found in: Ciele Athletics FLRJacket-Elite Review: Ciele covers more than just your head well!
+✅ Saved 0 sneakers for article 244
+⚠️  No sneakers found in: The 8 Best Running Headphones to Keep You Motivated
+✅ Saved 0 sneakers for article 208
+⚠️  No sneakers found in: The 10 Best Massage Guns For Workout Recovery
+✅ Saved 0 sneakers for article 243
+[20:45:22] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:22] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:22] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:22] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:22] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:22] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:22] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:22] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:22] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+⚠️  No sneakers found in: The 11 Best Treadmills for Runners
+✅ Saved 0 sneakers for article 241
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 229
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 225
+✅ Saved 1 sneakers for article 247
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 254
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:23] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 228
+✅ Saved 1 sneakers for article 255
+✅ Saved 0 sneakers for article 239
+✅ Saved 1 sneakers for article 234
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 257
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 249
+✅ Saved 1 sneakers for article 203
+✅ Saved 1 sneakers for article 195
+✅ Saved 1 sneakers for article 230
+✅ Saved 1 sneakers for article 202
+✅ Saved 1 sneakers for article 246
+✅ Saved 1 sneakers for article 224
+✅ Saved 1 sneakers for article 250
+✅ Saved 1 sneakers for article 218
+✅ Saved 1 sneakers for article 237
+✅ Saved 1 sneakers for article 245
+✅ Saved 1 sneakers for article 238
+✅ Saved 1 sneakers for article 232
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 252
+✅ Saved 1 sneakers for article 214
+✅ Saved 1 sneakers for article 231
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 204
+✅ Saved 1 sneakers for article 201
+✅ Saved 1 sneakers for article 205
+✅ Saved 1 sneakers for article 240
+✅ Saved 1 sneakers for article 194
+✅ Saved 1 sneakers for article 212
+✅ Saved 1 sneakers for article 226
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:24] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 219
+✅ Saved 1 sneakers for article 213
+[20:45:25] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:25] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:25] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 221
+✅ Saved 1 sneakers for article 220
+[20:45:26] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:26] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:26] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:27] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:27] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:27] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 3 sneakers for article 258
+📦 Processing batch 2/4
+🔍 Processing: Suunto Wing 2 Bone Conduction Headphone Review...
+🔍 Processing: Hoka Rocket X Trail Multi Tester Review: Hugely Fa...
+🔍 Processing: BioLite Range 500 Headlamp Review...
+🔍 Processing: ASICS Megablast Multi Tester Review 5 Comparisons...
+🔍 Processing: Quench Your Thirst On Your Next Run With These Hyd...
+🔍 Processing: 6 Best Jogging Strollers for Every Active Parent...
+🔍 Processing: The Best Running Shorts We Tested and Recommend...
+🔍 Processing: Asics Metaspeed Ray Review: Featherlight Freak...
+🔍 Processing: Nank (Naenka) Runner 4 Bone Conduction Headphone...
+🔍 Processing: PUMA Magnify Nitro 3 Review...
+🔍 Processing: Hoka Mach X 3 Review...
+🔍 Processing: Testbericht: Mount to Coast T1 (German)...
+🔍 Processing: Best Puma Running Shoes Right Now (2025)...
+🔍 Processing: ASICS METASPEED Edge Tokyo Review...
+🔍 Processing: adidas adizero Boston 13 Review...
+🔍 Processing: Hoka Rocket X Trail Multi Tester Review: Hugely Fa...
+🔍 Processing: Testbericht: adidas Adizero Takumi Sen 11 - Wettka...
+🔍 Processing: Saucony Endorphin LD Review: Unleashed At Last...
+🔍 Processing: Analysis: Nike Intoduces  the ACG Ultrafly Trail R...
+🔍 Processing: ASICS Sonicblast Multi Tester Review: 4 Comparison...
+🔍 Processing: The North Face Vectiv Infinite 3 Review: Limitless...
+🔍 Processing: Best Running Jackets Right Now (2025)...
+🔍 Processing: Scott Supertrac RC 3 Review: Low-Stacked & Speedy...
+🔍 Processing: Scott Pursuit Gravel Review: Goldilocks for the Gr...
+🔍 Processing: Tracksmith Overland Shorts and Short Sleeve Review...
+🔍 Processing: On Cloudboom Max Review: Versatile and Refined, to...
+🔍 Processing: Norda 001A Multi Tester Review: Immensely competen...
+🔍 Processing: Inov8 Trailtalon Max 120 Mile Review: White Mounta...
+🔍 Processing: Puma Velocity Nitro 4: Narrow Is the Road to Perfe...
+🔍 Processing: Best Running Belts of 2025...
+🔍 Processing: We Spent Weeks Trying Out Running Sunglasses—and T...
+🔍 Processing: Mizuno Wave Sky 9 Beoordeling,  Mizuno herdefiniee...
+🔍 Processing: Best Running Gear of 2025...
+🔍 Processing: HOKA Rocket X 3 Review...
+🔍 Processing: adidas adiSTAR 4 Review...
+🔍 Processing: Test des Mount to Coast T1 (French)...
+🔍 Processing: Kurt's Mizuno Wave Sky 9 Review:  Mizuno redefines...
+🔍 Processing: Our Editors’ Top 10 Running Shoes Are on Sale For ...
+🔍 Processing: The Garmin Labor Day Sales I’d Actually Recommend ...
+🔍 Processing: HOKA Mafate 5 Performance Review...
+🔍 Processing: New Balance Fresh Foam X More v6 Performance Revie...
+🔍 Processing: Reebok Nano Zero Performance Review...
+🔍 Processing: Mizuno Wave Sky 9 Performance Review...
+🔍 Processing: Craft Kype Pro Performance Review...
+🔍 Processing: On Cloudboom Max: Boom or Bust?...
+🔍 Processing: Testbericht: adidas Adizero Prime X 3 STRUNG - Vie...
+🔍 Processing: ASICS Megablast and Sonicblast In-Depth Reviews...
+🔍 Processing: Nils’s Puma Fast-R Nitro 3 In Depth Review: 3 PR's...
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+✅ Saved 1 sneakers for article 189
+✅ Saved 3 sneakers for article 162
+✅ Saved 2 sneakers for article 133
+⚠️  No sneakers found in: Quench Your Thirst On Your Next Run With These Hydration Packs
+✅ Saved 0 sneakers for article 187
+⚠️  No sneakers found in: 6 Best Jogging Strollers for Every Active Parent
+✅ Saved 0 sneakers for article 185
+[20:45:29] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:29] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:29] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:29] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:29] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:29] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 6 sneakers for article 161
+✅ Saved 6 sneakers for article 144
+⚠️  No sneakers found in: Nank (Naenka) Runner 4 Bone Conduction Headphone
+✅ Saved 0 sneakers for article 174
+⚠️  No sneakers found in: The Best Running Shorts We Tested and Recommend
+✅ Saved 0 sneakers for article 183
+[20:45:31] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:31] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:31] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:31] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:31] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:31] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+⚠️  No sneakers found in: Reebok Nano Zero Performance Review
+✅ Saved 0 sneakers for article 135
+[20:45:32] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:32] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:32] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+⚠️  No sneakers found in: The Garmin Labor Day Sales I’d Actually Recommend (From a Running Gear Editor Who’s Tried Them All)
+✅ Saved 0 sneakers for article 138
+[20:45:32] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:32] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:32] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+⚠️  No sneakers found in: Tracksmith Overland Shorts and Short Sleeve Reviews:For Where Miles Wander!
+✅ Saved 0 sneakers for article 157
+[20:45:32] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:32] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:45:32] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3292. Please try again in 987ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: HOKA Rocket X 3 Review
+✅ Saved 0 sneakers for article 143
+✅ Saved 1 sneakers for article 175
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3014. Please try again in 904ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3649. Please try again in 1.094s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Mizuno Wave Sky 9 Performance Review
+✅ Saved 0 sneakers for article 134
+✅ Saved 1 sneakers for article 142
+✅ Saved 1 sneakers for article 172
+[20:45:33] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:33] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:33] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:33] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:33] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:33] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:34] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:34] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 171
+✅ Saved 1 sneakers for article 193
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 4509. Please try again in 1.352s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: ASICS Megablast and Sonicblast In-Depth Reviews
+✅ Saved 0 sneakers for article 129
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 4623. Please try again in 1.386s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Saucony Endorphin LD Review: Unleashed At Last
+✅ Saved 0 sneakers for article 165
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:34] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:34] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:34] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 173
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 150
+✅ Saved 1 sneakers for article 164
+✅ Saved 1 sneakers for article 190
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 5063. Please try again in 1.518s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Scott Pursuit Gravel Review: Goldilocks for the Gravel
+✅ Saved 0 sneakers for article 159
+[20:45:35] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:35] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 128
+✅ Saved 1 sneakers for article 160
+✅ Saved 1 sneakers for article 145
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 156
+✅ Saved 1 sneakers for article 151
+✅ Saved 1 sneakers for article 167
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 136
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 4698. Please try again in 1.409s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Test des Mount to Coast T1 (French)
+✅ Saved 0 sneakers for article 141
+✅ Saved 1 sneakers for article 137
+✅ Saved 1 sneakers for article 169
+[20:45:35] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:35] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 132
+✅ Saved 1 sneakers for article 168
+✅ Saved 1 sneakers for article 130
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 6219. Please try again in 1.865s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: ASICS Sonicblast Multi Tester Review: 4 Comparisons
+✅ Saved 0 sneakers for article 163
+[20:45:36] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:36] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:36] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 166
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 5849. Please try again in 1.754s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Kurt's Mizuno Wave Sky 9 Review:  Mizuno redefines its max cushioned trainer: 2 comparisons
+✅ Saved 0 sneakers for article 140
+[20:45:36] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:36] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:36] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:37] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:37] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:37] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 188
+[20:45:37] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:45:37] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:45:37] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 2 sneakers for article 139
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 8944. Please try again in 2.683s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Norda 001A Multi Tester Review: Immensely competent and comfortable, any distance, any terrain.  7 Comparisons
+✅ Saved 0 sneakers for article 152
+[20:45:39] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:39] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:39] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 8935. Please try again in 2.68s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: We Spent Weeks Trying Out Running Sunglasses—and These Offered the Best Coverage and Comfort
+✅ Saved 0 sneakers for article 146
+[20:45:39] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:39] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:39] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 10167. Please try again in 3.05s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Best Running Belts of 2025
+✅ Saved 0 sneakers for article 147
+[20:45:40] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:40] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:40] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 6001. Please try again in 1.8s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Best Puma Running Shoes Right Now (2025)
+✅ Saved 0 sneakers for article 170
+📦 Processing batch 3/4
+🔍 Processing: ASICS Metaspeed Sky Tokyo vs ASICS Metaspeed Sky P...
+🔍 Processing: Mizuno Wave Rider 29 Review...
+🔍 Processing: Salomon S/LAB Pulsar 4 Performance Review...
+🔍 Processing: Puma Velocity Nitro 4 Performance Review...
+🔍 Processing: A Running Shoe That's Stable and Fun? Yep, the Asi...
+🔍 Processing: I Switched to a Natural-Fit Running Shoe—and Final...
+🔍 Processing: We Spent Weeks Running In the Newest Headphones—Th...
+🔍 Processing: Best Running Shoes for Beginners (2025)...
+🔍 Processing: New Balance Fresh Foam More v6 Review: Behold, The...
+🔍 Processing: Adidas Prime X3 Strung Review: A Return to its Pri...
+🔍 Processing: Tracksmith Eliot Range Performance Review...
+🔍 Processing: Can I use my Apple Watch for Running? Which is bes...
+🔍 Processing: Testbericht: Puma Fast-R Nitro Elite 3 im Wettkamp...
+🔍 Processing: Recenzja: Mizuno Wave Sky 9 (Polish)...
+🔍 Processing: Norda 008 Slide Review...
+🔍 Processing: Nike Structure 26 Performance Review...
+🔍 Processing: Never Drop Your Water Again: 5 Running Water Bottl...
+🔍 Processing: Hoka Challenger 8 Multi Tester Review with 7 Compa...
+🔍 Processing: Brooks Adrenaline GTS 25  Multi Tester Review: Ste...
+🔍 Processing: Brooks Hyperion 3 Mulit Tester Review: A Modern Da...
+🔍 Processing: On Cloudsurfer Trail 2 Review: 8 Comparisons...
+🔍 Processing: Hoka Rocket X 3: For Your Best Space Race...
+🔍 Processing: The Running Headphones Editors Swear By Are Now Up...
+🔍 Processing: ASICS Metaspeed Sky Tokyo Review...
+🔍 Processing: Nike Terra Kiger 10 Review...
+🔍 Processing: Mizuno Neo Vista 2 vs Mizuno Neo Vista...
+🔍 Processing: Testbericht: New Balance FuelCell SC Elite v5 : 8 ...
+🔍 Processing: Vallon Freshwater Revivals and Watchtowers Sunglas...
+🔍 Processing: Heart Rate Monitors For When You Push Yourself to ...
+🔍 Processing: Lululemon Wildfeel Trail Review: We See You, Lulu...
+🔍 Processing: Asics Megablast Review: The Superblast, Refined...
+🔍 Processing: Tracksmith Eliot Range: First Thoughts...
+🔍 Processing: Adidas Adizero Prime X3 Strung  Review...
+🔍 Processing: Mizuno Wave Inspire 21 Review...
+🔍 Processing: New Balance Rebel v5 vs New Balance Rebel v4...
+🔍 Processing: Into The Wild: Checking Out Tracksmith’s Overland ...
+🔍 Processing: Hoka Mafate 5  Review: Deeply Capable! 4 Compariso...
+🔍 Processing: Beoordeling: New Balance SC Elite V5: Sharpened fo...
+🔍 Processing: On Cloudflow 5 Multi Tester Review: Master of Fart...
+🔍 Processing: Rabbit High Country Review: Jackalope Dreamin’...
+🔍 Processing: Saucony Guide 18 Review...
+🔍 Processing: Brooks Glycerin 22 Review...
+🔍 Processing: New Balance FuelCell Rebel v5 Review...
+🔍 Processing: Mammut Runbold IV Women's Pants Review: The Ultima...
+🔍 Processing: Mount to Coast R135 Badwater Limited Edition Revie...
+🔍 Processing: Matador GlobeRider35 Travel Backpack Review...
+🔍 Processing: Brooks Glycerin GTS 22 Review...
+🔍 Processing: Mizuno Neo Vista 2  Review...
+🔍 Processing: Norrøna Senja Equaliser Lightweight T-Shirt and Se...
+🔍 Processing: Teva Aventrail R2T Trail Running Sandal Multi Test...
+[20:45:45] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:45] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+✅ Saved 2 sneakers for article 46
+✅ Saved 4 sneakers for article 47
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2364. Please try again in 709ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: ASICS Metaspeed Sky Tokyo vs ASICS Metaspeed Sky Paris
+✅ Saved 0 sneakers for article 125
+[20:45:48] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:48] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:48] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2634. Please try again in 790ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: I Switched to a Natural-Fit Running Shoe—and Finally Found My Stride
+✅ Saved 0 sneakers for article 120
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2393. Please try again in 717ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: New Balance Rebel v5 vs New Balance Rebel v4
+✅ Saved 0 sneakers for article 53
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 14 sneakers for article 117
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2742. Please try again in 822ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Norda 008 Slide Review
+✅ Saved 0 sneakers for article 108
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2936. Please try again in 880ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Puma Velocity Nitro 4 Performance Review
+✅ Saved 0 sneakers for article 122
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2832. Please try again in 849ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Never Drop Your Water Again: 5 Running Water Bottles That Are Actually Easy to Hold
+✅ Saved 0 sneakers for article 103
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3006. Please try again in 901ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Recenzja: Mizuno Wave Sky 9 (Polish)
+✅ Saved 0 sneakers for article 109
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3044. Please try again in 913ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Salomon S/LAB Pulsar 4 Performance Review
+✅ Saved 0 sneakers for article 123
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3158. Please try again in 947ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3223. Please try again in 966ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Mizuno Wave Rider 29 Review
+✅ Saved 0 sneakers for article 124
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3039. Please try again in 911ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Norrøna Senja Equaliser Lightweight T-Shirt and Senja Flex 5” Shorts Reviews
+✅ Saved 0 sneakers for article 37
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2778. Please try again in 833ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Lululemon Wildfeel Trail Review: We See You, Lulu
+✅ Saved 0 sneakers for article 75
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3357. Please try again in 1.007s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: A Running Shoe That's Stable and Fun? Yep, the Asics GT-2000 14 Delivers Both
+✅ Saved 0 sneakers for article 121
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:49] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 104
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2310. Please try again in 693ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Mizuno Neo Vista 2 vs Mizuno Neo Vista
+✅ Saved 0 sneakers for article 82
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2610. Please try again in 783ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Brooks Glycerin 22 Review
+✅ Saved 0 sneakers for article 44
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2846. Please try again in 853ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Nike Terra Kiger 10 Review
+✅ Saved 0 sneakers for article 83
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3342. Please try again in 1.002s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Adidas Adizero Prime X3 Strung  Review
+✅ Saved 0 sneakers for article 55
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2853. Please try again in 855ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Brooks Glycerin GTS 22 Review
+✅ Saved 0 sneakers for article 39
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2461. Please try again in 738ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Mizuno Wave Inspire 21 Review
+✅ Saved 0 sneakers for article 54
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3493. Please try again in 1.047s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Vallon Freshwater Revivals and Watchtowers Sunglasses Reviews
+✅ Saved 0 sneakers for article 79
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2980. Please try again in 894ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2870. Please try again in 861ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: The Running Headphones Editors Swear By Are Now Up to 50% Off. Here’s What Makes Them Stand Out.
+✅ Saved 0 sneakers for article 85
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2733. Please try again in 819ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Mammut Runbold IV Women's Pants Review: The Ultimate Hiking and Adventure Pants?
+✅ Saved 0 sneakers for article 42
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3864. Please try again in 1.159s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Tracksmith Eliot Range Performance Review
+✅ Saved 0 sneakers for article 114
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2883. Please try again in 864ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Tracksmith Eliot Range: First Thoughts
+✅ Saved 0 sneakers for article 70
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 45
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3987. Please try again in 1.196s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Hoka Rocket X 3: For Your Best Space Race
+✅ Saved 0 sneakers for article 87
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3441. Please try again in 1.032s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Beoordeling: New Balance SC Elite V5: Sharpened for performance (Dutch/Flemish Review)
+✅ Saved 0 sneakers for article 48
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3141. Please try again in 942ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Mizuno Neo Vista 2  Review
+✅ Saved 0 sneakers for article 38
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 4267. Please try again in 1.28s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Teva Aventrail R2T Trail Running Sandal Multi Tester Review
+✅ Saved 0 sneakers for article 36
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3450. Please try again in 1.035s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: ASICS Metaspeed Sky Tokyo Review
+✅ Saved 0 sneakers for article 84
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3436. Please try again in 1.03s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: New Balance FuelCell Rebel v5 Review
+✅ Saved 0 sneakers for article 43
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 4394. Please try again in 1.318s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: New Balance Fresh Foam More v6 Review: Behold, The Queen of Cush
+✅ Saved 0 sneakers for article 116
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3548. Please try again in 1.064s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: On Cloudsurfer Trail 2 Review: 8 Comparisons
+✅ Saved 0 sneakers for article 92
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:50] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:50] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3470. Please try again in 1.041s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Matador GlobeRider35 Travel Backpack Review
+✅ Saved 0 sneakers for article 40
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:51] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 4433. Please try again in 1.329s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Adidas Prime X3 Strung Review: A Return to its Prime?
+✅ Saved 0 sneakers for article 115
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:51] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3426. Please try again in 1.027s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Mount to Coast R135 Badwater Limited Edition Review- Comparisons to R1
+✅ Saved 0 sneakers for article 41
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:51] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 3638. Please try again in 1.091s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Brooks Adrenaline GTS 25  Multi Tester Review: Steady, Stable, Stylish- 3 Comparisons
+✅ Saved 0 sneakers for article 95
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 4706. Please try again in 1.411s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Can I use my Apple Watch for Running? Which is best?
+✅ Saved 0 sneakers for article 113
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:51] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:51] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 4079. Please try again in 1.223s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Into The Wild: Checking Out Tracksmith’s Overland Collection
+✅ Saved 0 sneakers for article 51
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:51] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:51] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 5211. Please try again in 1.563s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Hoka Mafate 5  Review: Deeply Capable! 4 Comparisons
+✅ Saved 0 sneakers for article 49
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 6023. Please try again in 1.806s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Heart Rate Monitors For When You Push Yourself to the Limit… and You Want The Receipts
+✅ Saved 0 sneakers for article 76
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 5869. Please try again in 1.76s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Asics Megablast Review: The Superblast, Refined
+✅ Saved 0 sneakers for article 71
+[20:45:52] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:52] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:52] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:52] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:52] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:52] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:52] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:52] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:52] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 6832. Please try again in 2.049s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Testbericht: New Balance FuelCell SC Elite v5 : 8 Vergleiche (German)
+✅ Saved 0 sneakers for article 80
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 6995. Please try again in 2.098s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Testbericht: Puma Fast-R Nitro Elite 3 im Wettkampfeinsatz 7 Vergleiche (German)
+✅ Saved 0 sneakers for article 110
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 7250. Please try again in 2.175s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Hoka Challenger 8 Multi Tester Review with 7 Comparisons
+✅ Saved 0 sneakers for article 96
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 7388. Please try again in 2.216s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Brooks Hyperion 3 Mulit Tester Review: A Modern Daily Road Trainer Done Right! 7 Comparisons
+✅ Saved 0 sneakers for article 94
+[20:45:53] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:53] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:53] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:54] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:54] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:54] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:54] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:54] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:54] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:54] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:54] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:54] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 9198. Please try again in 2.759s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: We Spent Weeks Running In the Newest Headphones—These 8 Picks Withstood Our Sweat Mile After Mile
+✅ Saved 0 sneakers for article 119
+📦 Processing batch 4/4
+🔍 Processing: Saucony Endorphin Speed 5 vs Saucony Endorphin Spe...
+🔍 Processing: Skechers Aero Burst Review...
+🔍 Processing: On Running Cloudsurfer Max Multi Tester Review: No...
+🔍 Processing: Tarptent ProTrail Li Tent Review...
+🔍 Processing: ASICS Gel Cumulus 27 Review...
+🔍 Processing: Kiprun KD900X LD+ Review...
+🔍 Processing: Saucony Endorphin Speed 5 Review...
+🔍 Processing: PUMA Fast-R Elite 3 vs PUMA Fast-R Elite 2...
+🔍 Processing: Best Recovery Footwear for Runners...
+🔍 Processing: Vinco Performance Terra Sunglasses Review...
+🔍 Processing: Bolle Victus Pro Black Matte Clear Lava Photochrom...
+🔍 Processing: Testbericht: Tracksmith Eliot Racer - 4 Vergleiche...
+🔍 Processing: Altra x SOAR Mont Blanc Carbon Trail Shoe Review...
+🔍 Processing: Nike Structure 26 Multi Tester Review: 4 Compariso...
+🔍 Processing: Inov8 Airlite Pro Shorts Review...
+🔍 Processing: Hoka Mafate 5 Review: Long Haul Lunker...
+🔍 Processing: Best On Running Shoes Right Now (2025)...
+🔍 Processing: PUMA Fast-R Nitro Elite 3 Review...
+🔍 Processing: Brooks Caldera 8 Review...
+🔍 Processing: Brooks Ghost 17 vs Brooks Ghost 16...
+[20:45:56] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:56] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[20:45:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2435. Please try again in 730ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Saucony Endorphin Speed 5 vs Saucony Endorphin Speed 4
+✅ Saved 0 sneakers for article 35
+[20:45:59] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:45:59] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:45:59] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 2346. Please try again in 703ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: PUMA Fast-R Elite 3 vs PUMA Fast-R Elite 2
+✅ Saved 0 sneakers for article 28
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:00] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 199682, Requested 3023. Please try again in 811ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Skechers Aero Burst Review
+✅ Saved 0 sneakers for article 34
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:00] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 199335, Requested 2519. Please try again in 556ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Brooks Ghost 17 vs Brooks Ghost 16
+✅ Saved 0 sneakers for article 16
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:00] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 198949, Requested 2886. Please try again in 550ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Inov8 Airlite Pro Shorts Review
+✅ Saved 0 sneakers for article 21
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 197731, Requested 3096. Please try again in 248ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Kiprun KD900X LD+ Review
+✅ Saved 0 sneakers for article 30
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:00] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:00] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 197125, Requested 3127. Please try again in 75ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:00] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 197793, Requested 3019. Please try again in 243ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Vinco Performance Terra Sunglasses Review
+✅ Saved 0 sneakers for article 26
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:00] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 197763, Requested 3314. Please try again in 323ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Bolle Victus Pro Black Matte Clear Lava Photochromic Cat 1-3 Sunglasses Review
+✅ Saved 0 sneakers for article 25
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:00] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:00] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 197100, Requested 3585. Please try again in 205ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Tarptent ProTrail Li Tent Review
+✅ Saved 0 sneakers for article 32
+[20:46:01] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:01] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:01] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 17
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 197063, Requested 5223. Please try again in 685ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: PUMA Fast-R Nitro Elite 3 Review
+✅ Saved 0 sneakers for article 18
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 198035, Requested 5300. Please try again in 1s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Best Recovery Footwear for Runners
+✅ Saved 0 sneakers for article 27
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 5515. Please try again in 1.654s. Visit https://platform.openai.com/account/rate-limits to learn more.
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 197003, Requested 5128. Please try again in 639ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Best On Running Shoes Right Now (2025)
+✅ Saved 0 sneakers for article 19
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 197467, Requested 5606. Please try again in 921ms. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: Testbericht: Tracksmith Eliot Racer - 4 Vergleiche (German)
+✅ Saved 0 sneakers for article 24
+✅ Saved 1 sneakers for article 20
+[20:46:01] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:01] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:01] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:46:01] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:01] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:01] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:46:01] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:01] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:01] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:46:02] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:02] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:02] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:46:02] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:02] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:02] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 200000, Requested 5619. Please try again in 1.685s. Visit https://platform.openai.com/account/rate-limits to learn more.
+✅ Saved 1 sneakers for article 22
+[20:46:02] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:02] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:02] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+⚠️  No sneakers found in: Altra x SOAR Mont Blanc Carbon Trail Shoe Review
+✅ Saved 0 sneakers for article 23
+[20:46:03] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:46:03] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[20:46:03] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+OpenAI API error: 429 Rate limit reached for gpt-4o-mini in organization org-L8HwPoR2mMw8uwOdCF4cyjY6 on tokens per min (TPM): Limit 200000, Used 195081, Requested 8299. Please try again in 1.013s. Visit https://platform.openai.com/account/rate-limits to learn more.
+⚠️  No sneakers found in: On Running Cloudsurfer Max Multi Tester Review: Not the Max We Expected! 4 Comparisons
+✅ Saved 0 sneakers for article 33
+[20:46:04] [31mERROR[39m (sneaker-pipeline): [36mOpenAI API call failed[39m
+[20:46:04] [31mERROR[39m (sneaker-pipeline): [36mLLM extraction failed[39m
+[20:46:04] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:46:06] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:46:06] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:46:06] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[20:46:06] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[20:46:06] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[20:46:06] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+✅ Saved 1 sneakers for article 29
+✅ Saved 1 sneakers for article 31
+✅ Sync completed
+📈 Results: 168/170 successful
+👟 Extracted 120 sneaker records
+❌ 2 failed:
+  - recLTznd2neoDBSny: Li Ning Feidian 5 Elite: Error: Insert failed: invalid input syntax for type date: "Done"
+  - Record recKUd09yxdcqWMAE: Missing required fields
+  - Record recUpjWsOgMiir20L: Missing required fields
+
+📈 Sync Summary:
+✅ Successful: 168
+❌ Failed: 2
+👟 Sneakers extracted: 120
+
+🚨 Errors:
+  recLTznd2neoDBSny: Li Ning Feidian 5 Elite: Error: Insert failed: invalid input syntax for type date: "Done"
+  Record recKUd09yxdcqWMAE: Missing required fields
+  Record recUpjWsOgMiir20L: Missing required fields

@@ -1,0 +1,389 @@
+{
+  "totalArticles": 27,
+  "totalShoes": 50,
+  "articles": [
+    {
+      "article_id": "20",
+      "shoes_count": 1,
+      "brands": [
+        "Hoka"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": []
+    },
+    {
+      "article_id": "19",
+      "shoes_count": 8,
+      "brands": [
+        "On"
+      ],
+      "coverage": {
+        "weight": 8,
+        "drop": 8,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "18",
+      "shoes_count": 1,
+      "brands": [
+        "Puma"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 1,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "17",
+      "shoes_count": 1,
+      "brands": [
+        "Brooks"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": []
+    },
+    {
+      "article_id": "16",
+      "shoes_count": 1,
+      "brands": [
+        "Brooks"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 1,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "254",
+      "shoes_count": 1,
+      "brands": [
+        "Brooks"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 0,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "255",
+      "shoes_count": 1,
+      "brands": [
+        "Puma"
+      ],
+      "coverage": {
+        "weight": 0,
+        "drop": 1,
+        "price": 0
+      },
+      "issues": []
+    },
+    {
+      "article_id": "257",
+      "shoes_count": 1,
+      "brands": [
+        "Under Armour"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 1,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "258",
+      "shoes_count": 6,
+      "brands": [
+        "Adidas"
+      ],
+      "coverage": {
+        "weight": 3,
+        "drop": 3,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "125",
+      "shoes_count": 2,
+      "brands": [
+        "Asics"
+      ],
+      "coverage": {
+        "weight": 0,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": [
+        "No physical specs extracted (weight, drop, price all null)"
+      ]
+    },
+    {
+      "article_id": "129",
+      "shoes_count": 2,
+      "brands": [
+        "Asics"
+      ],
+      "coverage": {
+        "weight": 2,
+        "drop": 2,
+        "price": 2
+      },
+      "issues": []
+    },
+    {
+      "article_id": "133",
+      "shoes_count": 1,
+      "brands": [
+        "Nike"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": []
+    },
+    {
+      "article_id": "134",
+      "shoes_count": 1,
+      "brands": [
+        "Mizuno"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": []
+    },
+    {
+      "article_id": "135",
+      "shoes_count": 1,
+      "brands": [
+        "Reebok"
+      ],
+      "coverage": {
+        "weight": 0,
+        "drop": 1,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "136",
+      "shoes_count": 1,
+      "brands": [
+        "New Balance"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 0,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "137",
+      "shoes_count": 1,
+      "brands": [
+        "Hoka"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 0,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "141",
+      "shoes_count": 1,
+      "brands": [
+        "Mount to Coast"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 1,
+        "price": 0
+      },
+      "issues": []
+    },
+    {
+      "article_id": "142",
+      "shoes_count": 1,
+      "brands": [
+        "Adidas"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": []
+    },
+    {
+      "article_id": "143",
+      "shoes_count": 1,
+      "brands": [
+        "Hoka"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 1,
+        "price": 1
+      },
+      "issues": []
+    },
+    {
+      "article_id": "144",
+      "shoes_count": 6,
+      "brands": [
+        "Hoka",
+        "Nike"
+      ],
+      "coverage": {
+        "weight": 6,
+        "drop": 4,
+        "price": 6
+      },
+      "issues": []
+    },
+    {
+      "article_id": "151",
+      "shoes_count": 3,
+      "brands": [
+        "Altra"
+      ],
+      "coverage": {
+        "weight": 2,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": []
+    },
+    {
+      "article_id": "152",
+      "shoes_count": 1,
+      "brands": [
+        "On"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": []
+    },
+    {
+      "article_id": "159",
+      "shoes_count": 1,
+      "brands": [
+        "Hoka"
+      ],
+      "coverage": {
+        "weight": 0,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": [
+        "No physical specs extracted (weight, drop, price all null)"
+      ]
+    },
+    {
+      "article_id": "160",
+      "shoes_count": 1,
+      "brands": [
+        "Hoka"
+      ],
+      "coverage": {
+        "weight": 0,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": [
+        "No physical specs extracted (weight, drop, price all null)"
+      ]
+    },
+    {
+      "article_id": "161",
+      "shoes_count": 3,
+      "brands": [
+        "Altra",
+        "On",
+        "Hoka"
+      ],
+      "coverage": {
+        "weight": 0,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": [
+        "Multiple brands (3): Altra, On, Hoka",
+        "No physical specs extracted (weight, drop, price all null)"
+      ]
+    },
+    {
+      "article_id": "162",
+      "shoes_count": 1,
+      "brands": [
+        "Hoka"
+      ],
+      "coverage": {
+        "weight": 0,
+        "drop": 0,
+        "price": 0
+      },
+      "issues": [
+        "No physical specs extracted (weight, drop, price all null)"
+      ]
+    },
+    {
+      "article_id": "164",
+      "shoes_count": 1,
+      "brands": [
+        "Nike"
+      ],
+      "coverage": {
+        "weight": 1,
+        "drop": 1,
+        "price": 0
+      },
+      "issues": []
+    }
+  ],
+  "fieldCoverage": {
+    "weight": 36,
+    "drop": 25,
+    "price": 18,
+    "heel_height": 24,
+    "forefoot_height": 18,
+    "primary_use": 50,
+    "surface_type": 37,
+    "cushioning_type": 24
+  },
+  "issues": [
+    "Article 125: No physical specs extracted (weight, drop, price all null)",
+    "Article 159: No physical specs extracted (weight, drop, price all null)",
+    "Article 160: No physical specs extracted (weight, drop, price all null)",
+    "Article 161: Multiple brands (3): Altra, On, Hoka",
+    "Article 161: No physical specs extracted (weight, drop, price all null)",
+    "Article 162: No physical specs extracted (weight, drop, price all null)"
+  ]
+}

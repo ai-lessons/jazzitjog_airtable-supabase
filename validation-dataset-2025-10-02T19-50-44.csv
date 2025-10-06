@@ -1,0 +1,28 @@
+article_id,article_title,brand_name,model,model_key,primary_use,cushioning_type,weight,foot_width,heel_height,drop,waterproof,price,forefoot_height,carbon_plate,surface_type
+104,Unknown,Nike,Nike Structure 26,nike nike structure 26,daily trainer,firm,320,standard,38,10,,145,28,,road
+16,Unknown,Brooks,Brooks Ghost 17,brooks brooks ghost 17,daily trainer,max,227,,,10,,130,,,road
+17,Unknown,Brooks,Brooks Caldera 8,brooks brooks caldera 8,trail,max,300,,36,6,false,150,30,,trail
+18,Unknown,Puma,Puma Fast-R Nitro Elite 3,puma puma fast-r nitro elite 3,race,firm,170,wide,40,8,,300,32,true,road
+19,Unknown,On,Cloudmonster Hyper,on cloudmonster hyper,daily trainer,balanced,265,,38,6,false,,32,false,road
+19,Unknown,On,Cloudmonster 2,on cloudmonster 2,daily trainer,balanced,300,,39,6,false,,33,false,road
+19,Unknown,On,Cloudrunner 2,on cloudrunner 2,daily trainer,balanced,277,,31,10,false,,21,false,road
+19,Unknown,On,Cloudultra Pro,on cloudultra pro,trail,balanced,265,,39,6,false,,33,true,trail
+19,Unknown,On,Cloudsurfer 2,on cloudsurfer 2,daily trainer,firm,255,,37,9,false,160,28,false,road
+19,Unknown,On,Cloudboom Strike,on cloudboom strike,race,balanced,221,,40,4,false,,36,true,road
+19,Unknown,On,Cloudsurfer Max,on cloudsurfer max,daily trainer,firm,292,,37,6,false,,31,false,road
+19,Unknown,On,Cloudsurfer Trail,on cloudsurfer trail,trail,balanced,272,,41,7,false,,34,false,trail
+22,Unknown,Nike,Nike Structure 26,nike nike structure 26,daily trainer,max,293,,38,10,,145,28,,road
+23,Unknown,Altra,Altra x SOAR Mont Blanc Carbon Trail,altra altra x soar mont blanc carbon trail,trail,balanced,260,,29,0,,260,29,true,trail
+24,Unknown,Tracksmith,Tracksmith Eliot Racer,tracksmith tracksmith eliot racer,race,balanced,218,,38,8,,325,31,true,road
+28,Unknown,Puma,PUMA Fast-R Elite 3,puma puma fast-r elite 3,race,max,,narrow,,0,,300,,true,road
+29,Unknown,Saucony,Saucony Endorphin Speed 5,saucony saucony endorphin speed 5,tempo,,245,wide,,0,,175,,true,road
+31,Unknown,Asics,Asics Gel Cumulus 27,asics asics gel cumulus 27,daily trainer,balanced,170,wide,39,8,,140,30,,road
+33,Unknown,On,On Running Cloudsurfer Max,on on running cloudsurfer max,daily trainer,firm,290,wide,37,6,false,180,31,false,road
+34,Unknown,Skechers,Aero Burst,skechers aero burst,daily trainer,max,309,narrow,42,6,,140,36,true,road
+35,Unknown,Saucony,Saucony Endorphin Speed 5,saucony saucony endorphin speed 5,daily trainer,balanced,,wide,36,8,,175,28,true,road
+39,Unknown,Brooks,Brooks Glycerin GTS 22,brooks brooks glycerin gts 22,daily trainer,max,283,,,0,,165,,,road
+44,Unknown,Brooks,Brooks Glycerin 22,brooks brooks glycerin 22,daily trainer,max,,standard,,10,,165,,,road
+46,Unknown,Rabbit,Rabbit High Country,rabbit rabbit high country,daily trainer,balanced,316,standard,38,5,,180,33,true,trail
+49,Unknown,Hoka,Hoka Mafate 5,hoka hoka mafate 5,trail,max,308,standard,45,8,,,37,true,trail
+70,Unknown,Tracksmith,Eliot Range,tracksmith eliot range,trail,balanced,281,,35,9,,240,26,true,trail
+87,Unknown,Hoka,Rocket X 3,hoka rocket x 3,race,balanced,227,wide,40,7,,250,33,true,road

@@ -1,0 +1,1 @@
+{"version":3,"file":"mapFromAirtable.d.ts","sourceRoot":"","sources":["../../src/pipeline/mapFromAirtable.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,YAAY,EAAE,YAAY,EAAuB,MAAM,qBAAqB,CAAC;AACtF,OAAO,EAAE,wBAAwB,EAAE,MAAM,4BAA4B,CAAC;AAEtE;;;GAGG;AACH,wBAAsB,eAAe,CAAC,OAAO,EAAE,GAAG,EAAE,GAAG,OAAO,CAAC,UAAU,CAAC,OAAO,wBAAwB,CAAC,CAAC,CAQ1G;AAGD,OAAO,EAAE,YAAY,EAAE,YAAY,EAAE,CAAC"}

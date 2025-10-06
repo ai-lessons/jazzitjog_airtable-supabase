@@ -1,0 +1,1 @@
+{"version":3,"file":"watermark.d.ts","sourceRoot":"","sources":["../../src/db/watermark.ts"],"names":[],"mappings":"AAMA,MAAM,MAAM,QAAQ,GAAG,MAAM,CAAC,MAAM,EAAE,MAAM,CAAC,CAAC;AAE9C,wBAAsB,YAAY;;;;GAajC;AAED,wBAAsB,YAAY,CAAC,IAAI,EAAE;IACvC,wBAAwB,EAAE,MAAM,CAAC;IACjC,QAAQ,CAAC,EAAE,QAAQ,CAAC;CACrB,iBAUA;AAED,wBAAsB,cAAc,kBASnC"}

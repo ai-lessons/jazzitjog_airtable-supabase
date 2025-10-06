@@ -1,0 +1,32 @@
+article_id,brand_name,model,primary_use_CORRECT,cushioning_type_CORRECT,weight_CORRECT,foot_width_CORRECT,heel_heig,  ht_CORRECT,drop_CORRECT,waterproof_CORRECT,notes,
+234,On,cloudultra 3,trail running,firm,295,narrow,32,,5.5,,"`- Есть строка ""Stack Height / Drop 32 mm in heel, 26.5 mm in forefoot (5.5 mm drop)"" откуда берется heel_hight, forefoot hight и drop.
+- указано Very breathable upper, т.е upper_breathability = high.
+- в тексте есть фраза  the cushioning leans toward the firmer side, т.е. cushioning_type = firm.
+- в тексте есть предложение it felt slightly more narrow, which may not be an issue for runners with a standard or narrow foot shape, т.е foot_width = narrow",
+237,Kailas,FUGA EX 330,trail,max,297,narrow,39,5,FALSE,,"`- в тексте есть предложение the midfoot narrows to  a very narrow 60 mm at midfoot, among the narrowest of any trail shoe I can recall. This narrow midfoot , т.е. foot_width = narrow
+- we are at the higher end for an unplated max cushion trail shoe, т.е. cushioning_type = max",
+238,Nike,Structure 26,daily trainer,,320,,38,10,,,"`- Offiziell: 320g (Herren EUR 44) - вес дан
+- Sprengung: 10 mm (28 mm Vorfuß / 38mm Ferse), т.е. heel_hight, forefoot hight и drop есть информация. 
+- в статье точно есть данные о cushioning_type и foot_width.",
+240,Craft,Xplor 2,daily trainer,balanced,260,standard,39,6,FALSE,,"`The re-engineered two-layer mesh upper offers a secure and breathable experience and, т.е. upper_breathability = high.",
+245,Nike,Vomero Premium,tempo,max,363,,55,10,,,"`Эта статья ТОЛЬКО о моделе Vomero Premium, что можно определить из названия статьи Title = Nike Vomero Premium Review: Max Madness, Fury on the Road. Вся информация и характеристики даны по этой моделе.",
+245,FALSE,FALSE,FALSE,,,,,,,,"`Aside from that glaring issue, the Vomero Plus is a fantastic shoe, possibly the overall best max cushion shoe of 2025, т.е. Cushioning_type = max.
+- вес кроссовок нас интересует только мужского размера - Weight 12.8 oz. (363 g) for a US M10.5.
+- Stack Height / Drop 55 mm in heel, 45 mm in forefoot (10 mm drop)",
+245,FALSE,FALSE,FALSE,,,,,,,,,
+246,Notace,Yama T1,trail,,215,,15, ,0,,,
+249,Scott,Pursuit Ride 2,daily trainer,balanced,265,wide,33,9,,,,
+250,Hoka,Mach X 3,daily trainer,balanced,288,standard,44,5,FALSE,,,
+252,Hoka,Rocket X Trail,trail,max,282,,42,6,FALSE,,,
+254,Brooks,Hyperion Elite 5,racing,firm,196,narrow,,,,,,
+255,Puma,Velocity Nitro 4,daily trainer,balanced,,narrow,36,10,FALSE,,,
+257,Under Armour,Velociti Pro 2,speedwork,,252,wide,37,8,FALSE,,,
+258,Adidas,Supernova Rise 2,daily trainer,balanced,261,,,10,,,Указаны Weight 9.2 oz (M) и Drop 10 mm,
+258,Adidas,Ultraboost 5X,daily trainer,firm,265,,,10,,,,
+258,Adidas,Evo SL,daily trainer,balanced,230,,,7,,,,
+258,Adidas,FALSE, ,,,,,,,,,
+258,Adidas,Takumi Sen 11,racing,max,,,,,,,,
+258,Adidas,Adizero Adios Pro 4,racing,max,196,,,6,,,,
+258,Adidas,Supernova Prima 2,daily trainer,,,,,,,,,
+258,Adidas,Adizero Evo SL,everyday training and speed workouts,,230,,,7,,,"`Weight	8.1 oz (M)
+Drop	7mm (M)",

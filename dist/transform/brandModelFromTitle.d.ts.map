@@ -1,0 +1,1 @@
+{"version":3,"file":"brandModelFromTitle.d.ts","sourceRoot":"","sources":["../../src/transform/brandModelFromTitle.ts"],"names":[],"mappings":"AAiOA;;;;;;;;;GASG;AACH,wBAAgB,mBAAmB,CAAC,QAAQ,EAAE,MAAM,GAAG;IACrD,KAAK,EAAE,MAAM,GAAG,IAAI,CAAC;IAAC,KAAK,EAAE,MAAM,GAAG,IAAI,CAAC;IAAC,UAAU,EAAE,MAAM,CAAC;CAChE,CAiCA"}

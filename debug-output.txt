@@ -1,0 +1,117 @@
+🔍 Debugging problematic articles
+
+[19:46:53] [32mINFO[39m (sneaker-pipeline): [36mStarting Airtable ingest[39m
+[19:46:53] [32mINFO[39m (sneaker-pipeline): [36mFetching Airtable records[39m
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📄 Article 234:
+   Title: On Cloudultra 3 Review: A Fine Follow-Up
+   Content length: 2760
+
+📝 Content preview:
+Trail Running Shoes • September 19, 2025 on cloudultra 3 - feature We independently review everything we recommend. When you buy through our links, we may earn a commission.
+
+What You Need To Know
+Weight 10.4 oz. (295 g) for a US M9/ 8.3 oz. (235 g) for a US W8
+
+Stack Height / Drop 32 mm in heel, 26.5 mm in forefoot (5.5 mm drop)
+
+Best For Long runs, firmer feel ride
+
+Key Features Helion HF hyper foam dual midsole for high energy return, redesigned Missiongrip outsole
+
+On The Run Very breathable...
+
+✅ Extraction completed:
+   Method: regex
+   Title Analysis: {
+  scenario: 'specific',
+  brand: 'on',
+  model: 'cloudultra 3',
+  confidence: 0.8
+}
+   Sneakers found: 1
+
+👟 [1] On cloudultra 3
+    primary_use: trail running
+    cushioning_type: NULL
+    weight: 295g
+    foot_width: NULL
+    heel_height: 32mm
+    forefoot_height: 26.5mm
+    drop: 5.5mm
+    waterproof: null
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📄 Article 238:
+   Title: Testbericht: Nike Structure 26 - Wie auf Schienen 3 Vergleiche (German)
+   Content length: 14230
+
+📝 Content preview:
+Artikel von Nils Scharff Nike Structure 26 (140) Einleitung Nike hat Anfang des Jahres angekndigt, seine Trainingsschuhe knftig in drei klar definierte Produktlinien (Silos) zu unterteilen: * Pegasus: Der klassische Daily Trainer fr die breite Masse. * Vomero: Die maximal gedmpfte Trainingsalternative. * Structure: Der Stabilittsschuh fr Lufer:innen, die zustzlichen Support bentigen. Innerhalb dieser Silos gibt es jeweils ein sogenanntes Hero-Modell also die Standardversion des jeweiligen Schuhs...
+
+✅ Extraction completed:
+   Method: regex
+   Title Analysis: {
+  scenario: 'specific',
+  brand: 'Nike',
+  model: 'structure 26',
+  confidence: 0.9
+}
+   Sneakers found: 1
+
+👟 [1] Nike Structure 26
+    primary_use: daily trainer
+    cushioning_type: NULL
+    weight: 320g
+    foot_width: NULL
+    heel_height: NULLmm
+    forefoot_height: NULLmm
+    drop: 10mm
+    waterproof: null
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📄 Article 240:
+   Title: Craft Xplor 2 Review: 3 Comparisons
+   Content length: 9950
+
+📝 Content preview:
+Article by John Tribbia Craft Xplor 2 ($150) Introduction John: In an exciting partnership, Craft and acclaimed bicycle tire manufacturer Vittoria unveil the Xplor 2, a running shoe channeling inspiration from gravel bikes into a running shoe. According to Craft, this hybrid is engineered for smooth transitions between pavement and dirt, blending the comfort of a road shoe with the resilience of a trail runner. The Xplor 2 is designed as the ultimate versatile option for runners who desire the f...
+
+[19:46:58] [32mINFO[39m (sneaker-pipeline): [36mSuccessfully fetched Airtable records[39m
+[19:46:58] [32mINFO[39m (sneaker-pipeline): [36mFetched Airtable records[39m
+[19:46:58] [32mINFO[39m (sneaker-pipeline): [36mAirtable ingest completed[39m
+[19:46:58] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[19:46:58] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[19:46:58] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[19:46:58] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[19:46:59] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[19:46:59] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[19:46:59] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[19:46:59] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[19:46:59] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[19:46:59] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[19:46:59] [32mINFO[39m (sneaker-pipeline): [36mOpenAI client created successfully[39m
+✅ Extraction completed:
+   Method: llm
+   Title Analysis: { scenario: 'brand-only', brand: 'on', confidence: 0.85 }
+   Sneakers found: 1
+
+👟 [1] Craft Xplor 2
+    primary_use: daily trainer
+    cushioning_type: max
+    weight: 260g
+    foot_width: wide
+    heel_height: 39mm
+    forefoot_height: 33mm
+    drop: 6mm
+    waterproof: false
+
+
+[19:47:06] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[19:47:06] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[19:47:06] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
