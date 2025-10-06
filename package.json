@@ -27,7 +27,7 @@
     "lodash": "^4.17.0",
     "openai": "^4.104.0",
     "p-queue": "^8.0.0",
-    "pino": "^8.16.0",
+    "pino": "^10.0.0",
     "zod": "^3.22.0"
   },
   "devDependencies": {
@@ -39,8 +39,7 @@
     "pino-pretty": "^13.1.1",
     "tsx": "^4.0.0",
     "typescript": "^5.2.0",
-    "vitest": "^3.2.4",
-    "xlsx": "^0.18.5"
+    "vitest": "^3.2.4"
   },
   "directories": {
     "doc": "docs",
