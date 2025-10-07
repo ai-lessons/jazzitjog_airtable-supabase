@@ -61,7 +61,10 @@ export async function insertToStaging(
       logger.error('Staging insert failed', {
         model_key: shoe.model_key,
         airtable_id: airtableId,
-        error,
+        error_message: error.message,
+        error_details: error.details,
+        error_hint: error.hint,
+        error_code: error.code,
       });
       metrics.incrementUpsertFailed();
 

@@ -58,14 +58,19 @@ export async function runStagingPipeline(config: PipelineConfig) {
       return { newItems: 0 };
     }
 
-    // Filter out articles already in staging
+    // Filter out articles already in staging OR shoe_results
     const { data: existingInStaging } = await supabase
       .from('staging_table')
       .select('airtable_id');
 
-    const existingIds = new Set(
-      existingInStaging?.map(r => r.airtable_id) || []
-    );
+    const { data: existingInProduction } = await supabase
+      .from('shoe_results')
+      .select('record_id');
+
+    const existingIds = new Set([
+      ...(existingInStaging?.map(r => r.airtable_id) || []),
+      ...(existingInProduction?.map(r => r.record_id) || [])
+    ]);
 
     const newArticles = ingestResult.articles.filter(
       article => !existingIds.has(article.record_id)
@@ -73,7 +78,8 @@ export async function runStagingPipeline(config: PipelineConfig) {
 
     log.info('Filtered for new articles', {
       total: ingestResult.articles.length,
-      alreadyInStaging: existingIds.size,
+      alreadyInStaging: existingInStaging?.length || 0,
+      alreadyInProduction: existingInProduction?.length || 0,
       newToProcess: newArticles.length,
     });
 
@@ -197,8 +203,8 @@ if (require.main === module) {
       tableName: process.env.AIRTABLE_TABLE_NAME || 'Running Shoe Articles',
     },
     database: {
-      url: process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      url: process.env.SUPABASE_URL!,
+      serviceKey: process.env.SUPABASE_KEY!,
     },
     openaiApiKey: process.env.OPENAI_API_KEY!,
     logLevel: 'info',

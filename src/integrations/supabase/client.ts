@@ -17,7 +17,7 @@ let cachedClient: SupabaseClientType | null = null;
 export function createSupabaseClient(config: DatabaseConfig): SupabaseClientType {
   logger.debug('Creating Supabase client', { url: config.url });
 
-  const client = createClient(config.url, config.serviceRoleKey, {
+  const client = createClient(config.url, config.serviceKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,

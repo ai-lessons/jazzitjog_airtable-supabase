@@ -65,10 +65,9 @@ Add these secrets:
 AIRTABLE_API_KEY=your_airtable_api_key
 AIRTABLE_BASE_ID=your_base_id
 AIRTABLE_TABLE_NAME=Running Shoe Articles
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_service_role_key
 OPENAI_API_KEY=your_openai_key
-NEXT_PUBLIC_SITE_URL=https://your-domain.com
 ```
 
 ### 4. (Optional) Setup Email Notifications
@@ -207,15 +206,14 @@ npm run etl:staging
 AIRTABLE_API_KEY=
 AIRTABLE_BASE_ID=
 AIRTABLE_TABLE_NAME=
-NEXT_PUBLIC_SUPABASE_URL=
-SUPABASE_SERVICE_ROLE_KEY=
+SUPABASE_URL=
+SUPABASE_KEY=
 OPENAI_API_KEY=
 ```
 
 ### Optional
 ```bash
 RESEND_API_KEY=           # Email notifications
-NEXT_PUBLIC_SITE_URL=     # For email links
 ```
 
 ## Security

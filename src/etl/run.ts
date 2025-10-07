@@ -184,7 +184,7 @@ export async function runPipelineFromEnv() {
     },
     database: {
       url: process.env.SUPABASE_URL || '',
-      serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
+      serviceKey: process.env.SUPABASE_KEY || '',
     },
     openaiApiKey: process.env.OPENAI_API_KEY || '',
     maxRecords: process.env.MAX_RECORDS ? parseInt(process.env.MAX_RECORDS) : undefined,
@@ -197,7 +197,7 @@ export async function runPipelineFromEnv() {
     throw new Error('Missing Airtable configuration');
   }
 
-  if (!config.database.url || !config.database.serviceRoleKey) {
+  if (!config.database.url || !config.database.serviceKey) {
     throw new Error('Missing Supabase configuration');
   }
 

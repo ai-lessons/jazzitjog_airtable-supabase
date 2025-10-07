@@ -10,5 +10,5 @@ export type RpcCallOptions = {
 
 export type DatabaseConfig = {
   url: string;
-  serviceRoleKey: string;
+  serviceKey: string;
 };
