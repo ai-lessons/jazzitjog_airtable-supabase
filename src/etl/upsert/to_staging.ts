@@ -25,16 +25,21 @@ export async function insertToStaging(
       airtable_id: airtableId,
     });
 
-    // Check if this airtable_id already exists in staging
+    // Check if this specific shoe (airtable_id + brand + model) already exists in staging
+    // Note: One article can have multiple shoes, so we need to check by brand+model too
     const { data: existing } = await client
       .from('staging_table')
       .select('id')
       .eq('airtable_id', airtableId)
-      .single();
+      .eq('brand_name', shoe.brand_name)
+      .eq('model', shoe.model)
+      .maybeSingle(); // Use maybeSingle() instead of single() to avoid error if not found
 
     if (existing) {
-      logger.debug('Airtable record already in staging, skipping', {
+      logger.debug('Shoe already in staging, skipping', {
         airtable_id: airtableId,
+        brand_name: shoe.brand_name,
+        model: shoe.model,
       });
 
       return {
@@ -44,20 +49,48 @@ export async function insertToStaging(
       };
     }
 
-    // Prepare staging record (remove model_key, record_id - staging specific fields)
-    const { model_key, record_id, ...stagingData } = shoe;
+    // Prepare staging record (remove model_key, record_id, article_id - staging specific fields)
+    const { model_key, record_id, article_id, ...stagingData } = shoe;
+
+    // Map ShoeInput fields to staging_table schema
+    const stagingRecord = {
+      airtable_id: airtableId,
+      brand_name: stagingData.brand_name,
+      model: stagingData.model,
+      primary_use: stagingData.primary_use,
+      surface_type: stagingData.surface_type,
+      heel_height: stagingData.heel_height,
+      forefoot_height: stagingData.forefoot_height,
+      drop: stagingData.drop,
+      weight: stagingData.weight,
+      price: stagingData.price, // staging_table uses 'price' not 'price_usd'
+      carbon_plate: stagingData.carbon_plate,
+      waterproof: stagingData.waterproof,
+      date: stagingData.date, // staging_table uses 'date' not 'date_published'
+      source_link: stagingData.source_link,
+      cushioning_type: stagingData.cushioning_type,
+      foot_width: stagingData.foot_width,
+      upper_breathability: stagingData.upper_breathability,
+      additional_features: stagingData.additional_features,
+      is_running_shoe: true, // Default to true for running shoe pipeline
+    };
 
     // Insert into staging_table
     const { data, error } = await client
       .from('staging_table')
-      .insert({
-        ...stagingData,
-        airtable_id: airtableId,
-      })
+      .insert(stagingRecord)
       .select()
       .single();
 
     if (error) {
+      console.error('❌ STAGING INSERT ERROR:', {
+        model_key: shoe.model_key,
+        airtable_id: airtableId,
+        error_message: error.message,
+        error_details: error.details,
+        error_hint: error.hint,
+        error_code: error.code,
+      });
       logger.error('Staging insert failed', {
         model_key: shoe.model_key,
         airtable_id: airtableId,
