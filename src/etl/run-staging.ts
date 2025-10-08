@@ -114,6 +114,17 @@ export async function runStagingPipeline(config: PipelineConfig) {
           config.openaiApiKey
         );
 
+        console.log('[DEBUG] After extraction:', {
+          article_id: article.article_id,
+          sneakersCount: extractResult.sneakers.length,
+          firstSneaker: extractResult.sneakers[0] ? {
+            brand: extractResult.sneakers[0].brand_name,
+            model: extractResult.sneakers[0].model,
+            price: extractResult.sneakers[0].price,
+            heel: extractResult.sneakers[0].heel_height,
+          } : 'none'
+        });
+
         if (extractResult.sneakers.length === 0) {
           log.warn('No sneakers extracted', { article_id: article.article_id });
           continue;
@@ -125,6 +136,17 @@ export async function runStagingPipeline(config: PipelineConfig) {
           extractResult.titleAnalysis
         );
 
+        console.log('[DEBUG] After normalization:', {
+          article_id: article.article_id,
+          normalizedCount: normalized.length,
+          firstNormalized: normalized[0] ? {
+            brand: normalized[0].sneaker.brand_name,
+            model: normalized[0].sneaker.model,
+            price: normalized[0].sneaker.price,
+            heel: normalized[0].sneaker.heel_height,
+          } : 'none'
+        });
+
         if (normalized.length === 0) {
           log.warn('No sneakers after normalization', {
             article_id: article.article_id,
@@ -133,13 +155,30 @@ export async function runStagingPipeline(config: PipelineConfig) {
         }
 
         // Step 4: Build
-        const shoes = buildShoeInputs(
-          normalized,
-          article.article_id,
-          article.record_id,
-          article.date,
-          article.source_link
+        const buildResults = buildShoeInputs(
+          normalized.map(r => r.sneaker),
+          {
+            article_id: article.article_id,
+            record_id: article.record_id,
+            date: article.date,
+            source_link: article.source_link,
+          }
         );
+
+        console.log('[DEBUG] After build:', {
+          article_id: article.article_id,
+          buildCount: buildResults.length,
+          firstBuild: buildResults[0] ? {
+            brand: buildResults[0].shoe.brand_name,
+            model: buildResults[0].shoe.model,
+            price: buildResults[0].shoe.price,
+            heel: buildResults[0].shoe.heel_height,
+            model_key: buildResults[0].shoe.model_key,
+          } : 'none'
+        });
+
+        // Extract ShoeInput from BuildResult
+        const shoes = buildResults.map(result => result.shoe);
 
         // Step 5: Insert to staging (not dry-run)
         if (!config.dryRun) {

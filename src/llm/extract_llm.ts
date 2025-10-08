@@ -53,8 +53,14 @@ export async function extractWithLLM(
     // Extract items array (handle different response formats)
     const rawItems = extractItemsArray(parsed);
 
+    console.log('[DEBUG] LLM response:', JSON.stringify(parsed, null, 2).substring(0, 1000));
+    console.log('[DEBUG] rawItems count:', rawItems.length);
+
     if (rawItems.length === 0) {
-      logger.warn('LLM returned empty results');
+      logger.warn('LLM returned empty results', {
+        responseKeys: Object.keys(parsed),
+        response: JSON.stringify(parsed).substring(0, 500)
+      });
       return [];
     }
 

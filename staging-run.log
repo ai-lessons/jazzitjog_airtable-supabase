@@ -1,0 +1,753 @@
+
+> sneaker-pipeline@1.0.0 etl:staging
+> tsx src/etl/run-staging.ts
+
+[15:19:45] [32mINFO[39m (sneaker-pipeline): [36mSupabase client created successfully[39m
+[15:19:45] [32mINFO[39m (sneaker-pipeline): [36mStarting Airtable ingest[39m
+[15:19:45] [32mINFO[39m (sneaker-pipeline): [36mFetching Airtable records[39m
+[15:19:45] [32mINFO[39m (sneaker-pipeline): [36m🚀 ETL Pipeline (Staging) starting[39m
+[15:19:45] [32mINFO[39m (sneaker-pipeline): [36m📥 Step 1: Ingesting NEW articles from Airtable[39m
+[15:19:49] [32mINFO[39m (sneaker-pipeline): [36mSuccessfully fetched Airtable records[39m
+[15:19:49] [32mINFO[39m (sneaker-pipeline): [36mFetched Airtable records[39m
+[15:19:49] [32mINFO[39m (sneaker-pipeline): [36mAirtable ingest completed[39m
+[15:19:49] [32mINFO[39m (sneaker-pipeline): [36mAirtable fetch completed[39m
+[15:19:50] [32mINFO[39m (sneaker-pipeline): [36mFiltered for new articles[39m
+[15:19:50] [32mINFO[39m (sneaker-pipeline): [36m⚙️ Step 2-6: Processing new articles[39m
+[15:19:50] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:19:50] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:19:50] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:19:50] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:19:50] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:19:50] [32mINFO[39m (sneaker-pipeline): [36mOpenAI client created successfully[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Hoka",
+      "model": "Challenger 7",
+      "upper_breathability": "high",
+      "carbon_plate": null,
+      "waterproof": false,
+      "heel_height": 31,
+      "forefoot_height": 29,
+      "drop": 2,
+      "weight": 252,
+      "price_usd": null,
+      "price_currency": null,
+      "primary_use": "winter running",
+      "cushioning_type": "max",
+      "surface_type": "road",
+      "foot_width": "standard",
+      "additional_features": "rocker-shaped sole, breathable upper",
+      "is_running_shoe": true
+    },
+    {
+      "brand_name": "Brooks",
+      "model": "Divide 5",
+      "upper_breathability": "medium",
+      "carbon_plate": null,
+      "waterproof": false,
+      "heel_height": 24,
+      "forefoot_height": 16,
+      "drop": 8,
+      "weight": 289,
+      "price_usd": 110,
+      "price_currency": "USD",
+      "primary_use": "winter running",
+      "cushioning_type": "firm",
+      "surface_type": "road",
+      "foot_width": "standard",
+    
+[DEBUG] rawItems count: 9
+[15:20:43] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:20:43] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:20:43] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:20:43] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:20:43] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:43] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:44] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:44] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:44] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:45] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:45] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:45] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:45] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:45] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:20:45] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:20:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:20:45] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:20:45] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:20:45] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:20:45] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Inov-8",
+      "model": "TrailFly Max Multi",
+      "upper_breathability": "high",
+      "carbon_plate": null,
+      "waterproof": false,
+      "heel_height": 35,
+      "forefoot_height": 29,
+      "drop": 6,
+      "weight": 276,
+      "price_usd": 170,
+      "price_currency": "USD",
+      "primary_use": "trail running",
+      "cushioning_type": "max",
+      "surface_type": "trail",
+      "foot_width": "narrow",
+      "additional_features": "Graphene-enhanced rubber, 4mm lugs, FLYSPEED PRO foam, Boomerang insole",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:20:53] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:20:53] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:20:53] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:20:53] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:20:54] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:20:54] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:20:54] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:20:54] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:20:54] [32mINFO[39m (sneaker-pipeline): [36mRegex succeeded but missing text fields, enhancing with LLM[39m
+[15:20:54] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:20:54] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:20:54] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Nike",
+      "model": "Pegasus 41",
+      "upper_breathability": "high",
+      "carbon_plate": null,
+      "waterproof": false,
+      "heel_height": 37,
+      "forefoot_height": 27,
+      "drop": 10,
+      "weight": 281,
+      "price_usd": 140,
+      "price_currency": "USD",
+      "primary_use": "daily trainer",
+      "cushioning_type": "max",
+      "surface_type": "road",
+      "foot_width": "standard",
+      "additional_features": "engineered mesh upper, ReactX foam, waffle-inspired rubber outsole",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:21:02] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:21:02] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Craft",
+      "model": "Xplor Pro",
+      "upper_breathability": "high",
+      "carbon_plate": null,
+      "waterproof": false,
+      "heel_height": 41,
+      "forefoot_height": 35,
+      "drop": 6,
+      "weight": 297,
+      "price_usd": 170,
+      "price_currency": "USD",
+      "primary_use": "trail running",
+      "cushioning_type": "balanced",
+      "surface_type": "trail",
+      "foot_width": "standard",
+      "additional_features": "secure upper hold, broad platform, responsive midsole, durable outsole",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:21:08] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:08] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:08] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:08] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": []
+}
+[DEBUG] rawItems count: 0
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:21:10] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:21:10] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:10] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:10] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:10] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:10] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:10] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:10] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Li Ning",
+      "model": "Feidian 5 Elite",
+      "upper_breathability": "high",
+      "carbon_plate": true,
+      "waterproof": false,
+      "heel_height": 38,
+      "forefoot_height": 33,
+      "drop": 5,
+      "weight": 202,
+      "price_usd": 204,
+      "price_currency": "USD",
+      "primary_use": "racing",
+      "cushioning_type": "balanced",
+      "surface_type": "road",
+      "foot_width": "standard",
+      "additional_features": "Boom Fiber upper, effective rocker, good outsole traction",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:21:15] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:21:15] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:21:15] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:21:15] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:21:16] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:16] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:16] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": []
+}
+[DEBUG] rawItems count: 0
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:21:17] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:21:17] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:17] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:17] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:17] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:17] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": []
+}
+[DEBUG] rawItems count: 0
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:21:18] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:21:18] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:18] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:18] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": []
+}
+[DEBUG] rawItems count: 0
+[15:21:19] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:19] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:19] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:21:19] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:21:19] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Puma",
+      "model": "Deviate Nitro 3",
+      "upper_breathability": "high",
+      "carbon_plate": true,
+      "waterproof": false,
+      "heel_height": 39,
+      "forefoot_height": 29,
+      "drop": 10,
+      "weight": 290,
+      "price_usd": 160,
+      "price_currency": "USD",
+      "primary_use": "daily trainer",
+      "cushioning_type": "balanced",
+      "surface_type": "road",
+      "foot_width": "standard",
+      "additional_features": "Nitro Elite foam, breathable knit upper, PumaGrip outsole",
+      "is_running_shoe": true
+    },
+    {
+      "brand_name": "Puma",
+      "model": "Velocity Nitro 4",
+      "upper_breathability": "high",
+      "carbon_plate": false,
+      "waterproof": false,
+      "heel_height": 36,
+      "forefoot_height": 26,
+      "drop": 10,
+      "weight": 255,
+      "price_usd": 140,
+      "price_currency": "USD",
+      "primary_use": "daily trainer",
+      "cushioning_type": "balanced",
+      "surface_type": "road"
+[DEBUG] rawItems count: 6
+[15:22:00] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:22:00] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:22:00] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:22:00] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:22:01] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:01] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:01] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:02] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:02] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:02] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:22:02] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:22:02] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:02] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:22:02] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:02] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:22:02] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:22:02] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Hoka",
+      "model": "Rocket X Trail",
+      "upper_breathability": "high",
+      "carbon_plate": true,
+      "waterproof": false,
+      "heel_height": 45,
+      "forefoot_height": 39,
+      "drop": 6,
+      "weight": 261,
+      "price_usd": 250,
+      "price_currency": "USD",
+      "primary_use": "trail running",
+      "cushioning_type": "max",
+      "surface_type": "trail",
+      "foot_width": "standard",
+      "additional_features": "A-TPU midsole, breathable engineered mesh upper, carbon H-shaped plate",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:22:08] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:22:08] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "adidas",
+      "model": "Adizero Takumi Sen 11",
+      "upper_breathability": "high",
+      "carbon_plate": false,
+      "waterproof": false,
+      "heel_height": 32,
+      "forefoot_height": 25,
+      "drop": 7,
+      "weight": 206,
+      "price_usd": 200,
+      "price_currency": "EUR",
+      "primary_use": "race",
+      "cushioning_type": "balanced",
+      "surface_type": "road",
+      "foot_width": "standard",
+      "additional_features": "LIGHTLOCK upper, Lightstrike Pro midsole, Continental rubber for grip",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:22:13] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:22:13] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:22:13] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:22:13] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:22:14] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:14] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:22:14] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:14] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:22:14] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:22:14] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:22:14] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:22:14] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Asics",
+      "model": "Sonicblast Multi Tester",
+      "upper_breathability": "high",
+      "carbon_plate": true,
+      "waterproof": false,
+      "heel_height": 46,
+      "forefoot_height": 38,
+      "drop": 8,
+      "weight": 257,
+      "price_usd": null,
+      "price_currency": null,
+      "primary_use": "daily trainer",
+      "cushioning_type": "max",
+      "surface_type": null,
+      "foot_width": "narrow",
+      "additional_features": "light and supportive upper, FF Turbo Squared foam, nylon/fiberglass plate",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:22:19] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:22:19] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:22:19] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:22:19] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:22:20] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:20] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:22:20] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:20] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:22:20] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:22:20] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:22:20] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:22:20] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "The North Face",
+      "model": "Vectiv Infinite 3",
+      "upper_breathability": null,
+      "carbon_plate": true,
+      "waterproof": false,
+      "heel_height": 37,
+      "forefoot_height": 31,
+      "drop": 6,
+      "weight": 275,
+      "price_usd": 160,
+      "price_currency": "USD",
+      "primary_use": "trail running",
+      "cushioning_type": "balanced",
+      "surface_type": "trail",
+      "foot_width": null,
+      "additional_features": "Dream foam midsole, Vectiv 3.0 TPU plate, 5mm Surface Ctrl rubber outsole, Dual Warp mesh upper",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:22:27] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:22:27] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:22:27] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:22:27] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:22:28] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:22:28] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:22:28] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Scott",
+      "model": "Supertrac RC 3",
+      "upper_breathability": null,
+      "carbon_plate": null,
+      "waterproof": false,
+      "heel_height": 20,
+      "forefoot_height": 15.5,
+      "drop": 4.5,
+      "weight": 243,
+      "price_usd": 180,
+      "price_currency": "USD",
+      "primary_use": "trail running",
+      "cushioning_type": "balanced",
+      "surface_type": "trail",
+      "foot_width": "narrow",
+      "additional_features": "Radial Traction outsole, Matryx upper, Kinetic Light midsole, ER2 rocker, Anti-debris sock",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:22:35] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:22:35] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:22:35] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:22:35] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:22:36] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:36] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:22:36] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:36] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:22:36] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:22:36] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:22:36] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:22:36] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Scott",
+      "model": "Pursuit Gravel",
+      "upper_breathability": null,
+      "carbon_plate": null,
+      "waterproof": null,
+      "heel_height": 32.5,
+      "forefoot_height": 23.5,
+      "drop": 9,
+      "weight": 285,
+      "price_usd": 160,
+      "price_currency": "USD",
+      "primary_use": "gravel and light trail adventures",
+      "cushioning_type": null,
+      "surface_type": "gravel",
+      "foot_width": null,
+      "additional_features": "ER3 rocker, Kinetic Nitrogen midsole, Versatile Traction outsole",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:22:44] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:22:44] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:22:44] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Norda",
+      "model": "001A",
+      "upper_breathability": "medium",
+      "carbon_plate": null,
+      "waterproof": false,
+      "heel_height": 26,
+      "forefoot_height": 21,
+      "drop": 5,
+      "weight": 294,
+      "price_usd": 295,
+      "price_currency": "USD",
+      "primary_use": "trail running",
+      "cushioning_type": "max",
+      "surface_type": "trail",
+      "foot_width": "standard",
+      "additional_features": "Dyneema upper, Vibram MegaGrip outsole, Arnitel TPEE midsole",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:22:49] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:22:49] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:22:49] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:22:49] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:22:50] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:50] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:22:50] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:50] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:22:50] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:22:50] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[15:22:50] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:22:50] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Puma",
+      "model": "Velocity Nitro 4",
+      "upper_breathability": "medium",
+      "carbon_plate": null,
+      "waterproof": false,
+      "heel_height": 36,
+      "forefoot_height": 26,
+      "drop": 10,
+      "weight": 241,
+      "price_usd": 140,
+      "price_currency": "USD",
+      "primary_use": "daily trainer",
+      "cushioning_type": "balanced",
+      "surface_type": "road",
+      "foot_width": "narrow",
+      "additional_features": "reformulated Nitrofoam midsole, Pumagrip outsole, breathable upper",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:22:55] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:22:55] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:22:55] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:22:55] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:22:56] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:22:56] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:22:56] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mTitle analysis: irrelevant category detected (non-shoe)[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mSkipping irrelevant article (non-shoe category)[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:22:56] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[DEBUG] LLM response: {
+  "items": [
+    {
+      "brand_name": "Mount to Coast",
+      "model": "T1",
+      "upper_breathability": "high",
+      "carbon_plate": false,
+      "waterproof": false,
+      "heel_height": 36,
+      "forefoot_height": 32,
+      "drop": 4,
+      "weight": 289,
+      "price_usd": null,
+      "price_currency": null,
+      "primary_use": "trail running",
+      "cushioning_type": "balanced",
+      "surface_type": "trail",
+      "foot_width": "wide",
+      "additional_features": "LightCell foam, double lacing system, excellent grip with Vibram outsole",
+      "is_running_shoe": true
+    }
+  ]
+}
+[DEBUG] rawItems count: 1
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36mStaging insert result[39m
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36mProcessing article[39m
+[15:23:02] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:23:02] [32mINFO[39m (sneaker-pipeline): [36mLLM extraction completed[39m
+[15:23:02] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:23:02] [32mINFO[39m (sneaker-pipeline): [36mStarting batch insert to staging[39m
+[15:23:03] [31mERROR[39m (sneaker-pipeline): [36mStaging insert failed[39m
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36mBatch staging insert completed[39m
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36mStarting extraction[39m
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction completed[39m
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36mRegex extraction insufficient after filtering, falling back to LLM[39m
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36mStarting LLM extraction[39m
+[DEBUG] LLM response: {
+  "items": []
+}
+[DEBUG] rawItems count: 0
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36mOpenAI API call successful[39m
+[15:23:03] [33mWARN[39m (sneaker-pipeline): [36mLLM returned empty results[39m
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36mExtraction completed[39m
+[15:23:03] [33mWARN[39m (sneaker-pipeline): [36mNo sneakers extracted[39m
+[15:23:03] [32mINFO[39m (sneaker-pipeline): [36m✅ Pipeline completed[39m

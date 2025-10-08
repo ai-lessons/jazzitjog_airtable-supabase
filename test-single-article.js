@@ -1,87 +1,47 @@
-import 'dotenv/config';
-import { SimpleSneakerParser } from './src/simple-parser.ts';
-import { SimpleSyncProcessor } from './src/simple-sync.ts';
+// Test extraction for a single Airtable record
+require('dotenv').config();
+const Airtable = require('airtable');
+
+const RECORD_ID = 'rec3NyhJ7LDDdLNBv'; // Change this to test different records
 
 async function testSingleArticle() {
-  const config = {
-    airtable: {
-      apiKey: process.env.AIRTABLE_API_KEY,
-      baseId: process.env.AIRTABLE_BASE_ID,
-      tableName: process.env.AIRTABLE_TABLE_NAME,
-    },
-    supabase: {
-      url: process.env.SUPABASE_URL,
-      key: process.env.SUPABASE_SERVICE_ROLE_KEY,
-    },
-    openai: {
-      apiKey: process.env.OPENAI_API_KEY,
-    },
-  };
-
-  const processor = new SimpleSyncProcessor(config);
-  const parser = new SimpleSneakerParser(process.env.OPENAI_API_KEY);
-
-  console.log('🧪 Testing filtering on specific problematic article...\n');
-
-  // Find Article 43 "New Balance FuelCell Rebel v5 Review"
-  const airtableRecords = await processor.fetchAirtableRecords();
-
-  const problemRecord = airtableRecords.find(record => {
-    const mapped = processor.mapAirtableRecord(record);
-    return mapped && mapped.article_id === 43;
-  });
-
-  if (!problemRecord) {
-    console.log('❌ Could not find Article 43');
-    return;
-  }
-
-  const mapped = processor.mapAirtableRecord(problemRecord);
-  console.log(`📄 TESTING ARTICLE 43:`);
-  console.log(`Title: "${mapped.title}"`);
-
-  // Step 1: Analyze title
-  const titleAnalysis = parser.analyzeTitle(mapped.title);
-  console.log(`\n🎯 TITLE ANALYSIS:`);
-  console.log(`  Scenario: ${titleAnalysis.scenario}`);
-  console.log(`  Brand: ${titleAnalysis.brand || 'none'}`);
-  console.log(`  Model: ${titleAnalysis.model || 'none'}`);
-  console.log(`  Confidence: ${titleAnalysis.confidence}`);
-
-  // Step 2: Extract sneakers
-  console.log(`\n🤖 EXTRACTING SNEAKERS (with detailed filtering logs)...`);
+  const base = new Airtable({
+    apiKey: process.env.AIRTABLE_API_KEY
+  }).base(process.env.AIRTABLE_BASE_ID);
 
   try {
-    const result = await parser.parseArticle(mapped);
+    console.log('Fetching record:', RECORD_ID);
+    const record = await base(process.env.AIRTABLE_TABLE_NAME || 'Running Shoe Articles').find(RECORD_ID);
 
-    console.log(`\n📊 FINAL RESULTS:`);
-    console.log(`Total sneakers after filtering: ${result.sneakers.length}`);
+    console.log('\n=== RECORD DETAILS ===');
+    console.log('ID:', record.id);
+    console.log('Title:', record.get('Title'));
+    console.log('Article ID:', record.get('ID'));
+    console.log('Date:', record.get('Created'));
+    console.log('Source:', record.get('Article link'));
 
-    result.sneakers.forEach((sneaker, i) => {
-      console.log(`${i+1}. ${sneaker.brand} ${sneaker.model}`);
+    const content = record.get('Content');
+    console.log('\n=== CONTENT ===');
+    console.log('Length:', content?.length || 0);
+    console.log('First 500 chars:', content?.substring(0, 500));
+    console.log('Last 500 chars:', content?.substring(content.length - 500));
 
-      // THIS IS THE PROBLEM - check if this is Adidas
-      if (sneaker.brand.toLowerCase().includes('adidas')) {
-        console.log(`   🚨 ADIDAS FOUND! This should have been filtered out!`);
-
-        // Let's manually test the filtering logic
-        console.log(`   📋 Manual filter test:`);
-        console.log(`     titleAnalysis.scenario: ${titleAnalysis.scenario}`);
-        console.log(`     titleAnalysis.brand: ${titleAnalysis.brand}`);
-        console.log(`     sneaker.brand: ${sneaker.brand}`);
-        console.log(`     Expected: Should be filtered because ${sneaker.brand} ≠ ${titleAnalysis.brand}`);
-      }
+    // Check for shoe-related keywords
+    const keywords = ['nike', 'adidas', 'asics', 'brooks', 'hoka', 'shoe', 'sneaker', 'running', 'drop', 'weight', 'mm', 'grams', 'oz', 'heel', 'forefoot', 'cushion', 'carbon'];
+    console.log('\n=== KEYWORD CHECK ===');
+    keywords.forEach(kw => {
+      const count = (content?.toLowerCase().match(new RegExp(kw, 'g')) || []).length;
+      if (count > 0) console.log(`${kw}: ${count}`);
     });
 
-    if (result.sneakers.some(s => s.brand.toLowerCase().includes('adidas'))) {
-      console.log(`\n🚨 FILTERING FAILED! Adidas models were not filtered out!`);
-    } else {
-      console.log(`\n✅ FILTERING WORKED! No Adidas models found.`);
-    }
+    // Save content to file for manual review
+    const fs = require('fs');
+    fs.writeFileSync(`article-${RECORD_ID}.txt`, content || 'NO CONTENT');
+    console.log(`\n✅ Full content saved to: article-${RECORD_ID}.txt`);
 
   } catch (error) {
-    console.log(`❌ Error during extraction: ${error.message}`);
+    console.error('Error:', error.message);
   }
 }
 
-testSingleArticle().catch(console.error);
+testSingleArticle();

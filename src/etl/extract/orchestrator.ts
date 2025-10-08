@@ -71,11 +71,12 @@ export async function extractFromArticle(
   }
 
   // Step 4: Fallback to LLM if regex returned insufficient results AFTER filtering
-  // For brand-only articles (roundups), expect multiple models
+  // For brand-only/general articles (roundups), expect multiple models (at least 3)
   // For specific-model articles (reviews), expect at least 1 model
   const needsLLM =
     results.length === 0 ||
     (titleAnalysis.scenario === 'brand-only' && results.length < 3) ||
+    (titleAnalysis.scenario === 'general' && results.length < 3) ||
     (titleAnalysis.scenario === 'specific' && results.length === 0);
 
   if (needsLLM) {
