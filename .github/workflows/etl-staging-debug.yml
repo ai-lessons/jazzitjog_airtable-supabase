@@ -1,0 +1,36 @@
+name: ETL Staging - Debug
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Debug Environment
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+          AIRTABLE_TABLE_NAME: ${{ secrets.AIRTABLE_TABLE_NAME }}
+        run: |
+          echo "🔍 Environment Check:"
+          echo "SUPABASE_URL: $SUPABASE_URL"
+          echo "SUPABASE_KEY (first 20 chars): ${SUPABASE_KEY:0:20}..."
+          echo "AIRTABLE_BASE_ID: $AIRTABLE_BASE_ID"
+          echo "AIRTABLE_TABLE_NAME: $AIRTABLE_TABLE_NAME"
+          node debug-github-filtering.mjs
