@@ -52,6 +52,14 @@ export async function insertToStaging(
     // Prepare staging record (remove model_key, record_id, article_id - staging specific fields)
     const { model_key, record_id, article_id, ...stagingData } = shoe;
 
+    // DEBUG: Log what we're trying to insert
+    console.log('[DEBUG] Inserting shoe:', {
+      model_key: shoe.model_key,
+      brand: shoe.brand_name,
+      model: shoe.model,
+      hasData: Object.keys(stagingData).length
+    });
+
     // Map ShoeInput fields to staging_table schema
     const stagingRecord = {
       airtable_id: airtableId,
