@@ -5,44 +5,226 @@ import { logger } from '../../core/logger';
 import { MODEL_TO_BRAND, BRAND_ALIASES, normalizeBrand as coreNormalizeBrand } from '../../core/mapping';
 
 /**
- * Analyze article title to determine extraction context
+ * Check if text contains running shoe keywords (multilingual)
  */
-export function analyzeTitleForContext(title: string): TitleAnalysis {
-  const normalized = title.toLowerCase().trim();
+function hasRunningShoeKeywords(text: string): boolean {
+  const shoeKeywords = [
+    // English
+    /\bshoe/i,
+    /\bsneaker/i,
+    /\btrainer/i,
+    /\bfootwear/i,
+    /\brunning\s+shoe/i,
+    /\btrail\s+shoe/i,
+    /\brace\s+shoe/i,
+    // Russian
+    /кроссовк/i,
+    /обувь/i,
+    /беговая\s+обувь/i,
+    // German
+    /laufschuh/i,
+    // French
+    /chaussure/i,
+    // Spanish
+    /zapatilla/i,
+    /calzado/i,
+    // Portuguese
+    /tênis/i,
+  ];
 
-  // FIRST: Filter out non-shoe articles (headphones, watches, accessories, etc.)
-  // This prevents wasting OpenAI tokens on irrelevant content
+  return shoeKeywords.some(pattern => pattern.test(text));
+}
+
+/**
+ * Check if text contains review/comparison keywords
+ */
+function hasReviewKeywords(text: string): boolean {
+  const reviewKeywords = [
+    /\breview\b/i,
+    /\btest\b/i,
+    /\btester\b/i,
+    /\bhands-on\b/i,
+    /\bfirst look\b/i,
+    /\b(?:vs|versus)\b/i,
+    /\bcomparison\b/i,
+    /\btested\b/i,
+    /\binitial\b/i,
+    /обзор/i, // Russian: review
+    /тест/i, // Russian: test
+  ];
+
+  return reviewKeywords.some(pattern => pattern.test(text));
+}
+
+/**
+ * Check if text contains non-shoe category keywords
+ */
+function hasNonShoeKeywords(text: string): boolean {
   const nonShoePatterns = [
+    /smartwatch/i,
+    /\bwatch(es)?\b/i,
+    /fitness\s+tracker/i,
+    /часы/i, // Russian: watch
     /headphone/i,
     /earbuds?/i,
-    /watch(es)?/i,
     /sunglasses/i,
+    /очки/i, // Russian: glasses
     /socks?/i,
+    /носки/i, // Russian: socks
     /hydration\s+pack/i,
     /vest/i,
     /jacket/i,
+    /куртка/i, // Russian: jacket
     /shorts?/i,
+    /шорты/i, // Russian: shorts
     /tights?/i,
+    /pants?/i,
+    /leggings?/i,
+    /штаны/i, // Russian: pants
     /massage\s+gun/i,
     /treadmill/i,
+    /беговая\s+дорожка/i, // Russian: treadmill
+    /bike\s+trainer/i,
+    /cycling/i,
+    /велосипед/i, // Russian: bicycle
     /backpack/i,
+    /рюкзак/i, // Russian: backpack
     /belt/i,
     /armband/i,
     /hat/i,
     /cap/i,
+    /шапка/i, // Russian: hat
     /gloves?/i,
+    /перчатки/i, // Russian: gloves
     /bra/i,
+    /sports\s+bra/i,
     /nutrition/i,
+    /питание/i, // Russian: nutrition
     /energy\s+gel/i,
+    /supplement/i,
+    /protein/i,
+    /recovery\s+drink/i,
   ];
 
-  if (nonShoePatterns.some(pattern => pattern.test(normalized))) {
-    logger.info('Title analysis: irrelevant category detected (non-shoe)', { title });
-    return {
-      scenario: 'irrelevant',
-      confidence: 0.0,
-    };
+  return nonShoePatterns.some(pattern => pattern.test(text));
+}
+
+/**
+ * Check if content has minimum shoe characteristics (technical specs)
+ */
+function hasShoeCharacteristics(content: string): boolean {
+  const contentLower = content.toLowerCase();
+
+  // Check for common shoe specification keywords
+  const specKeywords = [
+    // Stack height / drop
+    /stack\s+height/i,
+    /heel\s+height/i,
+    /forefoot\s+height/i,
+    /\b\d+\s*mm\s+drop/i,
+    /\bdrop\s*:\s*\d+/i,
+    // Weight
+    /weight\s*:\s*\d+/i,
+    /\d+\s*oz/i,
+    /\d+\s*g(?:rams)?/i,
+    /вес\s*:\s*\d+/i, // Russian: weight
+    // Cushioning / midsole
+    /cushion/i,
+    /midsole/i,
+    /амортизация/i, // Russian: cushioning
+    // Price
+    /price\s*:\s*[$€£]/i,
+    /\$\d{2,3}/i,
+    /цена\s*:/i, // Russian: price
+    // Carbon plate / technology
+    /carbon\s+plate/i,
+    /carbon\s+fiber/i,
+    /карбоновая\s+пластина/i, // Russian: carbon plate
+    // Gore-Tex / waterproof
+    /gore-?tex/i,
+    /gtx/i,
+    /waterproof/i,
+    /water-?resistant/i,
+    /водонепроницаем/i, // Russian: waterproof
+    // Outsole / traction
+    /outsole/i,
+    /traction/i,
+    /grip/i,
+    /подошва/i, // Russian: outsole
+  ];
+
+  // Count how many characteristic patterns found
+  const matchCount = specKeywords.filter(pattern => pattern.test(contentLower)).length;
+
+  // Need at least 3 different characteristics to consider it a shoe article
+  return matchCount >= 3;
+}
+
+/**
+ * Two-stage filtering: Title → Content
+ * Returns true if article is about running shoes
+ */
+export function isRunningShoeArticle(title: string, content?: string): boolean {
+  const titleLower = title.toLowerCase().trim();
+
+  // ========== STAGE 1: Title Analysis ==========
+
+  // 1.1: Check for NON-shoe keywords in title → REJECT immediately
+  if (hasNonShoeKeywords(titleLower)) {
+    logger.info('Article rejected: non-shoe keywords in title', { title });
+    return false;
   }
+
+  // 1.2: Check for SHOE keywords in title → ACCEPT immediately
+  if (hasRunningShoeKeywords(titleLower)) {
+    logger.info('Article accepted: shoe keywords in title', { title });
+    return true;
+  }
+
+  // 1.3: Title is unclear (no shoe keywords, no non-shoe keywords)
+  logger.debug('Title unclear, analyzing content...', { title });
+
+  // ========== STAGE 2: Content Analysis ==========
+
+  if (!content) {
+    logger.info('Article rejected: unclear title, no content to analyze', { title });
+    return false;
+  }
+
+  const contentLower = content.toLowerCase();
+
+  // 2.1: Check for POSITIVE shoe indicators (keywords OR characteristics)
+  const hasShoeKeywords = hasRunningShoeKeywords(contentLower);
+  const hasCharacteristics = hasShoeCharacteristics(content);
+
+  // Accept if: (SHOE keywords) OR (SHOE characteristics)
+  if (hasShoeKeywords || hasCharacteristics) {
+    logger.info('Article accepted: shoe indicators in content', {
+      title,
+      hasShoeKeywords,
+      hasCharacteristics
+    });
+    return true;
+  }
+
+  // 2.2: No positive shoe indicators → check for explicit NON-shoe keywords
+  // Only reject if we find clear non-shoe signals
+  if (hasNonShoeKeywords(contentLower)) {
+    logger.info('Article rejected: non-shoe keywords in content', { title });
+    return false;
+  }
+
+  // 2.3: Unclear content (no positive signals, no negative signals) → REJECT by default
+  logger.info('Article rejected: no clear indicators in content', { title });
+  return false;
+}
+
+/**
+ * Analyze article title to determine extraction context
+ * NOTE: This is called AFTER isRunningShoeArticle() confirms it's a shoe article
+ */
+export function analyzeTitleForContext(title: string): TitleAnalysis {
+  const normalized = title.toLowerCase().trim();
 
   // Try to detect specific model mention
   const specificMatch = detectSpecificModel(normalized);

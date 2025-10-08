@@ -34,23 +34,9 @@ export async function extractFromArticle(
   });
 
   // Step 1: Analyze title for context
+  // NOTE: Article is already filtered by isRunningShoeArticle() in ingestion stage
   const titleAnalysis = analyzeTitleForContext(article.title);
   logger.debug('Title analysis completed', { titleAnalysis });
-
-  // Step 1.5: Skip irrelevant articles immediately (saves OpenAI tokens!)
-  if (titleAnalysis.scenario === 'irrelevant') {
-    logger.info('Skipping irrelevant article (non-shoe category)', {
-      article_id: article.article_id,
-      title: article.title,
-    });
-
-    return {
-      article_id: article.article_id,
-      sneakers: [],
-      extractionMethod: 'regex', // No extraction attempted
-      titleAnalysis,
-    };
-  }
 
   // Step 2: Try regex extraction (fast path)
   let results: SneakerSpec[] = extractWithRegex(article.content);

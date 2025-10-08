@@ -1,9 +1,2 @@
-import "dotenv/config";
-export declare function extractFromArticle(args: {
-    content: string;
-    date?: string | null;
-    source_link?: string | null;
-}): Promise<{
-    items: any;
-}>;
+export declare function extractSneakers(content: string, options?: any): Promise<never[]>;
 //# sourceMappingURL=extract.d.ts.map

@@ -40,6 +40,7 @@ const extractor = __importStar(require("../llm/extract"));
 const regexFallback_1 = require("./regexFallback");
 const brandModelFromTitle_1 = require("../transform/brandModelFromTitle");
 const relevance_1 = require("../filters/relevance");
+const crypto_1 = require("crypto");
 // --- 1) извлекатель из ../llm/extract (поддержка разных имён экспорта)
 function pickExtractFn(mod) {
     const names = ["extractFromArticle", "extractFromContent", "extractModels", "extract", "runExtraction", "default"];
@@ -124,6 +125,79 @@ function isValidUsdPrice(p) {
 // Нормализация токенов для сравнения модели с заголовком
 const alnumLower = (s) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
 const modelTokens = (s) => alnumLower(s).split(" ").filter(t => t && !/^(the|and|with|for|pro|max|gtx|carbon|plate)$/.test(t));
+// Enhanced Title-first detection logic
+function isSingleModelTitle(title) {
+    const titleBM = (0, brandModelFromTitle_1.brandModelFromTitle)(title);
+    // Высокая уверенность в title + явное упоминание модели
+    return titleBM.confidence >= 0.85 && !!titleBM.brand && !!titleBM.model;
+}
+// Generate source_id with priority: article_id > normalized source_link > sha1(content)
+function generateSourceId(args) {
+    const { article_id, source_link, content } = args;
+    if (article_id) {
+        return `article_${article_id}`;
+    }
+    if (source_link) {
+        // Normalize source_link by removing protocol, www, trailing slashes, query params
+        const normalized = source_link
+            .replace(/^https?:\/\//, '')
+            .replace(/^www\./, '')
+            .replace(/\/$/, '')
+            .split('?')[0]
+            .split('#')[0];
+        return `link_${normalized}`;
+    }
+    if (content) {
+        const hash = (0, crypto_1.createHash)('sha1').update(content.trim()).digest('hex');
+        return `content_${hash}`;
+    }
+    throw new Error('Cannot generate source_id: no article_id, source_link, or content provided');
+}
+// Calculate field richness for comparison
+function calculateRichness(obj) {
+    const fields = [
+        'heel_height', 'forefoot_height', 'drop', 'weight', 'price',
+        'primary_use', 'surface_type', 'cushioning_type', 'foot_width',
+        'carbon_plate', 'waterproof', 'upper_breathability', 'additional_features'
+    ];
+    let count = 0;
+    for (const field of fields) {
+        const value = obj[field];
+        if (value !== null && value !== undefined) {
+            // Count explicit non-null values as more valuable
+            if (typeof value === 'number' && !isNaN(value))
+                count += 2;
+            else if (typeof value === 'boolean')
+                count += 2;
+            else if (typeof value === 'string' && value.trim())
+                count += 1;
+        }
+    }
+    return count;
+}
+// Check if new model is richer than existing
+function isRicherModel(newModel, existingModel) {
+    const newRichness = calculateRichness(newModel);
+    const existingRichness = calculateRichness(existingModel);
+    return newRichness > existingRichness;
+}
+// Check if content is about sneakers/running shoes
+function isSneakerArticle(title, content) {
+    const combined = `${title} ${content}`.toLowerCase();
+    // Must contain sneaker/shoe keywords
+    const shoeKeywords = /\b(shoe|shoes|sneaker|sneakers|runner|runners|running\s+shoe|footwear|kicks)\b/;
+    if (!shoeKeywords.test(combined))
+        return false;
+    // Common sneaker contexts
+    const sneakerContext = /\b(review|test|comparison|guide|best|top|rated|comfortable|cushioning|support|trail|road|marathon|jogging|training|athletic|sports?)\b/;
+    if (!sneakerContext.test(combined))
+        return false;
+    // Exclude obvious non-sneaker content
+    const excludePattern = /\b(boot|boots|sandal|sandals|high\s+heel|dress\s+shoe|formal|oxford|loafer|pump|stiletto|cleat|cleats)\b/;
+    if (excludePattern.test(combined))
+        return false;
+    return true;
+}
 function inferBrandFromContentLoose(content) {
     const map = new Map();
     for (const m of content.matchAll(/\b([A-Z][a-z]+(?:\s[A-Z][a-z]+)?)\b/g)) {
@@ -169,7 +243,35 @@ function scoreByTitle(brand, model, tBrand, tModel) {
     }
     return score;
 }
-// Функция для дедупликации записей внутри одной статьи
+// Enhanced deduplication with model_key + source_id
+function deduplicateEnhanced(shoes) {
+    const dedupeMap = new Map();
+    for (const shoe of shoes) {
+        // Generate source_id for this shoe
+        const source_id = generateSourceId({
+            article_id: shoe.article_id,
+            source_link: shoe.source_link,
+            content: undefined // We don't have access to content here, but article_id/source_link should be sufficient
+        });
+        // Create composite key: model_key + source_id
+        const compositeKey = `${shoe.model_key}::${source_id}`;
+        const existing = dedupeMap.get(compositeKey);
+        if (!existing) {
+            // New entry - add it
+            dedupeMap.set(compositeKey, shoe);
+        }
+        else {
+            // Duplicate found - decide whether to update
+            if (isRicherModel(shoe, existing)) {
+                // New model is richer - replace
+                dedupeMap.set(compositeKey, shoe);
+            }
+            // Otherwise keep existing (it's richer or same)
+        }
+    }
+    return Array.from(dedupeMap.values());
+}
+// Функция для дедупликации записей внутри одной статьи (legacy - for backward compatibility)
 function deduplicateWithinArticles(shoes) {
     const articleGroups = new Map();
     // Группируем по article_id
@@ -246,6 +348,10 @@ async function fromAirtableToShoeInputs(records) {
             continue;
         // Title-first эвристика бренда/модели
         const title = (getField(rec, ["Title", "title"]) ?? "").toString();
+        // Only process sneaker articles
+        if (!isSneakerArticle(title, content)) {
+            continue;
+        }
         const titleBM = (0, brandModelFromTitle_1.brandModelFromTitle)(title);
         const titleBrand = titleBM.brand ? titleBM.brand.trim() : null;
         const titleModel = titleBM.model ? (0, fields_1.refineModelName)(titleBrand ?? "", titleBM.model).trim() : null;
@@ -262,18 +368,67 @@ async function fromAirtableToShoeInputs(records) {
                 source_link = normStr(firstUrl);
             }
         }
-        // 3) Экстракция LLM (+ кандидат из Title)
+        // ENHANCED TITLE-FIRST LOGIC
+        const isSingleModel = isSingleModelTitle(title);
         let modelsRaw = [];
         try {
             const raw = await callExtractor(content, { date, source_link });
             modelsRaw = toModelArray(raw);
-            if (titleBrand && titleModel && titleBM.confidence >= 0.9) {
-                modelsRaw.push({ brand_name: titleBrand, model: titleModel, __source: 'title' });
+            if (isSingleModel && titleBrand && titleModel) {
+                // Single-model mode: extract only the title model's specs from content
+                const titleModelKey = (0, fields_1.makeModelKey)(titleBrand, titleModel);
+                // Filter content models to only include the title model or similar ones
+                const relevantModels = modelsRaw.filter(m => {
+                    const modelKey = (0, fields_1.makeModelKey)(m.brand_name || titleBrand, m.model || '');
+                    return modelKey === titleModelKey ||
+                        (m.brand_name === titleBrand && m.model === titleModel);
+                });
+                if (relevantModels.length > 0) {
+                    // Use the most complete model data for the title model
+                    const bestModel = relevantModels.reduce((best, current) => {
+                        return calculateRichness(current) > calculateRichness(best) ? current : best;
+                    });
+                    modelsRaw = [{
+                            ...bestModel,
+                            brand_name: titleBrand,
+                            model: titleModel,
+                            __source: 'title-single',
+                            __mode: 'single-model'
+                        }];
+                }
+                else {
+                    // Fallback to title-only data if no content match
+                    modelsRaw = [{
+                            brand_name: titleBrand,
+                            model: titleModel,
+                            __source: 'title-only',
+                            __mode: 'single-model'
+                        }];
+                }
+            }
+            else {
+                // Multi-model mode: extract all different models from content
+                // Add title model as a candidate if it has good confidence
+                if (titleBrand && titleModel && titleBM.confidence >= 0.8) {
+                    modelsRaw.push({
+                        brand_name: titleBrand,
+                        model: titleModel,
+                        __source: 'title',
+                        __mode: 'multi-model'
+                    });
+                }
             }
         }
-        catch { /* ignore */ }
-        if (!modelsRaw.length && titleBrand && titleModel && titleBM.confidence >= 0.9) {
-            modelsRaw = [{ brand_name: titleBrand, model: titleModel, __source: 'title' }];
+        catch {
+            // Fallback on extraction error
+            if (titleBrand && titleModel && titleBM.confidence >= 0.8) {
+                modelsRaw = [{
+                        brand_name: titleBrand,
+                        model: titleModel,
+                        __source: 'title-fallback',
+                        __mode: isSingleModel ? 'single-model' : 'multi-model'
+                    }];
+            }
         }
         if (!modelsRaw.length)
             continue;
@@ -317,66 +472,77 @@ async function fromAirtableToShoeInputs(records) {
             .sort((a, b) => (b.score - a.score) ||
             (richness(b.src) - richness(a.src)) ||
             (((a.src?.__source === 'title') ? 1 : 0) - ((b.src?.__source === 'title') ? 1 : 0)));
+        // In multi-model mode, deduplicate within this article to avoid repeats
+        const processedInThisArticle = new Set();
         // Обрабатываем каждого валидного кандидата
         for (const c of validCands) {
             const mk = (0, fields_1.makeModelKey)(c.brand, c.model);
-            if (mk) {
-                // --- фильтр релевантности (SOFT/HARD)
-                const titleHead = [titleBrand, titleModel].filter(Boolean).join(' ');
-                const irr = (0, relevance_1.detectIrrelevant)(titleHead, mk, c.model, c.brand || undefined);
-                const mode = process.env.PIPELINE_IRRELEVANT_MODE || 'hard';
-                if (mode === 'hard' && irr && irr.ok === false) {
-                    // здесь можно писать лог в shoe_results_rejected, если нужно
-                    continue;
-                }
-                const m = c.src ?? {};
-                const heel_height = m.heel_height ?? heightsFb.heel ?? null;
-                const forefoot_height = m.forefoot_height ?? heightsFb.forefoot ?? null;
-                let drop = m.drop ?? heightsFb.drop ?? null;
-                if (drop == null && heel_height != null && forefoot_height != null) {
-                    drop = Math.round((Number(heel_height) - Number(forefoot_height)) * 100) / 100;
-                }
-                const weight = m.weight ?? weightFb ?? null;
-                let price = null;
-                const llmUsd = m.price_usd ?? null;
-                const llmRaw = m.price ?? null;
-                if (isValidUsdPrice(llmUsd))
-                    price = Math.round(Number(llmUsd) * 100) / 100;
-                else if (isValidUsdPrice(llmRaw))
-                    price = Math.round(Number(llmRaw) * 100) / 100;
-                else if (isValidUsdPrice(priceFb.priceUsd))
-                    price = Math.round(Number(priceFb.priceUsd) * 100) / 100;
-                else if (isValidUsdPrice(priceWeird))
-                    price = Math.round(Number(priceWeird) * 100) / 100;
-                const surface_type = m.surface_type ?? null;
-                const foot_width = m.foot_width ?? null;
-                const cushioning_type = m.cushioning_type ?? null;
-                out.push({
-                    article_id,
-                    record_id,
-                    brand_name: c.brand,
-                    model: c.model,
-                    model_key: mk,
-                    upper_breathability: m.upper_breathability ?? null,
-                    carbon_plate: m.carbon_plate ?? null,
-                    waterproof: m.waterproof ?? null,
-                    heel_height,
-                    forefoot_height,
-                    drop,
-                    weight,
-                    price,
-                    primary_use: m.primary_use ?? null,
-                    cushioning_type,
-                    surface_type,
-                    foot_width,
-                    additional_features: m.additional_features ?? null,
-                    date,
-                    source_link,
-                });
+            if (!mk)
+                continue;
+            // In multi-model mode, check for duplicates within this article
+            const currentMode = c.src?.__mode || 'multi-model';
+            if (currentMode === 'multi-model' && processedInThisArticle.has(mk)) {
+                continue; // Skip duplicate model in same article
+            }
+            // --- фильтр релевантности (SOFT/HARD)
+            const titleHead = [titleBrand, titleModel].filter(Boolean).join(' ');
+            const irr = (0, relevance_1.detectIrrelevant)(titleHead, mk, c.model, c.brand || undefined);
+            const mode = process.env.PIPELINE_IRRELEVANT_MODE || 'hard';
+            if (mode === 'hard' && irr && irr.ok === false) {
+                // здесь можно писать лог в shoe_results_rejected, если нужно
+                continue;
+            }
+            const m = c.src ?? {};
+            const heel_height = m.heel_height ?? heightsFb.heel ?? null;
+            const forefoot_height = m.forefoot_height ?? heightsFb.forefoot ?? null;
+            let drop = m.drop ?? heightsFb.drop ?? null;
+            if (drop == null && heel_height != null && forefoot_height != null) {
+                drop = Math.round((Number(heel_height) - Number(forefoot_height)) * 100) / 100;
+            }
+            const weight = m.weight ?? weightFb ?? null;
+            let price = null;
+            const llmUsd = m.price_usd ?? null;
+            const llmRaw = m.price ?? null;
+            if (isValidUsdPrice(llmUsd))
+                price = Math.round(Number(llmUsd) * 100) / 100;
+            else if (isValidUsdPrice(llmRaw))
+                price = Math.round(Number(llmRaw) * 100) / 100;
+            else if (isValidUsdPrice(priceFb.priceUsd))
+                price = Math.round(Number(priceFb.priceUsd) * 100) / 100;
+            else if (isValidUsdPrice(priceWeird))
+                price = Math.round(Number(priceWeird) * 100) / 100;
+            const surface_type = m.surface_type ?? null;
+            const foot_width = m.foot_width ?? null;
+            const cushioning_type = m.cushioning_type ?? null;
+            out.push({
+                article_id,
+                record_id,
+                brand_name: c.brand,
+                model: c.model,
+                model_key: mk,
+                upper_breathability: m.upper_breathability ?? null,
+                carbon_plate: m.carbon_plate ?? null,
+                waterproof: m.waterproof ?? null,
+                heel_height,
+                forefoot_height,
+                drop,
+                weight,
+                price,
+                primary_use: m.primary_use ?? null,
+                cushioning_type,
+                surface_type,
+                foot_width,
+                additional_features: m.additional_features ?? null,
+                date,
+                source_link,
+            });
+            // Mark this model as processed for this article
+            if (currentMode === 'multi-model') {
+                processedInThisArticle.add(mk);
             }
         }
     }
-    // Применяем дедупликацию только внутри статей
-    return deduplicateWithinArticles(out);
+    // Apply enhanced deduplication with model_key + source_id
+    return deduplicateEnhanced(out);
 }
 //# sourceMappingURL=fromAirtableToShoeInputs.js.map

@@ -1,0 +1,3 @@
+declare const multiModelContent = "Best Road Running Shoes: Brooks Ghost 17 ($140)\nThe Ghost 17 delivers smooth transitions with DNA LOFT v2 foam. Weight: 8.8 ounces (249 grams). Heel height: 30mm, forefoot: 20mm, drop: 10mm.\n\nBest Trail Running Shoes: Hoka Speedgoat 6 ($155)\nTrail running at its finest with 9.1 ounces (258 grams) and 5mm lugs for traction. 40mm heel stack height.";
+export { multiModelContent };
+//# sourceMappingURL=data_cross_contamination_test.d.ts.map

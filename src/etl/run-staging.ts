@@ -131,10 +131,7 @@ export async function runStagingPipeline(config: PipelineConfig) {
         }
 
         // Step 3: Normalize
-        const normalized = normalizeSneakers(
-          extractResult.sneakers,
-          extractResult.titleAnalysis
-        );
+        const normalized = normalizeSneakers(extractResult.sneakers);
 
         console.log('[DEBUG] After normalization:', {
           article_id: article.article_id,

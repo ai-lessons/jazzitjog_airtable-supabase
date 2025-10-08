@@ -5,6 +5,7 @@ import type { IngestArticle, IngestResult, IngestOptions } from './types';
 import { logger } from '../../core/logger';
 import { getMetrics } from '../../core/metrics';
 import { normStr, toPositiveInt } from '../../core/utils';
+import { isRunningShoeArticle } from '../extract/title_analysis';
 
 /**
  * Ingest articles from Airtable
@@ -38,6 +39,19 @@ export async function ingestFromAirtable(
       const article = mapAirtableRecord(record);
 
       if (!article) {
+        result.skipped++;
+        metrics.incrementArticlesSkipped();
+        continue;
+      }
+
+      // Filter: Check if article is about running shoes (two-stage: title → content)
+      const isShoeArticle = isRunningShoeArticle(article.title, article.content);
+
+      if (!isShoeArticle) {
+        logger.info('Skipping non-shoe article', {
+          article_id: article.article_id,
+          title: article.title,
+        });
         result.skipped++;
         metrics.incrementArticlesSkipped();
         continue;

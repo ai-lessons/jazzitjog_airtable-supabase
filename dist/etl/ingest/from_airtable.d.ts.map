@@ -1,0 +1,1 @@
+{"version":3,"file":"from_airtable.d.ts","sourceRoot":"","sources":["../../../src/etl/ingest/from_airtable.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,cAAc,EAAkB,MAAM,6BAA6B,CAAC;AAClF,OAAO,KAAK,EAAiB,YAAY,EAAE,aAAa,EAAE,MAAM,SAAS,CAAC;AAM1E;;GAEG;AACH,wBAAsB,kBAAkB,CACtC,MAAM,EAAE,cAAc,EACtB,OAAO,CAAC,EAAE,aAAa,GACtB,OAAO,CAAC,YAAY,CAAC,CA2DvB"}
