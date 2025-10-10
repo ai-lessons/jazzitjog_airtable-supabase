@@ -91,7 +91,7 @@ export async function runPipeline(config: PipelineConfig) {
         const extractResult = await extractFromArticle(
           {
             article_id: article.article_id,
-            record_id: article.record_id,
+            airtable_id: article.airtable_id,
             title: article.title,
             content: article.content,
             date: article.date,
@@ -124,7 +124,7 @@ export async function runPipeline(config: PipelineConfig) {
           normalizeResults.map(r => r.sneaker),
           {
             article_id: article.article_id,
-            record_id: article.record_id,
+            airtable_id: article.airtable_id,
             date: article.date,
             source_link: article.source_link,
           }

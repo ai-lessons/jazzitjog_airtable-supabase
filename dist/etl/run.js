@@ -63,7 +63,7 @@ async function runPipeline(config) {
                 // Step 2: Extract sneaker specs
                 const extractResult = await (0, extract_1.extractFromArticle)({
                     article_id: article.article_id,
-                    record_id: article.record_id,
+                    airtable_id: article.airtable_id,
                     title: article.title,
                     content: article.content,
                     date: article.date,
@@ -87,7 +87,7 @@ async function runPipeline(config) {
                 // Step 4: Build ShoeInput objects
                 const buildResults = (0, build_1.buildShoeInputs)(normalizeResults.map(r => r.sneaker), {
                     article_id: article.article_id,
-                    record_id: article.record_id,
+                    airtable_id: article.airtable_id,
                     date: article.date,
                     source_link: article.source_link,
                 });

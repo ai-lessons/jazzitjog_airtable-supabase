@@ -100,7 +100,7 @@ async function importData() {
         }
         const shoeInput = {
             article_id: createArticleId(row.brand, row.model),
-            record_id: null,
+            airtable_id: null,
             brand_name: row.brand,
             model: row.model,
             model_key: createModelKey(row.brand, row.model),

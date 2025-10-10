@@ -1,5 +1,7 @@
 import { SimpleSneakerParser } from '../simple-parser';
-import { cfg } from '../config';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Test cases that previously caused false positives with "On" brand
 const testCases = [
@@ -38,7 +40,11 @@ const testCases = [
 ];
 
 async function testOnBrandExtraction() {
-  const parser = new SimpleSneakerParser(cfg.openai.apiKey);
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY not found in environment variables');
+  }
+  const parser = new SimpleSneakerParser(apiKey);
 
   console.log('Testing On brand extraction fixes...\n');
   console.log('='.repeat(80));
@@ -52,7 +58,7 @@ async function testOnBrandExtraction() {
     try {
       const result = await parser.parseArticle({
         article_id: i + 1,
-        record_id: `test_${i + 1}`,
+        airtable_id: `test_${i + 1}`,
         title: testCase.title,
         content: testCase.content
       });

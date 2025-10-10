@@ -30,7 +30,7 @@ export function buildShoeInput(
   // Build ShoeInput
   const shoe: ShoeInput = {
     article_id: String(context.article_id), // Convert to string for DB
-    record_id: context.record_id || null,
+    airtable_id: context.airtable_id || null,
     brand_name: sneaker.brand_name || 'Unknown',
     model: sneaker.model || 'Unknown',
     model_key,

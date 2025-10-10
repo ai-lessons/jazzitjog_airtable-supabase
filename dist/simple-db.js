@@ -7,11 +7,11 @@ class SimpleDatabase {
     constructor(supabaseUrl, supabaseKey) {
         this.supabase = (0, supabase_js_1.createClient)(supabaseUrl, supabaseKey);
     }
-    async saveSneakers(article_id, record_id, sneakers) {
+    async saveSneakers(article_id, airtable_id, sneakers) {
         const results = { success: 0, errors: [] };
         for (const sneaker of sneakers) {
             try {
-                const record = this.sneakerToRecord(article_id, record_id, sneaker);
+                const record = this.sneakerToRecord(article_id, airtable_id, sneaker);
                 await this.upsertRecord(record);
                 results.success++;
             }
@@ -21,11 +21,11 @@ class SimpleDatabase {
         }
         return results;
     }
-    sneakerToRecord(article_id, record_id, sneaker) {
+    sneakerToRecord(article_id, airtable_id, sneaker) {
         const model_key = this.makeModelKey(sneaker.brand, sneaker.model);
         return {
             article_id,
-            record_id,
+            airtable_id,
             brand_name: sneaker.brand,
             model: sneaker.model,
             model_key,
@@ -58,7 +58,7 @@ class SimpleDatabase {
     }
     async upsertRecord(record) {
         // Check if record exists
-        const existing = await this.findExisting(record.record_id, record.model_key);
+        const existing = await this.findExisting(record.airtable_id, record.model_key);
         if (existing) {
             // Update with richer data
             const merged = this.mergeRecords(existing, record);
@@ -80,11 +80,11 @@ class SimpleDatabase {
             }
         }
     }
-    async findExisting(record_id, model_key) {
+    async findExisting(airtable_id, model_key) {
         const { data, error } = await this.supabase
             .from('shoe_results')
             .select('*')
-            .eq('record_id', record_id)
+            .eq('airtable_id', airtable_id)
             .eq('model_key', model_key)
             .single();
         if (error && error.code !== 'PGRST116') { // PGRST116 = no rows found

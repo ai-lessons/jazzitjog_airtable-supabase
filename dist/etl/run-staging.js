@@ -56,12 +56,12 @@ async function runStagingPipeline(config) {
             .select('airtable_id');
         const { data: existingInProduction } = await supabase
             .from('shoe_results')
-            .select('record_id');
+            .select('airtable_id');
         const existingIds = new Set([
             ...(existingInStaging?.map(r => r.airtable_id) || []),
-            ...(existingInProduction?.map(r => r.record_id) || [])
+            ...(existingInProduction?.map(r => r.airtable_id) || [])
         ]);
-        const newArticles = ingestResult.articles.filter(article => !existingIds.has(article.record_id));
+        const newArticles = ingestResult.articles.filter(article => !existingIds.has(article.airtable_id));
         log.info('Filtered for new articles', {
             total: ingestResult.articles.length,
             alreadyInStaging: existingInStaging?.length || 0,
@@ -79,14 +79,14 @@ async function runStagingPipeline(config) {
         for (const article of newArticles) {
             log.info('Processing article', {
                 article_id: article.article_id,
-                airtable_id: article.record_id,
+                airtable_id: article.airtable_id,
                 title: article.title,
             });
             try {
                 // Step 2: Extract
                 const extractResult = await (0, extract_1.extractFromArticle)({
                     article_id: article.article_id,
-                    record_id: article.record_id,
+                    airtable_id: article.airtable_id,
                     title: article.title,
                     content: article.content,
                     date: article.date,
@@ -127,7 +127,7 @@ async function runStagingPipeline(config) {
                 // Step 4: Build
                 const buildResults = (0, build_1.buildShoeInputs)(normalized.map(r => r.sneaker), {
                     article_id: article.article_id,
-                    record_id: article.record_id,
+                    airtable_id: article.airtable_id,
                     date: article.date,
                     source_link: article.source_link,
                 });
@@ -146,7 +146,7 @@ async function runStagingPipeline(config) {
                 const shoes = buildResults.map(result => result.shoe);
                 // Step 5: Insert to staging (not dry-run)
                 if (!config.dryRun) {
-                    const upsertResult = await (0, to_staging_1.insertShoesToStaging)(supabase, shoes, article.record_id);
+                    const upsertResult = await (0, to_staging_1.insertShoesToStaging)(supabase, shoes, article.airtable_id);
                     totalNewItems += upsertResult.created;
                     log.info('Staging insert result', {
                         article_id: article.article_id,

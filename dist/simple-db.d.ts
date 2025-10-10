@@ -2,7 +2,7 @@ import type { SneakerData } from './simple-parser';
 export interface DatabaseRecord {
     id?: number;
     article_id: number;
-    record_id: string;
+    airtable_id: string;
     brand_name: string;
     model: string;
     model_key: string;
@@ -26,7 +26,7 @@ export interface DatabaseRecord {
 export declare class SimpleDatabase {
     private supabase;
     constructor(supabaseUrl: string, supabaseKey: string);
-    saveSneakers(article_id: number, record_id: string, sneakers: SneakerData[]): Promise<{
+    saveSneakers(article_id: number, airtable_id: string, sneakers: SneakerData[]): Promise<{
         success: number;
         errors: string[];
     }>;

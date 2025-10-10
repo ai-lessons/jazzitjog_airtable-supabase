@@ -1,3 +1,31 @@
-node_modules/ 
-.env 
-.env.local 
+# Node/TypeScript
+node_modules/
+dist/
+*.log
+coverage/
+*.tsbuildinfo
+
+# Env files (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Editors/OS
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Web builds
+web/node_modules/
+web/dist/
+web-app/node_modules/
+web-app/.next/
+web-app/out/
+web-app/.vercel/
+web-app/.turbo/
+web-app/.cache/
+
+# Local analysis/archives
+analysis-bundle/
+backup/
+*.zip

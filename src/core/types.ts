@@ -3,7 +3,7 @@
 
 export type ShoeInput = {
   article_id: string; // Changed to string to match DB schema
-  record_id: string | null;
+  airtable_id: string | null;
   brand_name: string;
   model: string;
   model_key: string;

@@ -22,11 +22,11 @@ export async function upsertShoe(
       model: shoe.model,
     });
 
-    // Upsert using composite unique constraint (record_id, model_key)
+    // Upsert using composite unique constraint (airtable_id, brand_name, model)
     const { data, error } = await client
       .from('shoe_results')
       .upsert(shoe, {
-        onConflict: 'record_id,model_key',
+        onConflict: 'airtable_id,brand_name,model',
         ignoreDuplicates: false,
       })
       .select()

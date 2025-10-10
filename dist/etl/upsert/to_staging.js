@@ -40,8 +40,8 @@ async function insertToStaging(client, shoe, airtableId) {
                 created: false,
             };
         }
-        // Prepare staging record (remove model_key, record_id, article_id - staging specific fields)
-        const { model_key, record_id, article_id, ...stagingData } = shoe;
+        // Prepare staging record (remove model_key, airtable_id, article_id - staging specific fields)
+        const { model_key, airtable_id, article_id, ...stagingData } = shoe;
         // DEBUG: Log what we're trying to insert
         console.log('[DEBUG] Inserting shoe:', {
             model_key: shoe.model_key,

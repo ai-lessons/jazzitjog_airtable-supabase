@@ -4,7 +4,7 @@ import type { SneakerSpec, TitleAnalysis } from '../../llm/types';
  */
 export type ExtractInput = {
     article_id: number;
-    record_id?: string | null;
+    airtable_id?: string | null;
     title: string;
     content: string;
     date?: string | null;

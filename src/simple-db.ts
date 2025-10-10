@@ -4,7 +4,7 @@ import type { SneakerData } from './simple-parser';
 export interface DatabaseRecord {
   id?: number;
   article_id: number;
-  record_id: string;
+  airtable_id: string;
   brand_name: string;
   model: string;
   model_key: string;
@@ -35,14 +35,14 @@ export class SimpleDatabase {
 
   async saveSneakers(
     article_id: number,
-    record_id: string,
+    airtable_id: string,
     sneakers: SneakerData[]
   ): Promise<{ success: number; errors: string[] }> {
     const results = { success: 0, errors: [] as string[] };
 
     for (const sneaker of sneakers) {
       try {
-        const record = this.sneakerToRecord(article_id, record_id, sneaker);
+        const record = this.sneakerToRecord(article_id, airtable_id, sneaker);
         await this.upsertRecord(record);
         results.success++;
       } catch (error) {
@@ -55,14 +55,14 @@ export class SimpleDatabase {
 
   private sneakerToRecord(
     article_id: number,
-    record_id: string,
+    airtable_id: string,
     sneaker: SneakerData
   ): DatabaseRecord {
     const model_key = this.makeModelKey(sneaker.brand, sneaker.model);
 
     return {
       article_id,
-      record_id,
+      airtable_id,
       brand_name: sneaker.brand,
       model: sneaker.model,
       model_key,
@@ -100,7 +100,7 @@ export class SimpleDatabase {
 
   private async upsertRecord(record: DatabaseRecord): Promise<void> {
     // Check if record exists
-    const existing = await this.findExisting(record.record_id, record.model_key);
+    const existing = await this.findExisting(record.airtable_id, record.model_key);
 
     if (existing) {
       // Update with richer data
@@ -126,11 +126,11 @@ export class SimpleDatabase {
     }
   }
 
-  private async findExisting(record_id: string, model_key: string): Promise<DatabaseRecord | null> {
+  private async findExisting(airtable_id: string, model_key: string): Promise<DatabaseRecord | null> {
     const { data, error } = await this.supabase
       .from('shoe_results')
       .select('*')
-      .eq('record_id', record_id)
+      .eq('airtable_id', airtable_id)
       .eq('model_key', model_key)
       .single();
 

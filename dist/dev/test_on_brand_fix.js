@@ -1,7 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const simple_parser_1 = require("../simple-parser");
-const config_1 = require("../config");
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 // Test cases that previously caused false positives with "On" brand
 const testCases = [
     {
@@ -38,7 +42,11 @@ const testCases = [
     }
 ];
 async function testOnBrandExtraction() {
-    const parser = new simple_parser_1.SimpleSneakerParser(config_1.cfg.openai.apiKey);
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+        throw new Error('OPENAI_API_KEY not found in environment variables');
+    }
+    const parser = new simple_parser_1.SimpleSneakerParser(apiKey);
     console.log('Testing On brand extraction fixes...\n');
     console.log('='.repeat(80));
     for (let i = 0; i < testCases.length; i++) {
@@ -49,7 +57,7 @@ async function testOnBrandExtraction() {
         try {
             const result = await parser.parseArticle({
                 article_id: i + 1,
-                record_id: `test_${i + 1}`,
+                airtable_id: `test_${i + 1}`,
                 title: testCase.title,
                 content: testCase.content
             });

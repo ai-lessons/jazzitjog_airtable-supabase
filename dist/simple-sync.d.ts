@@ -38,7 +38,7 @@ export declare class SimpleSyncProcessor {
     private processRecord;
     mapAirtableRecord(record: AirtableRecord): {
         article_id: number;
-        record_id: string;
+        airtable_id: string;
         title: string;
         content: string;
         date?: string;

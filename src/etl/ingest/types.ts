@@ -2,7 +2,7 @@
 
 export type IngestArticle = {
   article_id: number;
-  record_id: string;
+  airtable_id: string; // Airtable record ID (renamed from record_id)
   title: string;
   content: string;
   date?: string | null;

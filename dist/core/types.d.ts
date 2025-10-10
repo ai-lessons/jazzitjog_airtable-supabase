@@ -1,6 +1,6 @@
 export type ShoeInput = {
     article_id: string;
-    record_id: string | null;
+    airtable_id: string | null;
     brand_name: string;
     model: string;
     model_key: string;

@@ -18,7 +18,7 @@ export interface SneakerData {
 }
 export interface ProcessedArticle {
     article_id: number;
-    record_id: string;
+    airtable_id: string;
     title: string;
     content: string;
     date?: string;
@@ -36,7 +36,7 @@ export declare class SimpleSneakerParser {
     constructor(apiKey: string);
     parseArticle(data: {
         article_id: number;
-        record_id: string;
+        airtable_id: string;
         title: string;
         content: string;
         date?: string;

@@ -90,7 +90,7 @@ class SimpleSyncProcessor {
             // Use ETL extraction pipeline (supports both regex and LLM)
             const extractResult = await (0, extract_1.extractFromArticle)({
                 article_id: article.article_id,
-                record_id: article.record_id,
+                airtable_id: article.airtable_id,
                 title: article.title,
                 content: article.content,
                 date: article.date,
@@ -100,9 +100,11 @@ class SimpleSyncProcessor {
                 console.log(`⚠️  No sneakers found in: ${article.title}`);
             }
             // Convert ETL sneaker format to SimpleSneakerParser format
-            const sneakers = extractResult.sneakers.map(s => ({
-                brand: s.brand_name,
-                model: s.model,
+            const sneakers = extractResult.sneakers
+                .filter(s => s.brand_name && s.model) // Filter out sneakers without brand/model
+                .map(s => ({
+                brand: s.brand_name, // Safe assertion after filter
+                model: s.model, // Safe assertion after filter
                 use: s.primary_use || undefined,
                 surface: s.surface_type || undefined,
                 heel: s.heel_height !== null ? s.heel_height : undefined,
@@ -118,7 +120,7 @@ class SimpleSyncProcessor {
                 date: article.date,
                 source: article.source_link,
             }));
-            const saveResult = await this.database.saveSneakers(article.article_id, article.record_id, sneakers);
+            const saveResult = await this.database.saveSneakers(article.article_id, article.airtable_id, sneakers);
             result.successful++;
             result.sneakers_extracted += saveResult.success;
             if (saveResult.errors.length > 0) {
@@ -153,7 +155,7 @@ class SimpleSyncProcessor {
         }
         return {
             article_id: Number(article_id),
-            record_id: record.id,
+            airtable_id: record.id,
             title: String(title),
             content: String(content),
             date: date ? String(date) : undefined,

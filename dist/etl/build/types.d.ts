@@ -4,7 +4,7 @@ import type { ShoeInput } from '../../core/types';
  */
 export type BuildContext = {
     article_id: number;
-    record_id?: string | null;
+    airtable_id?: string | null;
     date?: string | null;
     source_link?: string | null;
 };

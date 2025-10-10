@@ -98,7 +98,7 @@ function mapAirtableRecord(record: AirtableRecord): IngestArticle | null {
   // Validate required fields
   if (!article_id || !title || !content) {
     logger.debug('Skipping record: missing required fields', {
-      record_id: record.id,
+      airtable_id: record.id,
       has_article_id: !!article_id,
       has_title: !!title,
       has_content: !!content,
@@ -108,7 +108,7 @@ function mapAirtableRecord(record: AirtableRecord): IngestArticle | null {
 
   return {
     article_id,
-    record_id: record.id,
+    airtable_id: record.id,
     title,
     content,
     date,

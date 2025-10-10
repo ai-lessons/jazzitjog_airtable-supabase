@@ -141,7 +141,7 @@ export class SimpleSyncProcessor {
       const extractResult = await extractFromArticle(
         {
           article_id: article.article_id,
-          record_id: article.record_id,
+          airtable_id: article.airtable_id,
           title: article.title,
           content: article.content,
           date: article.date,
@@ -155,28 +155,30 @@ export class SimpleSyncProcessor {
       }
 
       // Convert ETL sneaker format to SimpleSneakerParser format
-      const sneakers = extractResult.sneakers.map(s => ({
-        brand: s.brand_name,
-        model: s.model,
-        use: s.primary_use || undefined,
-        surface: s.surface_type || undefined,
-        heel: s.heel_height !== null ? s.heel_height : undefined,
-        forefoot: s.forefoot_height !== null ? s.forefoot_height : undefined,
-        drop: s.drop !== null ? s.drop : undefined,
-        weight: s.weight !== null ? s.weight : undefined,
-        price: s.price || undefined,
-        plate: s.carbon_plate !== null ? s.carbon_plate : undefined,
-        waterproof: s.waterproof !== null ? s.waterproof : undefined,
-        cushioning: s.cushioning_type || undefined,
-        width: s.foot_width || undefined,
-        breathability: undefined, // Not extracted
-        date: article.date,
-        source: article.source_link,
-      }));
+      const sneakers = extractResult.sneakers
+        .filter(s => s.brand_name && s.model) // Filter out sneakers without brand/model
+        .map(s => ({
+          brand: s.brand_name as string, // Safe assertion after filter
+          model: s.model as string, // Safe assertion after filter
+          use: s.primary_use || undefined,
+          surface: s.surface_type || undefined,
+          heel: s.heel_height !== null ? s.heel_height : undefined,
+          forefoot: s.forefoot_height !== null ? s.forefoot_height : undefined,
+          drop: s.drop !== null ? s.drop : undefined,
+          weight: s.weight !== null ? s.weight : undefined,
+          price: s.price || undefined,
+          plate: s.carbon_plate !== null ? s.carbon_plate : undefined,
+          waterproof: s.waterproof !== null ? s.waterproof : undefined,
+          cushioning: s.cushioning_type || undefined,
+          width: s.foot_width || undefined,
+          breathability: undefined, // Not extracted
+          date: article.date,
+          source: article.source_link,
+        }));
 
       const saveResult = await this.database.saveSneakers(
         article.article_id,
-        article.record_id,
+        article.airtable_id,
         sneakers
       );
 
@@ -198,7 +200,7 @@ export class SimpleSyncProcessor {
 
   mapAirtableRecord(record: AirtableRecord): {
     article_id: number;
-    record_id: string;
+    airtable_id: string;
     title: string;
     content: string;
     date?: string;
@@ -227,7 +229,7 @@ export class SimpleSyncProcessor {
 
     return {
       article_id: Number(article_id),
-      record_id: record.id,
+      airtable_id: record.id,
       title: String(title),
       content: String(content),
       date: date ? String(date) : undefined,

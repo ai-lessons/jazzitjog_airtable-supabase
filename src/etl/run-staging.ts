@@ -65,15 +65,15 @@ export async function runStagingPipeline(config: PipelineConfig) {
 
     const { data: existingInProduction } = await supabase
       .from('shoe_results')
-      .select('record_id');
+      .select('airtable_id');
 
     const existingIds = new Set([
       ...(existingInStaging?.map(r => r.airtable_id) || []),
-      ...(existingInProduction?.map(r => r.record_id) || [])
+      ...(existingInProduction?.map(r => r.airtable_id) || [])
     ]);
 
     const newArticles = ingestResult.articles.filter(
-      article => !existingIds.has(article.record_id)
+      article => !existingIds.has(article.airtable_id)
     );
 
     log.info('Filtered for new articles', {
@@ -96,7 +96,7 @@ export async function runStagingPipeline(config: PipelineConfig) {
     for (const article of newArticles) {
       log.info('Processing article', {
         article_id: article.article_id,
-        airtable_id: article.record_id,
+        airtable_id: article.airtable_id,
         title: article.title,
       });
 
@@ -105,7 +105,7 @@ export async function runStagingPipeline(config: PipelineConfig) {
         const extractResult = await extractFromArticle(
           {
             article_id: article.article_id,
-            record_id: article.record_id,
+            airtable_id: article.airtable_id,
             title: article.title,
             content: article.content,
             date: article.date,
@@ -156,7 +156,7 @@ export async function runStagingPipeline(config: PipelineConfig) {
           normalized.map(r => r.sneaker),
           {
             article_id: article.article_id,
-            record_id: article.record_id,
+            airtable_id: article.airtable_id,
             date: article.date,
             source_link: article.source_link,
           }
@@ -182,7 +182,7 @@ export async function runStagingPipeline(config: PipelineConfig) {
           const upsertResult = await insertShoesToStaging(
             supabase,
             shoes,
-            article.record_id
+            article.airtable_id
           );
 
           totalNewItems += upsertResult.created;
