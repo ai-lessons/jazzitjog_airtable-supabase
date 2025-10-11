@@ -70,7 +70,7 @@ async function run() {
         const hasCore = row.primary_use != null || row.surface_type != null || row.heel_height != null || row.weight != null;
         if (!hasCore) {
           inc('CORE_EMPTY');
-          await logRejected({ record_id: row.record_id, model_key: row.model_key, brand_name: row.brand_name, model: row.model, reason: 'core_empty', title: (r.get('Title') as any) || null, source_link: row.source_link });
+          await logRejected({ airtable_id: (row as any).airtable_id || (row as any).record_id, model_key: row.model_key, brand_name: row.brand_name, model: row.model, reason: 'core_empty', title: (r.get('Title') as any) || null, source_link: row.source_link });
           continue;
         }
         accepted.push(row);
@@ -107,3 +107,4 @@ async function run() {
 }
 
 run().catch(e => { console.error(e); process.exit(1); });
+

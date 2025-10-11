@@ -2,8 +2,24 @@
 
 import OpenAI from 'openai';
 import { logger } from '../core/logger';
+import PQueue from 'p-queue';
+import { createHash } from 'crypto';
 
 let cachedClient: OpenAI | null = null;
+const llmQueue = new PQueue({ concurrency: parseInt(process.env.OPENAI_CONCURRENCY || '2', 10) || 2 });
+const CACHE_TTL_MS = parseInt(process.env.OPENAI_CACHE_TTL_MS || '86400000', 10) || 86400000; // 24h
+const responseCache = new Map<string, { ts: number; value: string }>();
+
+function cacheKey(model: string, systemPrompt: string, userPrompt: string, fewShot?: string): string {
+  const h = createHash('sha256');
+  h.update(model);
+  h.update('\n--SYS--\n');
+  h.update(systemPrompt);
+  if (fewShot) { h.update('\n--FEW--\n'); h.update(fewShot); }
+  h.update('\n--USR--\n');
+  h.update(userPrompt);
+  return h.digest('hex');
+}
 
 /**
  * Create OpenAI client
@@ -75,7 +91,15 @@ export async function callOpenAI(
 
   logger.debug('Calling OpenAI API', { model, temperature });
 
-  try {
+  const key = cacheKey(model, systemPrompt, userPrompt, fewShotExamples);
+  const now = Date.now();
+  const cached = responseCache.get(key);
+  if (cached && now - cached.ts < CACHE_TTL_MS) {
+    logger.debug('OpenAI cache hit');
+    return cached.value;
+  }
+
+  const task: () => Promise<string> = async () => {
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
       { role: 'system', content: systemPrompt },
     ];
@@ -86,29 +110,46 @@ export async function callOpenAI(
 
     messages.push({ role: 'user', content: userPrompt });
 
-    const response = await client.chat.completions.create({
-      model,
-      temperature,
-      max_tokens: maxTokens,
-      response_format: { type: 'json_object' },
-      messages,
-    });
+    // simple retry with backoff for rate limits
+    const delays = [500, 1500, 3500];
+    let lastErr: any = null;
+    for (let attempt = 0; attempt < delays.length + 1; attempt++) {
+      try {
+        const response = await client.chat.completions.create({
+          model,
+          temperature,
+          max_tokens: maxTokens,
+          response_format: { type: 'json_object' },
+          messages,
+        });
 
-    const content = response.choices[0]?.message?.content;
+        const content = response.choices[0]?.message?.content;
+        if (!content) throw new Error('Empty response from OpenAI');
 
-    if (!content) {
-      throw new Error('Empty response from OpenAI');
+        logger.info('OpenAI API call successful', {
+          model,
+          tokens: response.usage?.total_tokens || 0,
+        });
+
+        responseCache.set(key, { ts: Date.now(), value: content });
+        return content;
+      } catch (err: any) {
+        lastErr = err;
+        const isRate = (err?.status === 429) || /rate limit/i.test(String(err?.message || ''));
+        if (attempt < delays.length && isRate) {
+          const wait = delays[attempt];
+          logger.warn('OpenAI rate limit hit, backing off', { waitMs: wait, attempt: attempt + 1 });
+          await new Promise(r => setTimeout(r, wait));
+          continue;
+        }
+        break;
+      }
     }
+    logger.error('OpenAI API call failed', { error: lastErr });
+    console.error('OpenAI API error:', lastErr instanceof Error ? lastErr.message : lastErr);
+    throw lastErr;
+  };
 
-    logger.info('OpenAI API call successful', {
-      model,
-      tokens: response.usage?.total_tokens || 0,
-    });
-
-    return content;
-  } catch (error) {
-    logger.error('OpenAI API call failed', { error });
-    console.error('OpenAI API error:', error instanceof Error ? error.message : error);
-    throw error;
-  }
+  const result = await llmQueue.add(task as () => Promise<string>);
+  return result as string;
 }

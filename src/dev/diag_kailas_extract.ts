@@ -7,7 +7,7 @@ const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY! })
 const tableName = process.env.AIRTABLE_TABLE_NAME!;
 
 async function run() {
-  // точечно читаем запись по record_id
+  // точечно читаем запись по airtable_id (Airtable record id)
   const recId = 'recR9MMIHkbs1LkYm';
   const record = await base(tableName).find(recId);
 
@@ -23,7 +23,7 @@ async function run() {
     console.log('—'.repeat(80));
     console.log({
       article_id: x.article_id,
-      record_id: x.record_id,
+      airtable_id: x.airtable_id || x.record_id,
       brand_name: x.brand_name,
       model: x.model,
       price: x.price,

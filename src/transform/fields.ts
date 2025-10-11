@@ -1,9 +1,10 @@
-// src/transform/fields.ts
+// src/transform/fields.ts (legacy helpers kept for compatibility)
 
-/** Строгая структура для апсерта в БД */
 export type ShoeInput = {
   article_id: number;
+  // Legacy: record_id (deprecated). Use airtable_id instead.
   record_id: string | null;
+  airtable_id: string | null;
   brand_name: string;
   model: string;
   model_key: string;
@@ -24,45 +25,36 @@ export type ShoeInput = {
   source_link: string | null;
 };
 
-/** Релакс-форма (для промежуточных шагов/старого кода) */
 export type ShoeInputLoose = Partial<ShoeInput> & {
   brand_name?: string;
   model?: string;
   record_id?: string | null;
+  airtable_id?: string | null;
   article_id?: number | string | null;
 };
 
-/** То, что читаем/пишем в таблицу (суместимость) */
 export type ShoeRow = ShoeInput;
 
-/* ---------- нормализация ----------- */
+// --- utils ---
 
-const stripDiacritics = (s: string) =>
-  s.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+const stripDiacritics = (s: string) => s.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+const norm = (s: string) => stripDiacritics(s).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
 
-const norm = (s: string) =>
-  stripDiacritics(s)
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim()
-    .replace(/\s+/g, ' ');
-
-/** Уточняет название модели */
 export function refineModelName(brand: string, model: string): string {
   const b = (brand || '').trim();
   let m = (model || '').trim();
 
-  // убираем скобки и хвост после ":"/дэша
+  // Remove parentheses and trailing subtitle after separators
   m = m.replace(/\((?:[^()]*)\)/g, '').replace(/\s*[:\-–—]\s+.*$/, '').trim();
 
-  // убираем повтор бренда в модели (например, "Asics ASICS Nimbus")
+  // Remove duplicated brand name from model
   const bn = norm(b);
   const mn = norm(m);
   if (bn && (mn === bn || mn.startsWith(bn + ' '))) {
     m = m.slice(b.length).trim();
   }
 
-  // убираем общие суффиксы (тестеры, дистанции, общие слова)
+  // Remove noise suffixes
   m = m.replace(/\s+(?:multi\s+)?tester\s*$/i, '').trim();
   m = m.replace(/\s+\d+\s+mile\s*$/i, '').trim();
   m = m.replace(/^running\s+/i, '').trim();
@@ -70,20 +62,18 @@ export function refineModelName(brand: string, model: string): string {
   m = m.replace(/\s+review\s*$/i, '').trim();
   m = m.replace(/\s+test\s*$/i, '').trim();
 
-  // специальные случаи для брендов
   if (bn === 'decathlon') {
-    // Убираем "Kiprun" из названия модели для Decathlon
     m = m.replace(/^kiprun\s+/i, '').trim();
   }
 
   return m.replace(/\s+/g, ' ').trim();
 }
 
-/** Строит ключ модели в формате "brand::model" */
 export function makeModelKey(brand: string, model: string): string {
   const b = norm(brand || '');
   const m = norm(model || '');
   if (!b || !m) return '';
+  // Legacy separator kept for backward compatibility
   return `${b}::${m}`;
 }
 
@@ -103,26 +93,25 @@ function toIsoOrNull(x: any): string | null {
   return isNaN(d.getTime()) ? null : d.toISOString();
 }
 
-/** Приводит Loose-вход к строгому ShoeInput */
 export function tightenInput(loose: ShoeInputLoose): ShoeInput | null {
   const article_id_raw = loose.article_id;
   const article_id = toNum(article_id_raw);
   const brand = (loose.brand_name || '').toString().trim();
   const model0 = (loose.model || '').toString().trim();
   const model = refineModelName(brand, model0);
-  const model_key =
-    loose.model_key && loose.model_key.includes('::')
-      ? loose.model_key
-      : makeModelKey(brand, model);
+  const model_key = loose.model_key && loose.model_key.includes('::') ? loose.model_key : makeModelKey(brand, model);
 
-  // обязательные для апсерта
-  if (!article_id || !brand || !model || !model_key || !loose.record_id) {
+  // Prefer new airtable_id, fallback to legacy record_id
+  const id = (loose.airtable_id || loose.record_id || null) as string | null;
+
+  if (!article_id || !brand || !model || !model_key || !id) {
     return null;
   }
 
   return {
     article_id,
-    record_id: loose.record_id ?? null,
+    record_id: id,
+    airtable_id: id,
     brand_name: brand,
     model,
     model_key,
@@ -144,7 +133,6 @@ export function tightenInput(loose: ShoeInputLoose): ShoeInput | null {
   };
 }
 
-/** Массовая нормализация для массивов loose-объектов */
 export function normalizeAll(list: ShoeInputLoose[]): ShoeInput[] {
   const out: ShoeInput[] = [];
   for (const r of list) {
@@ -153,3 +141,4 @@ export function normalizeAll(list: ShoeInputLoose[]): ShoeInput[] {
   }
   return out;
 }
+

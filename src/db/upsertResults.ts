@@ -1,25 +1,31 @@
-// src/db/upsertResults.ts
+// src/db/upsertResults.ts (aligned with airtable_id)
 import { createClient } from '@supabase/supabase-js';
-import type { ShoeInput } from '../transform/fields';
+type UpsertRow = {
+  model_key: string;
+  airtable_id: string | null;
+  brand_name: string;
+  model: string;
+  [key: string]: any;
+};
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-export async function upsertResults(rows: ShoeInput[], opts?: { dryRun?: boolean }) {
+export async function upsertResults(rows: UpsertRow[], opts?: { dryRun?: boolean }) {
   if (!Array.isArray(rows) || rows.length === 0) return { written: 0 };
   for (const r of rows) {
     if (!r.model_key) throw new Error(`upsertResults: model_key is required`);
-    if (!r.record_id) throw new Error(`upsertResults: record_id is required`);
+    if (!r.airtable_id) throw new Error(`upsertResults: airtable_id is required`);
   }
   if (opts?.dryRun) return { written: rows.length };
 
-  // по умолчанию пишем целиком (но saveToSupabase использует батчи)
+  // Upsert into shoe_results using (airtable_id,brand_name,model)
   const { data, error } = await supabase
     .from('shoe_results')
     .upsert(rows, {
-      onConflict: 'record_id,model_key',
+      onConflict: 'airtable_id,brand_name,model',
       ignoreDuplicates: false,
       defaultToNull: true,
     })
@@ -29,12 +35,12 @@ export async function upsertResults(rows: ShoeInput[], opts?: { dryRun?: boolean
   return { written: data?.length ?? rows.length };
 }
 
-/** Совместимый батчевый апсерт (для старого кода) */
-export async function upsertResultsInBatches(rows: ShoeInput[], chunkSize = 500, opts?: { dryRun?: boolean }) {
+/** Batch upsert with chunking */
+export async function upsertResultsInBatches(rows: UpsertRow[], chunkSize = 500, opts?: { dryRun?: boolean }) {
   if (!Array.isArray(rows) || rows.length === 0) return { written: 0 };
   for (const r of rows) {
     if (!r.model_key) throw new Error(`upsertResultsInBatches: model_key is required`);
-    if (!r.record_id) throw new Error(`upsertResultsInBatches: record_id is required`);
+    if (!r.airtable_id) throw new Error(`upsertResultsInBatches: airtable_id is required`);
   }
   if (opts?.dryRun) return { written: rows.length };
 
@@ -44,7 +50,7 @@ export async function upsertResultsInBatches(rows: ShoeInput[], chunkSize = 500,
     const { data, error } = await supabase
       .from('shoe_results')
       .upsert(chunk, {
-        onConflict: 'record_id,model_key',
+        onConflict: 'airtable_id,brand_name,model',
         ignoreDuplicates: false,
         defaultToNull: true,
       })

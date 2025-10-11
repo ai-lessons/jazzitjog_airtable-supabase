@@ -302,9 +302,9 @@ export async function fromAirtableToShoeInputs(records: any[]): Promise<ShoeInpu
     const article_id = toPositiveInt(getField(rec, ["ID","Id","id","article_id"]));
     if (!article_id) continue;
 
-    const record_id: string | null =
+    const airtable_id: string | null =
       (rec && typeof rec === "object" && typeof rec.id === "string" && rec.id) ||
-      normStr(getField(rec, ["record_id","Record Id","Record ID","Airtable Record Id"])) ||
+      normStr(getField(rec, ["airtable_id","Record Id","Record ID","Airtable Record Id"])) ||
       null;
 
     const contentRaw = getField(rec, ["Content","Text","Article","content","text"]);
@@ -500,7 +500,7 @@ export async function fromAirtableToShoeInputs(records: any[]): Promise<ShoeInpu
 
       out.push({
         article_id,
-        record_id,
+        airtable_id,
         brand_name: c.brand!,
         model: c.model!,
         model_key: mk,
@@ -531,3 +531,4 @@ export async function fromAirtableToShoeInputs(records: any[]): Promise<ShoeInpu
   // Apply enhanced deduplication with model_key + source_id
   return deduplicateEnhanced(out);
 }
+

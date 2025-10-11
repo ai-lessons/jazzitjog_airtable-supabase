@@ -220,3 +220,4 @@ export function getMetrics(): MetricsCollector {
 export function resetMetrics(): void {
   globalMetrics = new MetricsCollector();
 }
+

@@ -1,4 +1,5 @@
 // src/dev/upsert_by_record_ids.ts
+// Fetch specific Airtable records by their IDs and upsert to DB
 import 'dotenv/config';
 import Airtable from 'airtable';
 import { fromAirtableToShoeInputs } from '../pipeline/fromAirtableToShoeInputs';
@@ -24,45 +25,45 @@ async function run(ids: string[]) {
     process.exit(1);
   }
 
-  // тянем записи из Airtable по их record_id
+  // Fetch Airtable records by ID
   const recs = await Promise.all(ids.map(async (id) => {
     try { return await base(tableName).find(id); }
     catch (e: any) {
-      console.error(`⚠️  Не найдено в Airtable: ${id} (${e?.message || e})`);
+      console.error(`Failed to fetch Airtable record: ${id} (${e?.message || e})`);
       return null as any;
     }
   }));
   const found = recs.filter(Boolean);
   if (found.length === 0) {
-    console.error('❌ Нет валидных записей для апсерта.');
+    console.error('No records found by given IDs');
     process.exit(1);
   }
 
-  // конвертируем в ShoeInput
+  // Convert to ShoeInput[]
   const inputs = await fromAirtableToShoeInputs(found);
-
   if (!inputs.length) {
-    console.error('❌ Конвертер вернул 0 моделей.');
+    console.error('No models produced for upsert');
     process.exit(1);
   }
 
-  // на всякий случай — уникализируем по (record_id, model_key)
-  const dedup = uniqBy(inputs, (x: any) => `${x.record_id}::${x.model_key}`);
+  // Deduplicate by (airtable_id, model_key)
+  const dedup = uniqBy(inputs, (x: any) => `${x.airtable_id || x.record_id}::${x.model_key}`);
 
-  // валидация обязательных полей
+  // Validate minimal fields
   for (const r of dedup as any[]) {
-    if (!r.record_id) throw new Error('record_id is required');
+    if (!r.airtable_id && !r.record_id) throw new Error('airtable_id is required');
     if (!r.model_key) throw new Error('model_key is required');
   }
 
-  console.log('📦 Готовим UPSERT:', dedup.map((r: any) => ({
-    record_id: r.record_id, brand: r.brand_name, model: r.model, model_key: r.model_key, price: r.price
+  console.log('UPSERT payload:', dedup.map((r: any) => ({
+    airtable_id: r.airtable_id || r.record_id, brand: r.brand_name, model: r.model, model_key: r.model_key, price: r.price
   })));
 
   const res = await upsertResults(dedup as any[]);
-  console.log('✅ upserted:', res);
+  console.log('Upsert result:', res);
 }
 
-// CLI: ids из аргументов
+// CLI
 const ids = process.argv.slice(2).map(s => s.trim()).filter(Boolean);
-run(ids).catch(e => { console.error('❌ Ошибка:', e); process.exit(1); });
+run(ids).catch(e => { console.error('Unexpected error:', e); process.exit(1); });
+

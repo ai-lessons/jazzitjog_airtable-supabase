@@ -3,7 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
 
 export async function logRejected(r: {
-  record_id?: string | null;
+  airtable_id?: string | null;
+  record_id?: string | null; // legacy
   model_key?: string | null;
   brand_name?: string | null;
   model?: string | null;
@@ -13,7 +14,9 @@ export async function logRejected(r: {
 }) {
   try {
     await supabase.from('shoe_results_rejected').insert([{
-      record_id: r.record_id ?? null,
+      // Keep legacy column for compatibility; prefer airtable_id value
+      record_id: (r.airtable_id ?? r.record_id) ?? null,
+      airtable_id: r.airtable_id ?? r.record_id ?? null,
       model_key: r.model_key ?? null,
       brand_name: r.brand_name ?? null,
       model: r.model ?? null,
