@@ -94,7 +94,8 @@ export async function upsertShoe(
  */
 export async function upsertShoes(
   client: SupabaseClient,
-  shoes: ShoeInput[]
+  shoes: ShoeInput[],
+  options?: { concurrency?: number }
 ): Promise<UpsertSummary> {
   logger.info('Starting batch upsert', { count: shoes.length });
 
@@ -125,7 +126,11 @@ export async function upsertShoes(
   }
 
   // Queue with bounded concurrency
-  const queue = new PQueue({ concurrency: 5 });
+  const envConc = parseInt(process.env.UPSERT_CONCURRENCY || '5', 10);
+  const concurrency = (options && typeof options.concurrency === 'number')
+    ? options.concurrency
+    : (Number.isFinite(envConc) ? envConc : 5);
+  const queue = new PQueue({ concurrency });
   const results: UpsertResult[] = [];
 
   for (const shoe of shoes) {

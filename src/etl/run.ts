@@ -30,6 +30,8 @@ export type PipelineConfig = {
   maxRecords?: number;
   dryRun?: boolean;
   logLevel?: 'debug' | 'info' | 'warn' | 'error';
+  // Performance
+  upsertConcurrency?: number;
 };
 
 /**
@@ -155,7 +157,9 @@ export async function runPipeline(config: PipelineConfig) {
       log.info('💾 Step 7: Upserting to database');
       const supabaseClient = getSupabaseClient(config.database);
 
-      const upsertSummary = await upsertShoes(supabaseClient, allShoes);
+      const upsertSummary = await upsertShoes(supabaseClient, allShoes, {
+        concurrency: config.upsertConcurrency,
+      });
 
       log.info('Upsert completed', upsertSummary);
     }
@@ -190,6 +194,7 @@ export async function runPipelineFromEnv() {
     maxRecords: process.env.MAX_RECORDS ? parseInt(process.env.MAX_RECORDS) : undefined,
     dryRun: process.env.DRY_RUN === 'true',
     logLevel: (process.env.LOG_LEVEL as any) || 'info',
+    upsertConcurrency: process.env.UPSERT_CONCURRENCY ? parseInt(process.env.UPSERT_CONCURRENCY) : undefined,
   };
 
   // Validate config

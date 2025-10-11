@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "Bash(npm run dev:*)",
+      "Read(//h/sneaker-pipeline/src/airtable/**)",
+      "Read(//h/sneaker-pipeline/src/db/**)",
+      "Read(//h/sneaker-pipeline/src/transform/**)",
+      "Read(//h/sneaker-pipeline/src/llm/**)",
+      "Read(//h/sneaker-pipeline/src/cli/**)",
+      "Read(//h/sneaker-pipeline/src/**)",
+      "Read(//h/sneaker-pipeline/src/pipeline/**)",
+      "Bash(npx tsc:*)",
+      "Bash(npx tsx:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

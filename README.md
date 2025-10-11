@@ -24,7 +24,7 @@ AI-powered extraction and normalization of sneaker data from Airtable â†’ ETL â†
 4) Run ETL (env-driven)
 - Full run: `pnpm etl:run`
 - Staging run: `pnpm etl:staging`
-- CLI (limit/dry-run): `pnpm sync -- --limit=100 --dry-run`
+- CLI (limit/dry-run/upsert concurrency): `pnpm sync -- --limit=100 --dry-run --upsert-concurrency=8`
 
 ## Commands
 - `pnpm dev` â†’ `tsx src/main.ts`
@@ -44,7 +44,7 @@ AI-powered extraction and normalization of sneaker data from Airtable â†’ ETL â†
 
 ## Migrations & DB
 - Apply changes via SQL migrations only (see `web-app/migrations/*` for current set; to be relocated to `supabase/migrations/`)
-- See `supabase/docs/DATABASE_CHANGELOG.md` for current schema and history
+- See `supabase/docs/DATABASE_CHANGELOG.md` for current schema and history. Upsert concurrency: `UPSERT_CONCURRENCY` (default 5).
 
 ## Quality Gates
 - `pnpm type-check`
@@ -57,4 +57,5 @@ AI-powered extraction and normalization of sneaker data from Airtable â†’ ETL â†
 
 ## Contributing
 - Small, focused PRs. Include a verification step and update docs if architecture changed.
+
 

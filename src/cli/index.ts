@@ -47,6 +47,7 @@ function showHelp() {
 async function runSync(flags: Record<string, string | boolean>) {
   const maxRecords = flags['limit'] ? parseInt(String(flags['limit']), 10) : undefined;
   const dryRun = flags['dry-run'] === true;
+  const upsertConcurrency = flags['upsert-concurrency'] ? parseInt(String(flags['upsert-concurrency']), 10) : undefined;
 
   const config: PipelineConfig = {
     airtable: {
@@ -62,6 +63,7 @@ async function runSync(flags: Record<string, string | boolean>) {
     maxRecords,
     dryRun,
     logLevel: (process.env.LOG_LEVEL as any) || 'info',
+    upsertConcurrency,
   };
 
   // Basic validation
@@ -87,4 +89,3 @@ if (require.main === module) {
     process.exitCode = 1;
   });
 }
-
