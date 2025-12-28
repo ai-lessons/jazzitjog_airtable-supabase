@@ -8,6 +8,7 @@ import { analyzeTitleForContext, matchesTitleAnalysis } from './title_analysis';
 import { logger } from '../../core/logger';
 import { getMetrics } from '../../core/metrics';
 import { round2 } from '../../core/utils';
+import { env } from '../../core/env';
 
 /**
  * Extract sneaker specifications from article
@@ -66,37 +67,49 @@ export async function extractFromArticle(
     (titleAnalysis.scenario === 'specific' && results.length === 0);
 
   if (needsLLM) {
-    logger.info('Regex extraction insufficient after filtering, falling back to LLM', {
-      article_id: article.article_id,
-      beforeFilter,
-      afterFilter: results.length,
-      scenario: titleAnalysis.scenario,
-    });
-
-    try {
-      results = await extractWithLLM(
-        apiKey,
-        article.content,
-        article.title,
-        { titleAnalysis }
-      );
-      method = 'llm';
-      metrics.incrementLlmFallbacks();
-
-      logger.debug('LLM extraction completed', { count: results.length });
-    } catch (error) {
-      logger.error('LLM extraction failed', {
+    // Check if LLM is disabled
+    if (env.DISABLE_LLM) {
+      logger.warn('LLM disabled, skipping fallback. Returning regex-only results.', {
         article_id: article.article_id,
-        error,
+        beforeFilter,
+        afterFilter: results.length,
+        scenario: titleAnalysis.scenario,
       });
-      metrics.incrementArticlesFailed();
-
-      return {
+      // Return partial regex results even if insufficient
+      method = 'regex';
+    } else {
+      logger.info('Regex extraction insufficient after filtering, falling back to LLM', {
         article_id: article.article_id,
-        sneakers: [],
-        extractionMethod: 'llm',
-        titleAnalysis,
-      };
+        beforeFilter,
+        afterFilter: results.length,
+        scenario: titleAnalysis.scenario,
+      });
+
+      try {
+        results = await extractWithLLM(
+          apiKey,
+          article.content,
+          article.title,
+          { titleAnalysis }
+        );
+        method = 'llm';
+        metrics.incrementLlmFallbacks();
+
+        logger.debug('LLM extraction completed', { count: results.length });
+      } catch (error) {
+        logger.error('LLM extraction failed', {
+          article_id: article.article_id,
+          error,
+        });
+        metrics.incrementArticlesFailed();
+
+        return {
+          article_id: article.article_id,
+          sneakers: [],
+          extractionMethod: 'llm',
+          titleAnalysis,
+        };
+      }
     }
   } else {
     // Step 4b: Hybrid mode - if regex succeeded but missing critical text fields, enhance with LLM
@@ -104,7 +117,7 @@ export async function extractFromArticle(
       !sneaker.cushioning_type || !sneaker.foot_width || sneaker.waterproof === null
     );
 
-    if (hasMissingTextFields && titleAnalysis.scenario === 'specific') {
+    if (hasMissingTextFields && titleAnalysis.scenario === 'specific' && !env.DISABLE_LLM) {
       logger.info('Regex succeeded but missing text fields, enhancing with LLM', {
         article_id: article.article_id,
         count: results.length,

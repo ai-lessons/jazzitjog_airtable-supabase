@@ -21,6 +21,10 @@ Airtable (articles)
 - **build/**: model_key generation, ShoeInput construction
 - **upsert/**: Supabase writes with conflict handling
 
+#### Specs DOM Pipeline (scripts/)
+- **backfill-specs-dom.ts**: Variant 2: windowed deterministic extraction + shoe prefilter
+- **specs-backfill-runner.ts**: Batch runner for DOM extraction with timeout management
+
 #### Core Services (src/core/)
 - **logger**: Structured logging with pino
 - **metrics**: Pipeline execution metrics
@@ -53,7 +57,78 @@ Airtable (articles)
 - LLM fallback when regex yields insufficient data
 - Hybrid merge: keep numeric from regex, enrich text from LLM
 
-### 2. Canonical Normalization
+### 2. Variant 2: Windowed Deterministic Extraction + Shoe Prefilter
+**Decision**: Replace extraction worker timeout mechanism with deterministic windowed approach  
+**Rationale**:
+- Extraction worker timeout (EXTRACT_TIMEOUT_MS) produced 0 successful specs
+- Windowed extraction completes quickly without external worker
+- Prefilter reduces noise by filtering non-shoe articles early
+
+**Implementation**:
+```
+1. Shoe Article Prefilter (isLikelyShoeArticle):
+   - Strong anchor detection (heel-to-toe drop, drop + mm, etc.)
+   - Weighted keyword scoring (high/medium/low categories)
+   - Expanded negative keyword list
+
+2. Windowing (buildKeywordWindows):
+   - Finds keywords: drop, stack, heel, forefoot, weight, $, msrp, mm, oz, g
+   - Creates windows ±4000 chars around each hit
+   - Merges overlaps, caps total analyzed chars to 120k
+
+3. Cluster-Based Resolution (December 2025 enhancement):
+   - Snippet scoring (scoreSnippet): weights for weight/drop/stack/price patterns
+   - Top snippet selection (selectTopSnippets): selects top N snippets by spec density
+   - Cluster building (buildBestCluster): forms clusters from snippets with ≥2 spec groups
+   - Proximity join: upgrades ambiguous_multi to single when unique cluster found
+
+4. Safe Deterministic Extraction (extractSpecsFromWindows):
+   - When multiple values detected, attempts cluster-based resolution
+   - If unique cluster found: mode="single" with single_reason="proximity_join"
+   - Otherwise: mode="ambiguous_multi" with top snippets as candidates
+   - Three output modes: single, ambiguous_multi, skipped
+
+5. Combined Results:
+   - Multi-table detection takes precedence (when ≥2 models)
+   - Cluster-based resolution reduces ambiguous_multi by ~10–15%
+   - Windowed extraction used as fallback
+   - Prefilter telemetry included in all specs_json
+```
+
+**Current Status**:
+- Deterministic extractor is active and writes results
+- `mode="single"` has 25 rows, all with `price/drop/weight/stack`
+- `not_shoe_article` prefilter working in principle: `dom_not_shoe = 6` with `avg_score ≈ 2.17`
+- Cluster-based resolution implemented and TypeScript-verified
+
+**Current Issues**:
+1. **Prefilter missing for `large_html` rows**: 55 `skipped` rows have no prefilter data because prefilter is applied **after** the size guard
+2. **Positive score inflated by repetition**: Raw repetition (e.g., "running" 200x) makes long articles look like shoe articles
+3. **Anchor flag too permissive**: Often becomes `true` for texts that are not real spec sections
+
+**Next Iteration Fixes**:
+1. **Fix 1 – prefilter for `large_html`**:
+   - Before size guard, take `text.slice(0, MAX_PREFILTER_CHARS)` (120k–200k)
+   - Run prefilter on this slice
+   - Always persist `prefilter_*` fields even if final mode is `large_html`
+
+2. **Fix 2 – normalize the score**:
+   - For each positive keyword, use `min(count, CAP)` with `CAP ≈ 3–5`
+   - Sum capped counts for final positive score
+   - Prevent repetition ("run" 200x) from dominating classification
+
+3. **Fix 3 – stricter anchors with no auto‑pass**:
+   - Define `has_anchor` only for true spec anchors: combinations like `drop/stack/heel/forefoot + numbers/mm` or "heel-to-toe drop"
+   - Do **not** auto‑pass on `has_anchor`; if `has_anchor` is `true` but `negativeScore` is high, classify as `NOT_SHOE`
+
+**Cluster-Based Resolution Details**:
+- **Environment variables**: `SNIPPET_TOP_N` (default 8), `DEBUG_SPEC_CLUSTER=1`
+- **Scoring**: weight/drop/stack patterns (+2), price (+1), keyword anchors (+1)
+- **Cluster requirements**: at least 2 spec groups (weight, drop, heel+forefoot, price)
+- **Safety**: Only upgrades to single if no competing clusters within 10% score
+- **Telemetry**: `snippet_top_n`, `snippet_scoring_enabled`, `cluster_score`, `cluster_sources`, `single_reason`
+
+### 3. Canonical Normalization
 **Decision**: Store all measurements in canonical units  
 **Rationale**:
 - Enables meaningful comparisons
@@ -67,7 +142,7 @@ Airtable (articles)
 - Breathability: low/medium/high/null
 - Features: boolean (carbon_plate, waterproof)
 
-### 3. Duplicate Prevention Strategy
+### 4. Duplicate Prevention Strategy
 **Decision**: Use model_key + composite unique constraint  
 **Rationale**:
 - model_key enables fast duplicate checks
@@ -80,7 +155,7 @@ model_key = normalize(brand + " " + model)
 UNIQUE (airtable_id, brand_name, model)
 ```
 
-### 4. Database-Only Schema Changes
+### 5. Database-Only Schema Changes
 **Decision**: All schema changes via SQL migrations  
 **Rationale**:
 - Version control for schema
@@ -95,7 +170,7 @@ UNIQUE (airtable_id, brand_name, model)
 4. Update TypeScript types
 5. Document in DATABASE_CHANGELOG.md
 
-### 5. Monorepo with Integrated Web App
+### 6. Monorepo with Integrated Web App
 **Decision**: Convert web-app from submodule to regular directory  
 **Rationale**:
 - Single PR/commit for full-stack changes
@@ -170,6 +245,16 @@ run.ts
   └─→ upsert/to_supabase.ts (SupabaseService)
 ```
 
+### Specs DOM Pipeline Dependencies
+```
+specs-backfill-runner.ts
+  └─→ backfill-specs-dom.ts
+        ├─→ DOM parsing (Worker thread)
+        ├─→ Shoe prefilter (isLikelyShoeArticle)
+        ├─→ Windowing (buildKeywordWindows)
+        └─→ Extraction (extractSpecsFromWindows)
+```
+
 ### Web App Dependencies
 ```
 web-app/
@@ -197,7 +282,17 @@ web-app/
 7. Build ShoeInput with model_key
 8. Upsert to Supabase with conflict handling
 
-### Path 2: Staging to Approval
+### Path 2: Specs DOM Extraction
+1. Fetch article HTML (with timeout)
+2. Check HTML size guard (skip if >600k)
+3. Parse DOM with Worker thread (multi-table detection)
+4. Run shoe article prefilter
+5. Build keyword windows around spec keywords
+6. Extract specs from windows (deterministic regex)
+7. Combine results (multi-table takes precedence)
+8. Update Supabase with specs_json + prefilter telemetry
+
+### Path 3: Staging to Approval
 1. User views staging table (server-side fetch)
 2. User approves item
 3. Validate date format (YYYY-MM-DD or NULL)
@@ -205,7 +300,7 @@ web-app/
 5. Delete from staging
 6. Update UI
 
-### Path 3: Search Flow
+### Path 4: Search Flow
 1. User enters search criteria (brand, model, features)
 2. Build query with case-insensitive brand filter
 3. Apply feature filters (waterproof, carbon_plate, breathability)
@@ -246,6 +341,32 @@ interface ShoeInput {
 }
 ```
 
+### Specs JSON Structure
+```typescript
+interface SpecsJson {
+  mode: 'single' | 'ambiguous_multi' | 'multi_table' | 'skipped'
+  price_usd?: number | null
+  drop_mm?: number | null
+  weight_g?: number | null
+  heel_mm?: number | null
+  forefoot_mm?: number | null
+  raw_strings?: Record<string, string | undefined>
+  candidates?: any
+  requires_llm_resolution?: boolean
+  reason?: string
+  window_telemetry?: any
+  table_match_confidence?: number
+  models?: Array<any>
+  source_labels_found?: string[]
+  
+  // Prefilter telemetry (present for all modes)
+  prefilter_score: number
+  prefilter_has_anchor: boolean
+  prefilter_pos_hits: string[]  // max 5
+  prefilter_neg_hits: string[]  // max 5
+}
+```
+
 ### Staging vs Production
 - Staging: Review and approval workflow
 - Production: Approved, searchable data
@@ -258,6 +379,7 @@ interface ShoeInput {
 - Regex first (fast, deterministic)
 - LLM only when necessary (cost/latency)
 - Batch processing with limits
+- Windowed extraction reduces processing volume
 - Per-article caching planned
 
 ### Database Optimization

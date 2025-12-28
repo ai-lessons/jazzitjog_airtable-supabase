@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitest/config';
+import path from 'path';
 
 export default defineConfig({
   test: {
@@ -9,7 +10,14 @@ export default defineConfig({
       'node_modules/**',
       'dist/**',
       'analysis-bundle/**',
-      'src/**/*.test.ts', // Exclude old Jest tests in src
     ],
+    alias: {
+      '@/': path.resolve(__dirname, './src/'),
+    },
+  },
+  resolve: {
+    alias: {
+      '@/': path.resolve(__dirname, './src/'),
+    },
   },
 });

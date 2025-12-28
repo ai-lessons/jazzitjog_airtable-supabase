@@ -9,7 +9,7 @@
 
 ## Quick Reference
 
-Architecture: Airtable (articles) → ETL (ingest → extract → normalize → build → upsert) → Supabase (`public.shoe_results` + views/RPC) → Web (Next.js) with Supabase Auth.
+Architecture: Articles → ETL (ingest → extract → normalize → build → upsert) → Supabase (`public.shoe_results` + views/RPC) → Web (Next.js) with Supabase Auth.
 
 Key files to read:
 - `README.md` — setup & commands
@@ -17,14 +17,14 @@ Key files to read:
 - `src/etl/run.ts` — pipeline orchestrator
 - `src/etl/extract/orchestrator.ts` — regex + LLM hybrid extractor
 - `src/etl/normalize/fields.ts` — canonical units & categorical mapping
-- `src/integrations/*` — Airtable & Supabase clients/RPC
+- `src/integrations/*` — Supabase clients/RPC
 
 ---
 
 ## Technology Stack
 
 - Language: Node.js + TypeScript
-- Core libs: Airtable, Supabase JS, Zod, pino, dayjs, p-queue, fast-csv
+- Core libs: Supabase JS, Zod, pino, dayjs, p-queue, fast-csv
 - AI: OpenAI (LLM fallback in extraction)
 - Tests: Vitest
 - Web: Next.js (staging/approval/search) + Supabase Auth
@@ -36,21 +36,21 @@ Key files to read:
 ```
 src/
   core/          # logger, metrics, utils, validation, units, types
-  integrations/  # airtable & supabase clients + rpc
+  integrations/  # supabase clients + rpc
   etl/
-    ingest/      # from_airtable
+    ingest/      # data source ingestion
     extract/     # title analysis, regex + LLM orchestrator
     normalize/   # fields normalization & QC
     build/       # model_key + ShoeInput builder
     upsert/      # to_supabase (DB write)
     run.ts       # full pipeline orchestrator
-  cli/           # CLI entry (sync-airtable)
+  cli/           # CLI entry
 
 web-app/         # Next.js app (staging, approval, search)
 web-app/migrations/  # current SQL migrations (to be moved)
 
 supabase/
-  docs/DATABASE_CHANGELOG.md  # schema & changes (new)
+  docs/DATABASE_CHANGELOG.md  # schema & changes
 ```
 
 ---
@@ -68,7 +68,7 @@ supabase/
 
 3) Duplicate Prevention & Keys
 - `model_key` = normalized `brand + model` (space-separated)
-- DB uniqueness: `(airtable_id, brand_name, model)` to avoid duplicates per article
+- DB uniqueness: `(brand_name, model)` to avoid duplicates
 
 4) DB Safety
 - Migrations only (SQL), prefer additive changes
@@ -78,8 +78,8 @@ supabase/
 
 ## Data Flow
 
-1) Ingest (Airtable)
-- Flexible field mapping, article filtering by title/content heuristic
+1) Ingest
+- Flexible data source, article filtering by title/content heuristic
 
 2) Extract
 - Title analysis ⇒ scenario (specific | brand-only | general)
@@ -89,11 +89,11 @@ supabase/
 - Unit conversions, range validation, warnings collection
 
 4) Build
-- `ShoeInput` with `model_key` and metadata (airtable_id, date, source_link)
+- `ShoeInput` with `model_key` and metadata (date, source_link)
 
 5) Upsert
 - Batch upsert to `public.shoe_results` (bounded concurrency planned)
-- Conflict `(airtable_id, brand_name, model)`
+- Conflict prevention via `(brand_name, model)`
 
 ---
 
@@ -105,14 +105,13 @@ Completed
 - Normalization rules for core fields
 
 In Progress
-- CLI entry `src/cli/index.ts` for `sync-airtable`
-- Documentation refresh (this file + README + DB changelog)
+- CLI entry for data synchronization
+- Documentation refresh
 
 Planned (priority)
 - Move migrations to `supabase/migrations/` and formalize workflow
 - Batch upsert with `p-queue` and better created/updated detection
 - LLM hygiene: throttling, backoff, per-article cache
-- Remove legacy `record_id` usage across code/tests
 
 ---
 

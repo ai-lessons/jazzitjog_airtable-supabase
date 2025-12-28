@@ -13,7 +13,8 @@ import { getMetrics } from '../../core/metrics';
 export async function insertToStaging(
   client: SupabaseClient,
   shoe: ShoeInput,
-  airtableId: string
+  airtableId: string,
+  sourceArticleId: number
 ): Promise<UpsertResult> {
   const metrics = getMetrics();
 
@@ -60,9 +61,29 @@ export async function insertToStaging(
       hasData: Object.keys(stagingData).length
     });
 
+    // Runtime assertion: sourceArticleId must be valid
+    if (!sourceArticleId || sourceArticleId <= 0) {
+      const errorMsg = `Invalid sourceArticleId: ${sourceArticleId}`;
+      logger.error(errorMsg, {
+        model_key: shoe.model_key,
+        brand: shoe.brand_name,
+        model: shoe.model,
+        airtable_id: airtableId,
+      });
+      metrics.incrementUpsertFailed();
+      return {
+        model_key: shoe.model_key,
+        success: false,
+        created: false,
+        error: errorMsg,
+      };
+    }
+
     // Map ShoeInput fields to staging_table schema
+    // IMPORTANT: Use sourceArticleId directly from IngestArticle, not from shoe object
     const stagingRecord = {
       airtable_id: airtableId,
+      article_id: sourceArticleId, // Direct from JazzItJog_db.ID (number)
       brand_name: stagingData.brand_name,
       model: stagingData.model,
       primary_use: stagingData.primary_use,
@@ -82,6 +103,13 @@ export async function insertToStaging(
       additional_features: stagingData.additional_features,
       is_running_shoe: true, // Default to true for running shoe pipeline
     };
+
+    logger.debug('Staging record prepared', {
+      article_id: sourceArticleId,
+      model_key: shoe.model_key,
+      brand: stagingRecord.brand_name,
+      model: stagingRecord.model,
+    });
 
     // Insert into staging_table
     const { data, error } = await client
@@ -152,18 +180,20 @@ export async function insertToStaging(
 export async function insertShoesToStaging(
   client: SupabaseClient,
   shoes: ShoeInput[],
-  airtableId: string
+  airtableId: string,
+  sourceArticleId: number
 ): Promise<UpsertSummary> {
   logger.info('Starting batch insert to staging', {
     count: shoes.length,
     airtable_id: airtableId,
+    source_article_id: sourceArticleId,
   });
 
   const results: UpsertResult[] = [];
 
   // Insert one by one for better error handling
   for (const shoe of shoes) {
-    const result = await insertToStaging(client, shoe, airtableId);
+    const result = await insertToStaging(client, shoe, airtableId, sourceArticleId);
     results.push(result);
   }
 

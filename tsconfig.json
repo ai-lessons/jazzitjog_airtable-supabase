@@ -13,15 +13,20 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"],
-      "@/config": ["./config"],
-      "@/llm": ["./llm"],
-      "@/validate": ["./validate"],
-      "@/transform/*": ["./transform/*"]
+      "@/*": ["src/*"],
+      "@/config": ["src/config"],
+      "@/llm": ["src/llm"],
+      "@/validate": ["src/validate"],
+      "@/transform/*": ["src/transform/*"]
     }
   },
-  "include": ["src/**/*", "web-app/lib/supabase-browser.ts", "web-app/lib/supabase-server.ts"],
-  "exclude": ["node_modules", "dist", "tests"]
+  "include": [
+    "src/**/*", 
+    "tests/**/*", 
+    "web-app/lib/supabase-browser.ts", 
+    "web-app/lib/supabase-server.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
 }

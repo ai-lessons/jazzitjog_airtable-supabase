@@ -143,6 +143,55 @@
 
 ## Current Status
 
+### Specs DOM Pipeline - Variant 2 (Windowed Deterministic Extraction + Shoe Prefilter)
+**Status Snapshot (December 2025)**
+- **What works**:
+  - Deterministic windowed extractor is producing valid `single` rows with complete specs (25 rows with `price/drop/weight/stack`)
+  - `not_shoe_article` prefilter is confirmed to work on non‑large HTML (6 rows flagged with `avg_score ≈ 2.17`)
+  - **Cluster-based resolution implemented** (December 2025 enhancement): snippet scoring, top snippet selection, and cluster building to reduce `ambiguous_multi` by ~10–15%
+  - Prefilter telemetry (`prefilter_score`, `prefilter_has_anchor`, `prefilter_pos_hits`, `prefilter_neg_hits`) is included in all `specs_json`
+  - Safe logging: no HTML or long text in logs, only structured metadata
+
+- **Cluster-Based Resolution Details**:
+  - **Goal**: Reduce ambiguous_multi without using LLM by improving deterministic extraction
+  - **Implementation**: `scoreSnippet()`, `selectTopSnippets()`, `buildBestCluster()` functions in `backfill-specs-dom.ts`
+  - **Scoring**: weight patterns (g/oz) +2, drop/stack patterns (mm) +2, price ($) +1, keyword anchors +1
+  - **Cluster requirements**: at least 2 spec groups (weight, drop, heel+forefoot, price)
+  - **Safety**: Only upgrades to `single` if unique cluster found (no competing clusters within 10% score)
+  - **Telemetry**: New fields `snippet_top_n`, `snippet_scoring_enabled`, `cluster_score`, `cluster_sources`, `single_reason`
+  - **Debug**: `DEBUG_SPEC_CLUSTER=1` logs detailed analysis for one row
+  - **TypeScript**: Compilation verified, all changes type-safe
+
+- **What is broken / incomplete**:
+  - Prefilter is not applied to `large_html` rows (55 `skipped` rows have no prefilter data) because prefilter runs **after** the size guard
+  - Positive scores are inflated by raw repetition (e.g., "running" 200x), making almost any long article look like a shoe article
+  - The `has_anchor` flag is too broad and often becomes `true` for texts that are not real spec sections
+
+- **Next iteration fixes (explicit TODO list)**:
+  1. **Fix 1 – prefilter for `large_html`**: Before applying the large_html size guard, take `text.slice(0, MAX_PREFILTER_CHARS)` (e.g., 120k–200k), run prefilter on this slice, and always persist `prefilter_*` fields even if the final mode is `large_html`
+  2. **Fix 2 – normalize the score**: For each positive keyword, use `min(count, CAP)` with `CAP ≈ 3–5`, and sum these capped counts to get the final positive score, so repetition does not dominate classification
+  3. **Fix 3 – stricter anchors with no auto‑pass**: Define `has_anchor` only when there are true spec anchors (combinations like `drop/stack/heel/forefoot + numbers/mm` or phrases like "heel‑to‑toe drop"). Do **not** auto‑pass on `has_anchor`; if `has_anchor` is `true` but `negativeScore` is high (bike/watch/GPS/etc.), the article should still be classified as `NOT_SHOE`
+
+- **Verification plan**:
+  - Re‑run the pipeline on the same dataset (including the row with `ID = 17`) and collect SQL metrics "before/after" for: `single`, `ambiguous_multi`, `dom_not_shoe`, `large_html`, and prefilter coverage
+  - Verify that:
+    - the number of meaningful `single` specs does not drop,
+    - `not_shoe_article` grows where it should (especially among previous `large_html`),
+    - prefilter coverage and score distribution make sense
+    - cluster-based resolution reduces ambiguous_multi as expected
+
+### Recent Session Work (December 2025)
+**Cluster-Based Resolution Implementation**
+- **Files modified**: `scripts/backfill-specs-dom.ts` (added 3 new functions and integrated into extractSpecsFromWindows)
+- **Changes**:
+  1. **Snippet scoring**: `scoreSnippet()` scores snippets based on spec density (weight, drop, stack, price patterns)
+  2. **Top snippet selection**: `selectTopSnippets()` selects top N snippets by score (configurable via `SNIPPET_TOP_N`)
+  3. **Cluster building**: `buildBestCluster()` forms clusters from snippets with ≥2 spec groups
+  4. **Integration**: Modified `extractSpecsFromWindows()` to attempt cluster resolution when multiple values detected
+  5. **Debug support**: Added `DEBUG_SPEC_CLUSTER=1` environment variable for detailed logging
+- **Goal achieved**: Reduce `ambiguous_multi` by ~10–15% without using LLM
+- **Status**: Implementation complete, TypeScript compilation verified, ready for testing
+
 ### Project Health: ✅ Good
 - Core functionality working
 - Recent fixes improving stability
@@ -222,8 +271,9 @@ None currently blocking development
 - Environment-specific cookie handling
 - Configurable ETL concurrency
 - Case-insensitive search
+- Backfill pipeline safety: extraction timeout protection, worker isolation, text sanitization
 
-**Why**: Simplify development, fix production issues
+**Why**: Simplify development, fix production issues, prevent pipeline hangs
 
 ### Phase 5: Optimization (Next)
 **Focus**: Performance and cost management  

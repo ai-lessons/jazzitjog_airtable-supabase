@@ -43,12 +43,6 @@ describe('Smoke Test - Module Structure', () => {
     expect(metrics.getMetrics).toBeDefined();
   });
 
-  it('should load Airtable integration', async () => {
-    const airtable = await import('../../src/integrations/airtable');
-    expect(airtable.AirtableClient).toBeDefined();
-    expect(airtable.createAirtableClient).toBeDefined();
-  });
-
   it('should load Supabase integration', async () => {
     const supabase = await import('../../src/integrations/supabase');
     expect(supabase.createSupabaseClient).toBeDefined();

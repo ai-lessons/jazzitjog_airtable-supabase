@@ -1,9 +1,7 @@
-// Normalize module unit tests
-
 import { describe, it, expect } from 'vitest';
-import { normalizeSneaker } from '../../../src/etl/normalize/orchestrator';
-import { generateModelKey } from '../../../src/etl/build/model_key';
-import type { SneakerSpec } from '../../../src/llm/types';
+import { normalizeSneaker } from '@/etl/normalize/orchestrator';
+import { generateModelKey } from '@/etl/build/model_key';
+import type { SneakerSpec } from '@/llm/types';
 
 describe('Normalize Module', () => {
   it('should normalize brand name', () => {
@@ -106,27 +104,27 @@ describe('Normalize Module', () => {
     expect(result.sneaker.cushioning_type).toBe('max');
     expect(result.sneaker.surface_type).toBe('road');
   });
-});
 
-describe('Build Module', () => {
-  it('should generate model_key correctly', () => {
-    const key1 = generateModelKey('Nike', 'Vaporfly 3');
-    expect(key1).toBe('nike vaporfly 3');
+  describe('Build Module', () => {
+    it('should generate model_key correctly', () => {
+      const key1 = generateModelKey('Nike', 'Vaporfly 3');
+      expect(key1).toBe('nike vaporfly 3');
 
-    const key2 = generateModelKey('Hoka', 'Speedgoat 5');
-    expect(key2).toBe('hoka speedgoat 5');
+      const key2 = generateModelKey('Hoka', 'Speedgoat 5');
+      expect(key2).toBe('hoka speedgoat 5');
 
-    const key3 = generateModelKey('Adidas', 'Adizero Pro 3');
-    expect(key3).toBe('adidas adizero pro 3');
-  });
+      const key3 = generateModelKey('Adidas', 'Adizero Pro 3');
+      expect(key3).toBe('adidas adizero pro 3');
+    });
 
-  it('should handle special characters in model_key', () => {
-    const key = generateModelKey('On', 'Cloud-X 3');
-    expect(key).toBe('on cloud x 3');
-  });
+    it('should handle special characters in model_key', () => {
+      const key = generateModelKey('On', 'Cloud-X 3');
+      expect(key).toBe('on cloud x 3');
+    });
 
-  it('should return empty string for missing values', () => {
-    const key = generateModelKey(null, null);
-    expect(key).toBe('');
+    it('should return empty string for missing values', () => {
+      const key = generateModelKey(null, null);
+      expect(key).toBe('');
+    });
   });
 });

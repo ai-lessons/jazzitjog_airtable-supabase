@@ -2,7 +2,65 @@
 
 ## Current Work Focus
 
-### Recently Completed (October 2025)
+### Specs DOM Pipeline - Variant 2 Implementation (December 2025)
+**Windowed Deterministic Extraction + Shoe Prefilter**
+- **Successfully implemented**: Replaced extraction worker timeout mechanism with deterministic windowed approach
+- **Key components**:
+  1. **Shoe article prefilter**: `isLikelyShoeArticle()` with anchor detection and weighted keyword scoring
+  2. **Windowing**: `buildKeywordWindows()` creates windows around spec keywords (±4000 chars, max 120k total)
+  3. **Cluster-based resolution**: `scoreSnippet()`, `selectTopSnippets()`, `buildBestCluster()` for proximity join
+  4. **Safe deterministic extraction**: `extractSpecsFromWindows()` with cluster resolution for ambiguous cases
+  5. **Combined results**: Multi-table detection takes precedence, cluster resolution reduces ambiguous_multi
+
+**Current Status**:
+- ✅ Deterministic extractor active and writing results: `mode="single"` has 25 rows with complete specs (`price/drop/weight/stack`)
+- ✅ `not_shoe_article` prefilter working in principle: `dom_not_shoe = 6` rows with `avg_score ≈ 2.17`
+- ✅ **Cluster-based resolution implemented**: New snippet scoring, top snippet selection, and cluster building logic added
+- ✅ **Environment variables**: `SNIPPET_TOP_N` (default 8), `DEBUG_SPEC_CLUSTER=1` for detailed logging
+- ✅ **New telemetry fields**: `snippet_top_n`, `snippet_scoring_enabled`, `cluster_score`, `cluster_sources`, `single_reason`
+- ✅ Prefilter telemetry included in all `specs_json`: `prefilter_score`, `prefilter_has_anchor`, `prefilter_pos_hits`, `prefilter_neg_hits`
+- ✅ Safe logging: No HTML or long text in logs, only structured metadata
+- ✅ TypeScript compilation verified: All changes type-safe
+
+**Cluster-Based Resolution Details**:
+- **Goal**: Reduce `ambiguous_multi` by ~10–15% without using LLM
+- **Scoring**: Weight patterns (g/oz) +2, drop/stack patterns (mm) +2, price ($) +1, keyword anchors +1
+- **Cluster requirements**: At least 2 spec groups (weight, drop, heel+forefoot, price)
+- **Safety**: Only upgrades to `single` if unique cluster found (no competing clusters within 10% score)
+- **Debug**: `DEBUG_SPEC_CLUSTER=1` logs top snippets, scores, and cluster analysis for one row
+
+**Current Issues Identified**:
+1. **Prefilter missing for `large_html` rows**: 55 `skipped` rows have no prefilter data because prefilter is applied **after** the size guard
+2. **Positive score inflated by repetition**: Raw repetition (e.g., "running" 200x) makes long articles look like shoe articles
+3. **Anchor flag too permissive**: Often becomes `true` for texts that are not real spec sections
+
+**Immediate Next Steps (Fix 1, 2, 3)**:
+1. **Fix 1 – prefilter for `large_html`**:
+   - Before size guard, take `text.slice(0, MAX_PREFILTER_CHARS)` (120k–200k)
+   - Run prefilter on this slice, always persist `prefilter_*` fields even if final mode is `large_html`
+
+2. **Fix 2 – normalize the score**:
+   - For each positive keyword, use `min(count, CAP)` with `CAP ≈ 3–5`
+   - Sum capped counts for final positive score, prevent repetition domination
+
+3. **Fix 3 – stricter anchors with no auto‑pass**:
+   - Define `has_anchor` only for true spec anchors: combinations like `drop/stack/heel/forefoot + numbers/mm` or "heel-to-toe drop"
+   - Do **not** auto‑pass on `has_anchor`; if `has_anchor` is `true` but `negativeScore` is high, classify as `NOT_SHOE`
+
+**Verification Plan for Cluster Resolution**:
+- Re-run pipeline with same dataset (including ID=17)
+- Collect SQL metrics "before/after" for: `single`, `ambiguous_multi`, `dom_not_shoe`, `large_html`, prefilter coverage
+- Verify: Number of meaningful `single` specs does not drop, `not_shoe_article` grows where appropriate
+
+**Verification Plan**:
+- Re-run pipeline on same dataset (including ID=17) and collect SQL metrics "before/after" for:
+  - `single`, `ambiguous_multi`, `dom_not_shoe`, `large_html`, and prefilter coverage
+- Verify that:
+  - Number of meaningful `single` specs does not drop
+  - `not_shoe_article` grows where it should (especially among previous `large_html`)
+  - Prefilter coverage and score distribution make sense
+
+**Previously (October 2025)**
 **Web-App Submodule Conversion**
 - Converted `web-app/` from Git submodule to regular directory in main repository
 - Rationale: Simplified development workflow, single PR/commit for full-stack changes

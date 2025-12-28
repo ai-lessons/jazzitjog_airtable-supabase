@@ -2,9 +2,8 @@
 // Same as run.ts but writes to staging_table instead of shoe_results
 
 import "dotenv/config";
-import { AirtableClient } from '../integrations/airtable';
 import { getSupabaseClient } from '../integrations/supabase';
-import { ingestFromAirtable } from './ingest';
+import { ingestFromSupabaseArticles } from './ingest';
 import { extractFromArticle } from './extract';
 import { normalizeSneakers } from './normalize';
 import { buildShoeInputs } from './build';
@@ -31,29 +30,24 @@ export async function runStagingPipeline(config: PipelineConfig) {
   const metrics = getMetrics();
 
   try {
-    // Step 1: Ingest articles from Airtable
-    log.info('📥 Step 1: Ingesting NEW articles from Airtable');
-    const airtableClient = new AirtableClient({
-      apiKey: config.airtable.apiKey,
-      baseId: config.airtable.baseId,
-      tableName: config.airtable.tableName,
-    });
+    // Step 1: Ingest articles from Supabase table "JazzItJog_db"
+    log.info('📥 Step 1: Ingesting NEW articles from Supabase (JazzItJog_db)');
 
-    // Get Supabase client early to check for existing records
+    // Get Supabase client
     const supabase = getSupabaseClient(config.database);
 
-    // Fetch all articles from Airtable
-    const ingestResult = await ingestFromAirtable(airtableClient, {
+    // Fetch articles from Supabase
+    const ingestResult = await ingestFromSupabaseArticles(supabase, {
       maxRecords: config.maxRecords,
     });
 
-    log.info('Airtable fetch completed', {
+    log.info('Supabase fetch completed', {
       total: ingestResult.total,
       fetched: ingestResult.articles.length,
     });
 
     if (ingestResult.articles.length === 0) {
-      log.warn('No articles found in Airtable');
+      log.warn('No articles found in JazzItJog_db');
       metrics.finish();
       return { newItems: 0 };
     }
@@ -92,6 +86,8 @@ export async function runStagingPipeline(config: PipelineConfig) {
     // Step 2-6: Process each article
     log.info('⚙️ Step 2-6: Processing new articles');
     let totalNewItems = 0;
+    let totalArticlesProcessed = 0;
+    let totalArticlesFailed = 0;
 
     for (const article of newArticles) {
       log.info('Processing article', {
@@ -182,7 +178,8 @@ export async function runStagingPipeline(config: PipelineConfig) {
           const upsertResult = await insertShoesToStaging(
             supabase,
             shoes,
-            article.airtable_id
+            article.airtable_id,
+            article.article_id // Pass source article_id explicitly
           );
 
           totalNewItems += upsertResult.created;
