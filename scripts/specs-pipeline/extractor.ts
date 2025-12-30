@@ -66,6 +66,7 @@ const supabaseFetchTimeoutMs = parseInt(process.env.SUPABASE_FETCH_TIMEOUT_MS ||
 const maxExtractChars = parseInt(process.env.MAX_EXTRACT_CHARS || '200000', 10);
 const maxPrefilterChars = parseInt(process.env.MAX_PREFILTER_CHARS || '160000', 10);
 const minContentLen = parseInt(process.env.MIN_CONTENT_LEN || '2000', 10);
+const maxHtmlBytes = parseInt(process.env.MAX_HTML_BYTES || '600000', 10);
 
 // Windowed extraction configuration
 const MAX_WINDOW_TOTAL_CHARS = parseInt(process.env.MAX_WINDOW_TOTAL_CHARS || '120000', 10);
@@ -1556,6 +1557,9 @@ function parseDomWithWorker(html: string, id: number, debugMode: boolean): Promi
         let selectedTableIndex = null;
         let candidatesFound = 0;
         
+        // Table diagnostics array (only populated in debug mode)
+        const tableDiagnostics = [];
+        
         // Iterate over tables using for loop
         for (let i = 0; i < tables.length; i++) {
           const table = tables[i];
@@ -1622,20 +1626,7 @@ function parseDomWithWorker(html: string, id: number, debugMode: boolean): Promi
           }
         }
         
-        // Log table diagnostics if in debug mode
-        if (debugMode && tableDiagnostics.length > 0) {
-          for (const diag of tableDiagnostics) {
-            logger.info(diag, 'Table diagnostic');
-          }
-          
-          // Log final summary
-          logger.info({
-            tables_total: tables.length,
-            candidates_found: candidatesFound,
-            selected_table_index: selectedTableIndex,
-            detected_mode: bestTable ? 'multi_table' : 'single'
-          }, 'Multi-table extraction summary');
-        }
+        // Note: Debug logging removed from worker - no logger available in worker context
 
         if (!bestTable) {
           return {
@@ -2217,7 +2208,7 @@ async function backfillSpecs() {
         stage = 'size_guard';
         emitStage(stage);
         const htmlLength = fetchResult.length;
-        if (htmlLength > 600000) {
+        if (htmlLength > maxHtmlBytes) {
           // Large HTML guard - skip DOM parsing
           logger.info({
             ID: row.ID,
@@ -2663,7 +2654,8 @@ async function main() {
     BATCH_SIZE: process.env.BATCH_SIZE || null,
     DOM_PARSE_TIMEOUT_MS: domParseTimeoutMs,
     MAX_WINDOW_TOTAL_CHARS,
-    WINDOW_RADIUS
+    WINDOW_RADIUS,
+    MAX_HTML_BYTES: maxHtmlBytes
   }, 'Env vars seen by script');
 
   try {
