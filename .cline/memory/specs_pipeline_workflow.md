@@ -127,6 +127,21 @@ When multiple conflicting values are detected:
 }
 ```
 
+### Specs Method Values (Column `specs_method`)
+
+Extractor sets `specs_method` based on outcome:
+- `dom_windowed_single` - Single specs found via windowed extraction
+- `dom_windowed_ambiguous` - Ambiguous specs (multiple candidates) via windowed extraction
+- `dom_multi_table` - Comparison table of 2+ models detected in DOM
+- `title_prefilter_skip` - Skipped due to title prefilter (non-shoe article)
+- `large_html_skip` - Skipped due to HTML size >600k
+- `not_shoe_article` - Failed shoe article prefilter
+- `llm_gate_skip` - LLM gate skipped (see gate skip reasons below)
+
+Resolver sets `specs_method`:
+- `llm_resolver` - Successfully resolved via LLM
+- `llm_resolver_failure` - LLM call or parsing failed
+
 ## Stage 2: LLM Resolver
 
 **Primary Files:**
@@ -137,8 +152,9 @@ When multiple conflicting values are detected:
 
 The resolver processes rows where:
 1. `specs_json->>mode = 'ambiguous_multi'` OR
-2. `specs_json->>resolution_failed_reason IS NOT NULL` OR
-3. `specs_json->>mode = 'llm_gate_skipped'` (when FORCE_LLM=1)
+2. `specs_json->>mode = 'llm_gate_skipped'` (when FORCE_LLM=1)
+
+**Note**: The `resolution_failed_reason` field is part of the `ambiguous_multi` mode and does not require separate handling.
 
 ### Gate Checks (LLM_GATE)
 
@@ -256,6 +272,12 @@ When LLM call or parsing fails:
 1. Creates failure patch with `mode="ambiguous_multi"` and `resolution_failed_reason`
 2. Merges patch with existing specs_json (preserving candidates/raw_strings)
 3. Updates with `specs_method: "llm_resolver_failure"`
+
+## Gotchas / Operational Notes
+- **Batch sizing:** `RESOLVER_BATCH_SIZE` controls `scripts/specs-pipeline/resolver.ts`; `BATCH_SIZE` env var is ignored by that script.
+- **Gate-skip writes mode:** if gate fails (`LLM_MAX_CALLS=0` / insufficient signal / no_candidates), resolver writes `specs_json.mode="llm_gate_skipped"`, sets `gate_skip_reason`, and `specs_method="llm_gate_skip"`. This can drop `ambiguous_multi` to zero without resolution.
+- **Row selection contract:** select only `specs_json.mode="ambiguous_multi"` by default; include `llm_gate_skipped` only when `FORCE_LLM=1`. Do **not** use `resolution_failed_reason.not.is.null` as a generic selector.
+- **Interpretation:** “no more ambiguous_multi rows” does not mean “all resolved” — some rows may be gate-skipped and require rerun with different gate settings.
 
 ## Key Environment Variables
 

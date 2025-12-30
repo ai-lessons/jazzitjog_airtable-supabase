@@ -162,15 +162,15 @@
   - **Debug**: `DEBUG_SPEC_CLUSTER=1` logs detailed analysis for one row
   - **TypeScript**: Compilation verified, all changes type-safe
 
-- **What is broken / incomplete**:
-  - Prefilter is not applied to `large_html` rows (55 `skipped` rows have no prefilter data) because prefilter runs **after** the size guard
-  - Positive scores are inflated by raw repetition (e.g., "running" 200x), making almost any long article look like a shoe article
-  - The `has_anchor` flag is too broad and often becomes `true` for texts that are not real spec sections
+  - **What is broken / incomplete**:
+    ~~- Prefilter is not applied to `large_html` rows (55 `skipped` rows have no prefilter data) because prefilter runs **after** the size guard~~ **FIXED**
+    ~~- Positive scores are inflated by raw repetition (e.g., "running" 200x), making almost any long article look like a shoe article~~ **FIXED**
+    ~~- The `has_anchor` flag is too broad and often becomes `true` for texts that are not real spec sections~~ **FIXED**
 
-- **Next iteration fixes (explicit TODO list)**:
-  1. **Fix 1 – prefilter for `large_html`**: Before applying the large_html size guard, take `text.slice(0, MAX_PREFILTER_CHARS)` (e.g., 120k–200k), run prefilter on this slice, and always persist `prefilter_*` fields even if the final mode is `large_html`
-  2. **Fix 2 – normalize the score**: For each positive keyword, use `min(count, CAP)` with `CAP ≈ 3–5`, and sum these capped counts to get the final positive score, so repetition does not dominate classification
-  3. **Fix 3 – stricter anchors with no auto‑pass**: Define `has_anchor` only when there are true spec anchors (combinations like `drop/stack/heel/forefoot + numbers/mm` or phrases like "heel‑to‑toe drop"). Do **not** auto‑pass on `has_anchor`; if `has_anchor` is `true` but `negativeScore` is high (bike/watch/GPS/etc.), the article should still be classified as `NOT_SHOE`
+  - **Next iteration fixes (explicit TODO list)**:
+    1. **Fix 1 – prefilter for `large_html`**: ✅ **IMPLEMENTED** Before applying the large_html size guard, take `text.slice(0, MAX_PREFILTER_CHARS)` (e.g., 120k–200k), run prefilter on this slice, and always persist `prefilter_*` fields even if the final mode is `large_html`
+    2. **Fix 2 – normalize the score**: ✅ **IMPLEMENTED** For each positive keyword, use `min(count, CAP)` with `CAP ≈ 3–5`, and sum these capped counts to get the final positive score, so repetition does not dominate classification
+    3. **Fix 3 – stricter anchors with no auto‑pass**: ✅ **IMPLEMENTED** Define `has_anchor` only when there are true spec anchors (combinations like `drop/stack/heel/forefoot + numbers/mm` or phrases like "heel‑to‑toe drop"). Do **not** auto‑pass on `has_anchor`; if `has_anchor` is `true` but `negativeScore` is high (bike/watch/GPS/etc.), the article should still be classified as `NOT_SHOE`
 
 - **Verification plan**:
   - Re‑run the pipeline on the same dataset (including the row with `ID = 17`) and collect SQL metrics "before/after" for: `single`, `ambiguous_multi`, `dom_not_shoe`, `large_html`, and prefilter coverage

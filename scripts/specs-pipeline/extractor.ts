@@ -138,20 +138,13 @@ function isLikelyShoeArticle(text: string): {
 } {
   const lowerText = text.toLowerCase();
   
-  // Strong shoe anchor patterns
-
+  // Strong shoe anchor patterns - stricter definition
   function hasShoeAnchor(text: string): boolean {
     const patterns = [
       /heel[-\s]?to[-\s]?toe\s+drop/i,
       /\bdrop\b.{0,30}\b\d{1,2}\s*mm\b/i,
       /\b(heel)\b.{0,60}\b(forefoot)\b.{0,40}\b\d{1,2}\s*mm\b/i,
-      /\bstack\s+height\b/i,
-      /\bmidsole\b/i,
-      /\boutsole\b/i,
-      /\btoe\s*box\b/i,
-      /\blugs?\b/i,
-      /\b(running|trail)\s+shoe(s)?\b/i,
-      /\bsneaker(s)?\b/i
+      /\bstack\s+height\b/i
     ];
     
     return patterns.some(pattern => pattern.test(text));
@@ -191,55 +184,61 @@ function isLikelyShoeArticle(text: string): {
     'lens', 'drone', 'gaming', 'console', 'controller', 'keyboard', 'mouse'
   ];
   
+  // CAP repetition to prevent inflation
+  const POSITIVE_CAP_PER_TERM = 3;
+  const NEGATIVE_CAP_PER_TERM = 3;
+  
   // Collect hits
   const posHits: string[] = [];
   const negHits: string[] = [];
   let score = 0;
   
-  // Check high-value terms
+  // Check high-value terms with cap
   for (const term of POSITIVE_KEYWORDS.high) {
     const regex = new RegExp(`\\b${term.replace(/[-\\s]/g, '[-\\s]?')}\\b`, 'gi');
     const matches = lowerText.match(regex);
     if (matches) {
-      score += matches.length * 3;
-      posHits.push(`${term} (${matches.length}x)`);
+      const cappedCount = Math.min(matches.length, POSITIVE_CAP_PER_TERM);
+      score += cappedCount * 3;
+      posHits.push(`${term} (raw: ${matches.length}, capped: ${cappedCount})`);
     }
   }
   
-  // Check medium-value terms
+  // Check medium-value terms with cap
   for (const term of POSITIVE_KEYWORDS.medium) {
     const regex = new RegExp(`\\b${term}\\b`, 'gi');
     const matches = lowerText.match(regex);
     if (matches) {
-      score += matches.length * 2;
-      posHits.push(`${term} (${matches.length}x)`);
+      const cappedCount = Math.min(matches.length, POSITIVE_CAP_PER_TERM);
+      score += cappedCount * 2;
+      posHits.push(`${term} (raw: ${matches.length}, capped: ${cappedCount})`);
     }
   }
   
-  // Check low-value terms
+  // Check low-value terms with cap
   for (const term of POSITIVE_KEYWORDS.low) {
     const regex = new RegExp(`\\b${term === '$' ? '\\$' : term}\\b`, 'gi');
     const matches = lowerText.match(regex);
     if (matches) {
-      score += matches.length * 0.5;
-      posHits.push(`${term} (${matches.length}x)`);
+      const cappedCount = Math.min(matches.length, POSITIVE_CAP_PER_TERM);
+      score += cappedCount * 0.5;
+      posHits.push(`${term} (raw: ${matches.length}, capped: ${cappedCount})`);
     }
   }
   
-  // Check negative keywords
+  // Check negative keywords with cap
   let negativeScore = 0;
   for (const term of NEGATIVE_KEYWORDS) {
     const regex = new RegExp(`\\b${term}\\b`, 'gi');
     const matches = lowerText.match(regex);
     if (matches) {
-      negativeScore += matches.length * 3;
-      negHits.push(`${term} (${matches.length}x)`);
+      const cappedCount = Math.min(matches.length, NEGATIVE_CAP_PER_TERM);
+      negativeScore += cappedCount * 3;
+      negHits.push(`${term} (raw: ${matches.length}, capped: ${cappedCount})`);
     }
   }
   
-  score = Math.max(0, score - negativeScore);
-  
-  // Additional heuristics (moderate weight)
+  // Additional heuristics (moderate weight, no cap needed)
   if (lowerText.includes('$') && lowerText.match(/\$\d+/)) {
     score += 1;
     if (!posHits.some(h => h.includes('$'))) {
@@ -261,40 +260,43 @@ function isLikelyShoeArticle(text: string): {
     }
   }
   
+  // Calculate final score (negative penalty applied)
+  const rawScore = Math.max(0, score - negativeScore);
+  
+  // Anchor bonus (no auto-pass, just a bonus)
+  const ANCHOR_BONUS = hasAnchor ? 5 : 0;
+  const finalScore = rawScore + ANCHOR_BONUS;
+  
+  // Thresholds
+  const BASE_SCORE_THRESHOLD = 8;
+  const NEGATIVE_SCORE_THRESHOLD = 6;
+  
   // Determine if article is likely about shoes
   let ok = false;
   
-  // Rule 1: Has strong anchor → likely shoe
-  if (hasAnchor) {
+  // Rule 1: Check score threshold and negative dominance
+  if (finalScore >= BASE_SCORE_THRESHOLD && negativeScore < NEGATIVE_SCORE_THRESHOLD) {
     ok = true;
   }
-  // Rule 2: No anchor but decent score and not dominated by negatives
-  else if (score >= 8 && negativeScore < 6) {
-    ok = true;
+  
+  // Rule 2: Check for generic-only case with negative dominance
+  const hasSpecificTerms = posHits.some(hit => 
+    !POSITIVE_KEYWORDS.low.some(lowTerm => hit.includes(lowTerm))
+  );
+  
+  // If no specific terms and negative score is significant, reject
+  if (!hasSpecificTerms && negativeScore >= 3) {
+    ok = false;
   }
-  // Rule 3: Check for generic-only case
-  else {
-    const hasSpecificTerms = posHits.some(hit => 
-      !POSITIVE_KEYWORDS.low.some(lowTerm => hit.includes(lowTerm))
-    );
-    
-    // If no specific terms and negative score is significant
-    if (!hasSpecificTerms && negativeScore >= 3) {
-      ok = false;
-    }
-    // If no specific terms and only generic hits
-    else if (!hasSpecificTerms && posHits.length > 0) {
-      ok = false;
-    }
-    // Default to score threshold
-    else {
-      ok = score >= 6;
-    }
+  
+  // Rule 3: If no specific terms and only generic hits, reject
+  if (!hasSpecificTerms && posHits.length > 0) {
+    ok = false;
   }
   
   return {
     ok,
-    score,
+    score: finalScore, // Return final score with anchor bonus
     has_anchor: hasAnchor,
     pos_hits: posHits.slice(0, 5), // Limit to 5
     neg_hits: negHits.slice(0, 5)  // Limit to 5
@@ -364,7 +366,7 @@ function titlePrefilter(title: string): {
 }
 
 // Helper to extract lightweight text from HTML for prefiltering (no DOM parsing)
-function extractLightweightText(html: string, maxChars: number): string {
+export function extractLightweightText(html: string, maxChars: number): string {
   // Take only first maxChars characters of HTML
   const sliced = html.slice(0, maxChars);
   // Very basic tag stripping - replace tags with space to avoid matching inside attributes
@@ -385,6 +387,46 @@ function injectSourceTelemetry(
     source_used,
     content_len,
     fetched_html_bytes
+  };
+}
+
+// Pure function to simulate large_html skipped case with prefilter telemetry (for testing)
+export function simulateLargeHtmlSkipped(
+  html: string, 
+  title: string,
+  contentLen: number,
+  fetchedHtmlBytes: number,
+  maxPrefilterChars: number = parseInt(process.env.MAX_PREFILTER_CHARS || '160000', 10)
+): any {
+  // Run title prefilter (same logic as in pipeline)
+  const titlePrefilterResult = titlePrefilter(title);
+  
+  // If title indicates non-shoe, return early skip
+  if (titlePrefilterResult.decision === 'skip') {
+    return {
+      mode: 'skipped' as const,
+      reason: 'not_shoe_article',
+      not_shoe_signal: 'title',
+      title_prefilter: titlePrefilterResult,
+      stage: 'title_prefilter'
+    };
+  }
+
+  // Extract lightweight text for prefiltering (same logic as in pipeline)
+  const lightweightText = extractLightweightText(html, maxPrefilterChars);
+  const lightweightPrefilterResult = isLikelyShoeArticle(lightweightText);
+  
+  // Build the would-be specs_json patch for large_html skipped case
+  return {
+    mode: 'skipped' as const,
+    reason: 'large_html',
+    stage: 'size_guard',
+    bytes_length: html.length,
+    // Include prefilter telemetry from lightweight prefilter (Fix #1)
+    prefilter_score: lightweightPrefilterResult.score,
+    prefilter_has_anchor: lightweightPrefilterResult.has_anchor,
+    prefilter_pos_hits: lightweightPrefilterResult.pos_hits,
+    prefilter_neg_hits: lightweightPrefilterResult.neg_hits
   };
 }
 
@@ -2638,3 +2680,4 @@ if (require.main === module) {
 }
 
 export default main;
+export { isLikelyShoeArticle };

@@ -60,6 +60,33 @@
   - `not_shoe_article` grows where it should (especially among previous `large_html`)
   - Prefilter coverage and score distribution make sense
 
+### Gated LLM Resolver Workflow (Current)
+**Two-stage pipeline for specs resolution**:
+- **Stage 1: Keyword-windowed extraction** (`scripts/specs-pipeline/extractor.ts`)
+  - Outputs `specs_json` with modes: `single`, `ambiguous_multi`, `multi_table`, `skipped`
+  - Preserves `candidates`, `raw_strings`, and telemetry for ambiguous cases
+  - Sets `specs_method` values: `dom_windowed_single`, `dom_windowed_ambiguous`, `dom_multi_table`, etc.
+
+- **Stage 2: Gated LLM resolver** (`scripts/specs-pipeline/resolver.ts`)
+  - Processes rows where `specs_json.mode = 'ambiguous_multi'`
+  - Also processes `llm_gate_skipped` rows when `FORCE_LLM=1`
+  - **Critical merge rule**: Resolver never overwrites `specs_json`; merges success/failure patches into existing JSON
+  - `markFailure(id, reason, existingSpecsJson)` merges `failurePatch` into `existingSpecsJson`
+  - Success path merges `parsedJson` into `specs` plus `resolved_by_meta` and `telemetry`
+
+**Strict gating controls**:
+- `LLM_GATE=1` enabled by default (set to '0' to disable)
+- `LLM_MAX_CALLS=200` limit per run
+- `FORCE_LLM=1` bypasses gate checks for retrying skipped rows
+- Skip reasons persisted: `insufficient_signal`, `max_calls_exceeded`, `no_candidates`
+- Skip results recorded as `specs_json.mode = llm_gate_skipped` with `gate_skip_reason`, `previous_mode`, etc.
+- `specs_method = llm_gate_skip` for skipped rows
+
+**Next-step context**:
+- This pipeline populates table/columns with key sneaker specs (drop/stack/weight/price etc.)
+- Next planned step: define **data contract** and write **idempotent upsert** from `specs_json` into structured storage
+- Priority rules needed for `resolved_multi` vs `single` vs `multi_table` outputs
+
 **Previously (October 2025)**
 **Web-App Submodule Conversion**
 - Converted `web-app/` from Git submodule to regular directory in main repository

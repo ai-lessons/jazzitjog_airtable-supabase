@@ -25,6 +25,12 @@ Airtable (articles)
 - **backfill-specs-dom.ts**: Variant 2: windowed deterministic extraction + shoe prefilter
 - **specs-backfill-runner.ts**: Batch runner for DOM extraction with timeout management
 
+#### Specs Resolver Pipeline (scripts/specs-pipeline/)
+- **extractor.ts**: Keyword-windowed deterministic extraction with multi_table detection
+- **resolver.ts**: Gated LLM resolver for ambiguous cases with merge-preserving updates
+- **resolve-ambiguous-specs.ts**: Alternate/legacy resolver implementation
+- **runner.ts**: Pipeline orchestration for extractor and resolver stages
+
 #### Core Services (src/core/)
 - **logger**: Structured logging with pino
 - **metrics**: Pipeline execution metrics
@@ -95,6 +101,53 @@ Airtable (articles)
    - Prefilter telemetry included in all specs_json
 ```
 
+### 3. Gated LLM Resolver for Ambiguous Cases
+**Decision**: Use LLM only for ambiguous cases that pass strict gate checks, with merge-preserving updates  
+**Rationale**:
+- LLM calls are expensive and should be used only when necessary
+- Gate checks ensure sufficient signal exists before calling LLM
+- Merge behavior preserves extraction context (candidates, raw_strings, telemetry) for debugging and future retries
+
+**Implementation**:
+```
+1. Row Selection:
+   - Processes rows where specs_json.mode = 'ambiguous_multi'
+   - Also processes llm_gate_skipped rows when FORCE_LLM=1
+
+2. Gate Checks (controlled by env vars):
+   - LLM_GATE: enabled by default (set to '0' to disable)
+   - LLM_MAX_CALLS: limit per run (default 200)
+   - FORCE_LLM: bypass gate checks for retrying skipped rows
+
+3. Skip Reasons (persisted in specs_json):
+   - insufficient_signal: <2 non-null spec fields (price, weight, drop, heel, forefoot)
+   - max_calls_exceeded: LLM call limit reached
+   - no_candidates: no candidate snippets available
+
+4. Critical Merge Rule:
+   - Resolver never overwrites specs_json; merges success/failure patches into existing JSON
+   - markFailure(id, reason, existingSpecsJson) merges failurePatch into existingSpecsJson
+   - Success path merges parsedJson into specs plus resolved_by_meta and telemetry
+
+5. Output Modes:
+   - resolved: single model resolved
+   - resolved_multi: multiple models resolved
+   - ambiguous_multi: LLM could not resolve (kept for future retry)
+
+6. Data Preservation:
+   - Candidates and raw_strings from extractor are preserved
+   - Prefilter telemetry remains intact
+   - Only resolution-specific fields are added/updated
+```
+
+**Key Environment Variables**:
+- `LLM_GATE=1` (enabled by default, set to "0" to disable)
+- `LLM_MAX_CALLS=200` (maximum LLM calls per run)
+- `FORCE_LLM=1` (bypasses all gate checks, allows retry of llm_gate_skipped rows)
+- `FORCE_ID` (debug / force single row)
+- `RESOLVER_MODEL=gpt-4o-mini` (LLM model for resolution)
+- `RESOLVER_MAX_TOKENS=1000` (max tokens for LLM response)
+
 **Current Status**:
 - Deterministic extractor is active and writes results
 - `mode="single"` has 25 rows, all with `price/drop/weight/stack`
@@ -103,8 +156,8 @@ Airtable (articles)
 
 **Current Issues**:
 1. **Prefilter missing for `large_html` rows**: 55 `skipped` rows have no prefilter data because prefilter is applied **after** the size guard
-2. **Positive score inflated by repetition**: Raw repetition (e.g., "running" 200x) makes long articles look like shoe articles
-3. **Anchor flag too permissive**: Often becomes `true` for texts that are not real spec sections
+2. ~~**Positive score inflated by repetition**: Raw repetition (e.g., "running" 200x) makes long articles look like shoe articles~~ **FIXED**
+3. ~~**Anchor flag too permissive**: Often becomes `true` for texts that are not real spec sections~~ **FIXED**
 
 **Next Iteration Fixes**:
 1. **Fix 1 – prefilter for `large_html`**:
@@ -112,14 +165,22 @@ Airtable (articles)
    - Run prefilter on this slice
    - Always persist `prefilter_*` fields even if final mode is `large_html`
 
-2. **Fix 2 – normalize the score**:
-   - For each positive keyword, use `min(count, CAP)` with `CAP ≈ 3–5`
+2. **Fix 2 – normalize the score**: ✅ **IMPLEMENTED**
+   - For each positive keyword, use `min(count, CAP)` with `CAP = 3`
    - Sum capped counts for final positive score
    - Prevent repetition ("run" 200x) from dominating classification
 
-3. **Fix 3 – stricter anchors with no auto‑pass**:
+3. **Fix 3 – stricter anchors with no auto‑pass**: ✅ **IMPLEMENTED**
    - Define `has_anchor` only for true spec anchors: combinations like `drop/stack/heel/forefoot + numbers/mm` or "heel-to-toe drop"
    - Do **not** auto‑pass on `has_anchor`; if `has_anchor` is `true` but `negativeScore` is high, classify as `NOT_SHOE`
+   - Anchor bonus: +5 (does not auto-pass)
+
+**Implementation Details**:
+- **Positive/Negative caps**: 3 per term
+- **Anchor bonus**: +5 (added to score, no auto-pass)
+- **Base score threshold**: 8
+- **Negative score threshold**: 6
+- **Test suite**: `scripts/specs-pipeline/test-prefilter-fixes.ts` validates all fixes
 
 **Cluster-Based Resolution Details**:
 - **Environment variables**: `SNIPPET_TOP_N` (default 8), `DEBUG_SPEC_CLUSTER=1`
