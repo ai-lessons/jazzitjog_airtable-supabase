@@ -25,6 +25,8 @@ export async function ingestFromSupabaseArticles(
   const metrics = getMetrics();
   logger.info('Starting Supabase ingest from JazzItJog_db', { options });
 
+  let nullSourceLinkCount = 0;
+
   const result: IngestResult = {
     articles: [],
     total: 0,
@@ -36,7 +38,7 @@ export async function ingestFromSupabaseArticles(
     // Build query
     let query = client
       .from('JazzItJog_db')
-      .select('ID, Title, Content, Published')
+      .select('ID, Title, Content, Published, "Article link"')
       .not('Content', 'is', null) // Filter out NULL content
       .order('Published', { ascending: false }); // Order by Published DESC
 
@@ -73,6 +75,10 @@ export async function ingestFromSupabaseArticles(
         continue;
       }
 
+      if (article.source_link === null) {
+        nullSourceLinkCount++;
+      }
+
       // Filter: Check if article is about running shoes (two-stage: title → content)
       const isShoeArticle = isRunningShoeArticle(article.title, article.content);
 
@@ -94,12 +100,13 @@ export async function ingestFromSupabaseArticles(
     const minId = articleIds.length > 0 ? Math.min(...articleIds) : null;
     const maxId = articleIds.length > 0 ? Math.max(...articleIds) : null;
 
-    logger.info('Supabase ingest completed', {
+    logger.info({
       total: result.total,
       articles: result.articles.length,
       skipped: result.skipped,
+      null_source_link_count: nullSourceLinkCount,
       article_id_range: articleIds.length > 0 ? { min: minId, max: maxId } : null,
-    });
+    }, 'Supabase ingest completed');
 
     return result;
   } catch (error) {
@@ -119,13 +126,12 @@ export async function ingestFromSupabaseArticles(
  * - Published (string, optional) - publication date
  */
 function mapSupabaseRecord(record: any): IngestArticle | null {
-  // Extract fields (case-sensitive for Supabase)
   const article_id = toPositiveInt(record.ID);
   const title = normStr(record.Title);
   const content = normStr(record.Content);
   const date = normStr(record.Published);
+  const source_link = normStr(record['Article link']);
 
-  // Validate required fields
   if (!article_id || !title || !content) {
     logger.debug('Skipping record: missing required fields', {
       id: record.ID,
@@ -138,10 +144,10 @@ function mapSupabaseRecord(record: any): IngestArticle | null {
 
   return {
     article_id,
-    airtable_id: String(article_id), // Use article_id as fallback source ID
+    airtable_id: String(article_id),
     title,
     content,
     date,
-    source_link: null, // JazzItJog_db doesn't have source_link column
+    source_link, // <-- теперь URL прокидывается
   };
 }
