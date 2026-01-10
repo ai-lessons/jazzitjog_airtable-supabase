@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -35,6 +35,9 @@ export function Navigation() {
     <>
       <Link href="/search" className="text-sm opacity-80 hover:opacity-100">
         Search
+      </Link>
+      <Link href="/quiz" className="text-sm opacity-80 hover:opacity-100">
+        Quiz
       </Link>
       {isAdmin && (
         <>
