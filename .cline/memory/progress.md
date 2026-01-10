@@ -344,3 +344,10 @@ None currently blocking development
 - Enhanced search
 - Production monitoring
 - Mobile-responsive improvements
+
+## 2026-01-09 — PR: Supabase source_link + frontend cleanup + Quiz (Phase 1)
+
+- Ingest (Supabase): select `"Article link"` from `JazzItJog_db` → map to `source_link`; log `null_source_link_count` in pino object-first style. (commit: 64ce741)
+- Frontend cleanup: removed legacy Vite app `web/`, confirmed unused; `web-app/` remains primary frontend. (commit: bab6327)
+- web-app: added `/quiz` (Phase 1) and fixed `/api/auth/signout` to use `createSupabaseServerClient()` (import was broken). (commit: fb9ec83)
+- PR description updated with What/Why/Scope/Verification and frontend bullets.
