@@ -100,13 +100,13 @@ export async function ingestFromSupabaseArticles(
     const minId = articleIds.length > 0 ? Math.min(...articleIds) : null;
     const maxId = articleIds.length > 0 ? Math.max(...articleIds) : null;
 
-    logger.info({
+    logger.info('Supabase ingest completed', {
       total: result.total,
       articles: result.articles.length,
       skipped: result.skipped,
       null_source_link_count: nullSourceLinkCount,
       article_id_range: articleIds.length > 0 ? { min: minId, max: maxId } : null,
-    }, 'Supabase ingest completed');
+    });
 
     return result;
   } catch (error) {

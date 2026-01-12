@@ -39,6 +39,9 @@ export function Navigation() {
       <Link href="/quiz" className="text-sm opacity-80 hover:opacity-100">
         Quiz
       </Link>
+      <Link href="/ai-search" className="text-sm opacity-80 hover:opacity-100">
+        AI-search
+      </Link>
       {isAdmin && (
         <>
           <Link href="/staging" className="text-sm opacity-80 hover:opacity-100">

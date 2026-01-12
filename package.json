@@ -24,7 +24,8 @@
     "resolve:ambiguous": "tsx scripts/resolve-ambiguous-specs.ts",
     "specs:pipeline:runner": "tsx scripts/specs-pipeline/runner.ts",
     "specs:pipeline:extract": "tsx scripts/specs-pipeline/extractor.ts",
-    "specs:pipeline:resolve": "tsx scripts/specs-pipeline/resolver.ts"
+    "specs:pipeline:resolve": "tsx scripts/specs-pipeline/resolver.ts",
+    "backfill:evidence": "tsx src/etl/backfill/backfill_evidence_chunks.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.74.0",

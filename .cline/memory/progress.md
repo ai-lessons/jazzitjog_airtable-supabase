@@ -31,6 +31,13 @@
   - Feature filters (waterproof, carbon_plate, breathability)
   - Export functionality
   - Fast, responsive queries
+- **AI Search with Multilingual Support** (January 2026):
+  - Language detection heuristic (Cyrillic → 'ru', else 'en')
+  - Optional Russian-to-English query translation via OpenAI
+  - Dual embedding retrieval (RU + EN) when translation enabled
+  - Intelligent results merging with deduplication by source_link
+  - Debug fields: query_lang, retrieval_queries for observability
+  - Configurable via env vars: AI_QUERY_TRANSLATION, AI_QUERY_TRANSLATION_TARGET, TRANSLATE_MODEL
 
 ### ✅ Developer Experience
 - **TypeScript**: Full type safety across codebase
@@ -79,6 +86,23 @@
 - Per-article caching to avoid duplicate calls
 - Cost tracking and reporting
 - Configurable LLM model selection
+
+### Completed Recently (January 2026)
+
+#### 4. AI Search Multilingual Support (Variant A)
+**Status**: ✅ Implemented  
+**Description**: Add RU→EN query translation + dual retrieval without changing UI contract  
+**Features**:
+- Language detection heuristic: Cyrillic → 'ru', else 'en'
+- Configurable translation: AI_QUERY_TRANSLATION (default 'on'), AI_QUERY_TRANSLATION_TARGET (default 'en')
+- Translation prompt preserves brand/model names and numbers
+- Dual embedding and RPC calls for RU and EN queries
+- Intelligent results merging: keep best distances, deduplicate by source_link
+- Debug fields: query_lang, retrieval_queries
+- Translation model configurable: TRANSLATE_MODEL (default 'gpt-4o-mini')
+- Fallback to RU-only retrieval if translation fails
+- Manual test note: RU query "мягкие кроссовки для асфальта" executes 2 RPC calls when translation enabled
+**Files modified**: `web-app/src/lib/aiSearch/search.ts`
 
 ### Medium Priority
 
@@ -344,6 +368,81 @@ None currently blocking development
 - Enhanced search
 - Production monitoring
 - Mobile-responsive improvements
+
+## 2026-01-12 — AI-Search MVP Implementation (Multilingual Retrieval + Evidence Guard)
+
+### Complete AI-Search MVP Implementation
+**Goal**: Implement AI-powered semantic search for sneaker models with multilingual support and evidence-based guardrails  
+**Features implemented**:
+1. **Multilingual Search Module** (`web-app/src/lib/aiSearch/search.ts`):
+   - Language detection heuristic: Cyrillic → 'ru', else 'en' (fallback 'en')
+   - Configurable translation: AI_QUERY_TRANSLATION (default 'on'), AI_QUERY_TRANSLATION_TARGET (default 'en')
+   - Translation prompt preserves brand/model names and numbers via OpenAI chat completions
+   - Dual embedding retrieval: Original (RU) and translated (EN) queries when translation enabled
+   - Intelligent results merging: Keep best distances, deduplicate by source_link
+   - Debug fields: query_lang, retrieval_queries for observability
+   - Translation model configurable: TRANSLATE_MODEL (default 'gpt-4o-mini')
+   - Fallback to single-language retrieval if translation fails
+
+2. **API Endpoint** (`web-app/src/app/api/ai-search/route.ts`):
+   - Node.js runtime for server-side embeddings and service role key security
+   - Error logging and structured error responses
+   - Supports parameters: query (required), topModels, evidencePerModel, kChunks
+   - Integration with local search module for embedding generation and RPC calls
+
+3. **Navigation Integration** (`web-app/src/components/Navigation.tsx`):
+   - Added "AI-search" navigation item right after "Quiz" in main navigation
+   - Consistent styling with existing navigation items
+   - Accessible via `/ai-search` route
+
+4. **UI Page with Evidence Guard** (`web-app/src/app/ai-search/page.tsx`):
+   - Search interface with query input and search button
+   - Results display with brand, model, distance, and evidence previews
+   - **Evidence guard**: Models with <2 distinct sources are hidden from results
+   - **Warning banner**: Displayed when evidence guard filters out low-evidence models
+   - Results sorted by semantic distance (best first)
+   - Evidence previews show source links and contextual snippets
+
+**Technical Implementation**:
+- **Embedding Provider**: OpenAI `text-embedding-3-small` (1536 dimensions)
+- **Database Integration**: Supabase RPC `ai_match_models_with_evidence` for vector similarity search
+- **Architecture**: Local provider (OpenAI + Supabase) with remote provider path for future scaling
+- **Environment Configuration**: 
+  - `AI_SEARCH_PROVIDER`: 'local' (default) or 'remote'
+  - `AI_QUERY_TRANSLATION`: 'on'/'off' toggle for translation
+  - `AI_QUERY_TRANSLATION_TARGET`: target language (default 'en')
+  - `TRANSLATE_MODEL`: OpenAI model for translation
+  - `EMBED_MODEL`: OpenAI embedding model
+
+**Evidence Guard Logic**:
+- Filters out models with `distinct_sources < 2`
+- Shows warning: "Some low-evidence results hidden (need at least 2 distinct sources)"
+- Maintains result quality by requiring multiple independent sources
+- Prevents over-reliance on single-source evidence
+
+**Files Modified/Created**:
+- `web-app/src/lib/aiSearch/search.ts` - Core search module with multilingual support
+- `web-app/src/app/api/ai-search/route.ts` - API endpoint
+- `web-app/src/components/Navigation.tsx` - Navigation integration
+- `web-app/src/app/ai-search/page.tsx` - UI with evidence guard
+- `web-app/src/components/Navigation.tsx.bak` - Backup of original navigation
+
+**Manual Test Notes**:
+- Russian query "мягкие кроссовки для асфальта" executes 2 RPC calls when translation enabled
+- Evidence guard successfully hides models with <2 distinct sources
+- Warning banner appears when low-evidence models are filtered
+- API returns 200 with proper environment configuration
+
+**Current Limitations**:
+- Evidence previews still in English only (awaiting multilingual evidence storage)
+- Brand preference not yet enforced in search ranking
+- No caching layer for embeddings or translation results
+
+**Next Steps**:
+- Implement multilingual evidence storage (RU/EN previews)
+- Add brand preference ranking boost
+- Add caching for embeddings and translations
+- Extend evidence guard to consider source credibility
 
 ## 2026-01-09 — PR: Supabase source_link + frontend cleanup + Quiz (Phase 1)
 
