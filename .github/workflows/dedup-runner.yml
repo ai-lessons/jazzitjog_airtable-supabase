@@ -1,0 +1,96 @@
+name: Dedup Compare Worker Runner
+
+on:
+  # Daily scheduled run at 09:37 Europe/Stockholm with explicit timezone handling
+  schedule:
+    - cron: '37 9 * * *'
+      timezone: 'Europe/Stockholm'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+# Prevent overlapping runs
+concurrency:
+  group: dedup-runner
+  cancel-in-progress: false
+
+jobs:
+  run-dedup-worker:
+    runs-on: ubuntu-latest
+    
+    env:
+      DEDUP_ENDPOINT: https://fqcwpcyxofowscluryej.supabase.co/functions/v1/dedup-compare-worker
+      MAX_ATTEMPTS: 5
+      RETRY_INTERVAL_SECONDS: 300  # 5 minutes
+    
+    steps:
+      - name: Run dedup compare worker with retry logic
+        run: |
+          echo "Starting dedup compare worker runner"
+          echo "Max attempts: $MAX_ATTEMPTS"
+          echo "Retry interval: $RETRY_INTERVAL_SECONDS seconds"
+          echo ""
+          
+          attempt=1
+          
+          while [ $attempt -le $MAX_ATTEMPTS ]; do
+            echo "=========================================="
+            echo "Attempt $attempt of $MAX_ATTEMPTS"
+            echo "=========================================="
+            
+            # Call the dedup worker endpoint
+            response=$(curl -s -w "\n%{http_code}" -X POST "$DEDUP_ENDPOINT" \
+              -H "Content-Type: application/json" \
+              -d '{"dry_run": false, "stale_minutes": 0}')
+            
+            # Extract HTTP status code (last line)
+            http_code=$(echo "$response" | tail -n1)
+            
+            # Extract response body (all lines except last)
+            body=$(echo "$response" | sed '$d')
+            
+            echo "HTTP Status: $http_code"
+            echo "Response Body: $body"
+            
+            # Check if HTTP request succeeded
+            if [ "$http_code" -lt 200 ] || [ "$http_code" -ge 300 ]; then
+              echo "ERROR: HTTP request failed with status $http_code"
+              exit 1
+            fi
+            
+            # Parse JSON to check stage
+            stage=$(echo "$body" | grep -o '"stage":"[^"]*"' | sed 's/"stage":"\([^"]*\)"/\1/')
+            task_id=$(echo "$body" | grep -o '"task_id":[0-9]*' | sed 's/"task_id"://')
+            
+            echo "Stage: $stage"
+            if [ -n "$task_id" ]; then
+              echo "Task ID: $task_id"
+            fi
+            
+            # If idle, stop successfully
+            if [ "$stage" = "idle" ]; then
+              echo ""
+              echo "=========================================="
+              echo "Worker is idle - no more pending tasks"
+              echo "Completed successfully after $attempt attempt(s)"
+              echo "=========================================="
+              exit 0
+            fi
+            
+            # If not idle and not last attempt, wait before retry
+            if [ $attempt -lt $MAX_ATTEMPTS ]; then
+              echo "Worker is not idle, will retry in $RETRY_INTERVAL_SECONDS seconds..."
+              echo ""
+              sleep $RETRY_INTERVAL_SECONDS
+            fi
+            
+            attempt=$((attempt + 1))
+          done
+          
+          echo ""
+          echo "=========================================="
+          echo "Reached maximum attempts ($MAX_ATTEMPTS)"
+          echo "Worker may still have pending tasks"
+          echo "This is not necessarily an error - worker will continue next run"
+          echo "=========================================="
+          exit 0
